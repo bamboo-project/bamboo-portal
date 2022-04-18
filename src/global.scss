@@ -1,0 +1,27 @@
+@import 'tailwind.css';
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+@font-face {
+  font-family: 'Pixellari';
+  src: url('/Pixellari.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gameplay';
+  src: url('/Gameplay.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  @apply dark:bg-dark-bg-1;
+}
+

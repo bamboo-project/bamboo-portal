@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  @variants dark {
+    .nft-item {
+      background-color: #22242b;
+    }
+    .header {
+      background-color: #1f2127;
+    }
+    .input {
+      @apply p-4 w-full focus:ring-2 focus:ring-gray-600 focus:outline-none focus:border-transparent text-white;
+      background-color: #1f2024;
+      border: 0.5px solid #40434b;
+      border-radius: 10px;
+    }
+    .gray-input{
+      @apply p-4 w-full focus:ring-2 focus:ring-gray-100 focus:outline-none focus:border-transparent text-black;
+      background-color: #eeeeee;
+      border: 0.5px solid #eeeeee;
+      border-radius: 10px;
+    }
+    .tag-input {
+      @apply  pl-4 pr-4 pt-4 w-full focus:ring-2 focus:ring-gray-600 focus:outline-none focus:border-transparent text-white block flex-wrap ;
+      background-color: #1f2024;
+      border: 0.5px solid #40434b;
+      border-radius: 10px;
+    }
+    .tag {
+      @apply inline-block mr-4 mb-3 pt-2 pb-2 text-black pl-4 pr-4 rounded-full  flex-row justify-center items-center focus:ring-2 focus:ring-gray-600 focus:outline-none focus:border-transparent cursor-pointer;
+      background-color: #ffe366;
+    }
+    
+  }
+}
