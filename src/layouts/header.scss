@@ -1,0 +1,44 @@
+.header-address{
+	position: relative;
+	&-info{
+		display: flex;
+		align-items: center;
+		&-avatar{
+			position: relative;
+			width: 25px;
+			height: 25px;
+			background: #eee;
+			border-radius: 50%;
+			margin-right: 6px;
+			&-status{
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				width: 6px;
+				height: 6px;
+				background: #07FF6A;
+				border-radius: 50%;
+
+			}
+		}
+		&-content{
+
+		}
+	}
+	&-btns{
+		position: absolute;
+		top: 35px;
+		background: #2E2A2F80;
+		line-height: 1;
+		text-align: center;
+		padding:0 15px;
+
+		&-item{
+			padding: 13px 0;
+		}
+		&-item:first-child{
+			border-bottom: 0.5px solid #FFFFFF80;
+		}
+	}
+
+}
