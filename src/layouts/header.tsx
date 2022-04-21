@@ -1,6 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment, useState } from 'react';
-import { Popover, Transition, Switch } from '@headlessui/react';
+import { Fragment, useState, useEffect } from 'react'
+import { Popover, Transition, Switch } from '@headlessui/react'
 import {
   BookmarkAltIcon,
   CalendarIcon,
@@ -14,11 +14,11 @@ import {
   SupportIcon,
   ViewGridIcon,
   XIcon,
-} from '@heroicons/react/outline';
-import { ChevronDownIcon } from '@heroicons/react/solid';
-import { useDispatch } from 'umi';
+} from '@heroicons/react/outline'
+import { ChevronDownIcon } from '@heroicons/react/solid'
+import { useDispatch } from 'umi'
 
-import { useLocalStorageState } from 'ahooks';
+import { useLocalStorageState } from 'ahooks'
 
 const solutions = [
   {
@@ -27,34 +27,103 @@ const solutions = [
     href: '/market',
     icon: ChartBarIcon,
   },
-];
-const callsToAction = [{ name: 'About NFT', href: '#', icon: PlayIcon }];
+]
+const callsToAction = [{ name: 'About NFT', href: '#', icon: PlayIcon }]
 const resources = [
   {
     name: 'Help',
     href: '/help',
     icon: SupportIcon,
   },
-];
-const recentPosts = [{ id: 1, name: 'TBD', href: '#' }];
+]
+const recentPosts = [{ id: 1, name: 'TBD', href: '#' }]
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
+function classNames(...classes: any[]) {
+  return classes.filter(Boolean).join(' ')
 }
 
-export default function HeaderLayout(props) {
-  const { auth } = props;
-  const { isLogin, userInfo } = auth;
+let neoline
+let neolineN3: any
 
-  const dispatch = useDispatch();
+function initDapi() {
+  const initCommonDapi = new Promise((resolve, reject) => {
+    window.addEventListener('NEOLine.NEO.EVENT.READY', () => {
+      neoline = new NEOLine.Init()
+      if (neoline) {
+        resolve(neoline)
+      } else {
+        reject('common dAPI method failed to load.')
+      }
+    })
+  })
+  const initN3Dapi = new Promise((resolve, reject) => {
+    window.addEventListener('NEOLine.N3.EVENT.READY', () => {
+      neolineN3 = new NEOLineN3.Init()
+      if (neolineN3) {
+        resolve(neolineN3)
+      } else {
+        reject('N3 dAPI method failed to load.')
+      }
+    })
+  })
+  initCommonDapi
+    .then(() => {
+      console.log('The common dAPI method is loaded.')
+      return initN3Dapi
+    })
+    .then(() => {
+      console.log('The N3 dAPI method is loaded.')
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}
 
-  const [theme, setTheme] = useLocalStorageState('theme', 'dark');
+export default function HeaderLayout(props: any) {
+  const { auth } = props
+  const { isLogin, userInfo } = auth
+  const [walletAddress, setWalletAddress] = useState('Connect Wallet')
+  const [theme, setTheme] = useState('dark')
+
+  const dispatch = useDispatch()
 
   const handleLogout = () => {
     dispatch({
       type: 'auth/logout',
-    });
-  };
+    })
+  }
+  useEffect(() => {
+    initDapi()
+  }, [])
+  const connectWallet = () => {
+    // 未挂载好退出
+    if (!neolineN3) {
+      return
+    }
+    neolineN3
+      .pickAddress()
+      .then((result: { label: any; address: any }) => {
+        const { label, address } = result
+        setWalletAddress(address)
+        console.log('label：' + label)
+        console.log('address：' + address)
+      })
+      .catch((error: { type: any; description: any; data: any }) => {
+        const { type, description, data } = error
+        switch (type) {
+          case 'NO_PROVIDER':
+            console.log('No provider available.')
+            break
+          case 'CANCELED':
+            console.log('The user cancels, or refuses the dapps request')
+            break
+          default:
+            // Not an expected error object.  Just write the error to the console.
+            console.error(error)
+            break
+        }
+      })
+  }
   return (
     <Popover className="relative bg-gray-700 bg-opacity-50 dark:header">
       {({ open }) => (
@@ -86,10 +155,7 @@ export default function HeaderLayout(props) {
                   <MenuIcon className="h-6 w-6" aria-hidden="true" />
                 </Popover.Button>
               </div>
-              <Popover.Group
-                as="nav"
-                className="hidden md:flex space-x-14 flex-1 justify-end"
-              >
+              <Popover.Group as="nav" className="hidden md:flex space-x-14 flex-1 justify-end">
                 <a
                   href="/"
                   className="font-px text-base text-center block relative font-medium text-white dark:text-white hover:text-white"
@@ -112,10 +178,7 @@ export default function HeaderLayout(props) {
               </Popover.Group>
               <div className="hidden md:flex items-center justify-end ">
                 {isLogin ? (
-                  <Popover.Group
-                    as="nav"
-                    className="hidden md:flex space-x-10 flex-1 justify-end"
-                  >
+                  <Popover.Group as="nav" className="hidden md:flex space-x-10 flex-1 justify-end">
                     <Popover className="relative">
                       {({ open }) => (
                         <>
@@ -126,16 +189,11 @@ export default function HeaderLayout(props) {
                             )}
                           >
                             <div>
-                              <img
-                                src={userInfo.avatar}
-                                className="w-10 h-10 rounded-full"
-                              />
+                              <img src={userInfo.avatar} className="w-10 h-10 rounded-full" />
                             </div>
                             <ChevronDownIcon
                               className={classNames(
-                                open
-                                  ? 'text-gray-600 dark:text-white'
-                                  : 'text-gray-400 dark:text-gray-100',
+                                open ? 'text-gray-600 dark:text-white' : 'text-gray-400 dark:text-gray-100',
                                 'ml-2 h-5 w-5 group-hover:text-gray-500 dark:group-hover:text-white',
                               )}
                               aria-hidden="true"
@@ -159,9 +217,7 @@ export default function HeaderLayout(props) {
                               <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                                 <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                                   <a href={`/profile/${userInfo.userId}`}>
-                                    <div className="p-3 text-black font-bold text-2xl">
-                                      {userInfo.nickname}
-                                    </div>
+                                    <div className="p-3 text-black font-bold text-2xl">{userInfo.nickname}</div>
                                   </a>
                                   <hr />
                                   <a
@@ -169,19 +225,12 @@ export default function HeaderLayout(props) {
                                     className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
                                   >
                                     <div className="ml-4">
-                                      <p className="text-base font-medium text-gray-900">
-                                        Orders
-                                      </p>
+                                      <p className="text-base font-medium text-gray-900">Orders</p>
                                     </div>
                                   </a>
-                                  <a
-                                    href="/wallet"
-                                    className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
-                                  >
+                                  <a href="/wallet" className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
                                     <div className="ml-4">
-                                      <p className="text-base font-medium text-gray-900">
-                                        Wallet
-                                      </p>
+                                      <p className="text-base font-medium text-gray-900">Wallet</p>
                                     </div>
                                   </a>
                                   <a
@@ -189,46 +238,32 @@ export default function HeaderLayout(props) {
                                     className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
                                   >
                                     <div className="ml-4">
-                                      <p className="text-base font-medium text-gray-900">
-                                        Setting
-                                      </p>
+                                      <p className="text-base font-medium text-gray-900">Setting</p>
                                     </div>
                                   </a>
                                   <a className="-m-3 p-3 flex content-between justify-between rounded-lg hover:bg-gray-50">
                                     <div className="ml-4 ">
-                                      <p className="text-base font-medium text-gray-900">
-                                        Dark Theme
-                                      </p>
+                                      <p className="text-base font-medium text-gray-900">Dark Theme</p>
                                     </div>
                                     <Switch
                                       checked={theme == 'dark'}
                                       onChange={() => {
                                         if (theme == 'dark') {
-                                          document
-                                            .querySelector('html')
-                                            .classList.remove('dark');
-                                          setTheme('light');
+                                          document.querySelector('html').classList.remove('dark')
+                                          setTheme('light')
                                         } else {
-                                          document
-                                            .querySelector('html')
-                                            .classList.add('dark');
-                                          setTheme('dark');
+                                          document.querySelector('html').classList.add('dark')
+                                          setTheme('dark')
                                         }
                                       }}
                                       className={`${
-                                        theme == 'dark'
-                                          ? 'bg-second'
-                                          : 'bg-gray-400'
+                                        theme == 'dark' ? 'bg-second' : 'bg-gray-400'
                                       } relative inline-flex items-center h-6 rounded-full w-11`}
                                     >
-                                      <span className="sr-only">
-                                        Enable notifications
-                                      </span>
+                                      <span className="sr-only">Enable notifications</span>
                                       <span
                                         className={`${
-                                          theme == 'dark'
-                                            ? 'translate-x-6'
-                                            : 'translate-x-1'
+                                          theme == 'dark' ? 'translate-x-6' : 'translate-x-1'
                                         } inline-block w-4 h-4 transform bg-white rounded-full`}
                                       />
                                     </Switch>
@@ -237,14 +272,12 @@ export default function HeaderLayout(props) {
                                     onClick={() => {
                                       dispatch({
                                         type: 'auth/logout',
-                                      });
+                                      })
                                     }}
                                     className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
                                   >
                                     <div className="ml-4">
-                                      <p className="text-base font-medium text-gray-900">
-                                        Logout
-                                      </p>
+                                      <p className="text-base font-medium text-gray-900">Logout</p>
                                     </div>
                                   </a>
                                 </div>
@@ -260,10 +293,11 @@ export default function HeaderLayout(props) {
                 )}
                 <div
                   // href={isLogin ? '/create/nft' : '/login'}
+                  onClick={connectWallet}
                   className="ml-8 font-px cursor-pointer whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md 
                   shadow-sm text-base font-medium bg-primary text-white hover:text-white  hover:bg-opacity-90"
                 >
-                  Connect Wallet
+                  {walletAddress}
                 </div>
               </div>
             </div>
@@ -312,19 +346,14 @@ export default function HeaderLayout(props) {
                   </div>
                   <div className="mt-6">
                     <nav className="grid gap-y-8">
-                      {solutions.map((item) => (
+                      {solutions.map(item => (
                         <a
                           key={item.name}
                           href={item.href}
                           className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
                         >
-                          <item.icon
-                            className="flex-shrink-0 h-6 w-6 text-primary-600"
-                            aria-hidden="true"
-                          />
-                          <span className="ml-3 text-base font-medium text-gray-900">
-                            {item.name}
-                          </span>
+                          <item.icon className="flex-shrink-0 h-6 w-6 text-primary-600" aria-hidden="true" />
+                          <span className="ml-3 text-base font-medium text-gray-900">{item.name}</span>
                         </a>
                       ))}
                     </nav>
@@ -332,20 +361,14 @@ export default function HeaderLayout(props) {
                 </div>
                 <div className="py-6 px-5 space-y-6">
                   <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                    <a
-                      href="#"
-                      className="text-base font-medium text-gray-900 hover:text-gray-700"
-                    >
+                    <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
                       IP
                     </a>
 
-                    <a
-                      href="#"
-                      className="text-base font-medium text-gray-900 hover:text-gray-700"
-                    >
+                    <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
                       Mini App
                     </a>
-                    {resources.map((item) => (
+                    {resources.map(item => (
                       <a
                         key={item.name}
                         href={item.href}
@@ -357,17 +380,12 @@ export default function HeaderLayout(props) {
                   </div>
                   {isLogin ? (
                     <div className="w-full flex flex-col text-center">
-                      <img
-                        className="rounded-full w-20 h-20 mx-auto"
-                        src={userInfo.avatar}
-                      />
-                      <div className="text-black text-2xl mt-3">
-                        {userInfo.nickname}
-                      </div>
+                      <img className="rounded-full w-20 h-20 mx-auto" src={userInfo.avatar} />
+                      <div className="text-black text-2xl mt-3">{userInfo.nickname}</div>
                       <div
                         className="bg-blue-500 p-3 mt-4 text-white"
                         onClick={() => {
-                          handleLogout();
+                          handleLogout()
                         }}
                       >
                         Logout
@@ -391,5 +409,5 @@ export default function HeaderLayout(props) {
         </>
       )}
     </Popover>
-  );
+  )
 }
