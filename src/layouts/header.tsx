@@ -17,8 +17,8 @@ import {
 } from '@heroicons/react/outline'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import { useDispatch } from 'umi'
-
 import { useLocalStorageState } from 'ahooks'
+import './header.scss'
 
 const solutions = [
   {
@@ -42,49 +42,50 @@ function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-let neoline
-let neolineN3: any
-
-function initDapi() {
-  const initCommonDapi = new Promise((resolve, reject) => {
-    window.addEventListener('NEOLine.NEO.EVENT.READY', () => {
-      neoline = new NEOLine.Init()
-      if (neoline) {
-        resolve(neoline)
-      } else {
-        reject('common dAPI method failed to load.')
-      }
-    })
-  })
-  const initN3Dapi = new Promise((resolve, reject) => {
-    window.addEventListener('NEOLine.N3.EVENT.READY', () => {
-      neolineN3 = new NEOLineN3.Init()
-      if (neolineN3) {
-        resolve(neolineN3)
-      } else {
-        reject('N3 dAPI method failed to load.')
-      }
-    })
-  })
-  initCommonDapi
-    .then(() => {
-      console.log('The common dAPI method is loaded.')
-      return initN3Dapi
-    })
-    .then(() => {
-      console.log('The N3 dAPI method is loaded.')
-    })
-    .catch(err => {
-      console.log(err)
-    })
-}
-
 export default function HeaderLayout(props: any) {
   const { auth } = props
   const { isLogin, userInfo } = auth
-  const [walletAddress, setWalletAddress] = useState('Connect Wallet')
+  const [walletAddress, setWalletAddress] = useState('')
   const [theme, setTheme] = useState('dark')
+  const [neoline, setNeoline] = useState(null)
+  const [neolineN3, setNeolineN3] = useState(null)
+  const [showBtns, setShowBtns] = useState(false) // 鼠标悬浮钱包地址展示按钮
 
+  const initDapi = () => {
+    const initCommonDapi = new Promise((resolve, reject) => {
+      window.addEventListener('NEOLine.NEO.EVENT.READY', () => {
+        let data = new NEOLine.Init()
+        setNeoline(data)
+        if (data) {
+          resolve(data)
+        } else {
+          reject('common dAPI method failed to load.')
+        }
+      })
+    })
+    const initN3Dapi = new Promise((resolve, reject) => {
+      window.addEventListener('NEOLine.N3.EVENT.READY', () => {
+        let data = new NEOLineN3.Init()
+        setNeolineN3(data)
+        if (data) {
+          resolve(data)
+        } else {
+          reject('N3 dAPI method failed to load.')
+        }
+      })
+    })
+    initCommonDapi
+      .then(() => {
+        console.log('The common dAPI method is loaded.')
+        return initN3Dapi
+      })
+      .then(() => {
+        console.log('The N3 dAPI method is loaded.')
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
   const dispatch = useDispatch()
 
   const handleLogout = () => {
@@ -92,9 +93,47 @@ export default function HeaderLayout(props: any) {
       type: 'auth/logout',
     })
   }
+  const checkConnection = () => {
+    // 未挂载好退出
+    if (!neoline) {
+      return
+    }
+    neoline
+      .getAccount()
+      .then(account => {
+        const { address, label } = account
+        setWalletAddress(address)
+        console.log('Provider address: ' + address)
+        console.log('Provider account label (Optional): ' + label)
+      })
+      .catch(error => {
+        const { type, description, data } = error
+        switch (type) {
+          case 'NO_PROVIDER':
+            console.log('No provider available.')
+            break
+          case 'CONNECTION_DENIED':
+            console.log('The user rejected the request to connect with your dApp')
+            break
+          case 'CHAIN_NOT_MATCH':
+            console.log(
+              'The currently opened chain does not match the type of the call chain, please switch the chain.',
+            )
+            break
+          default:
+            // Not an expected error object.  Just write the error to the console.
+            console.error(error)
+            break
+        }
+      })
+  }
   useEffect(() => {
     initDapi()
   }, [])
+  useEffect(() => {
+    checkConnection()
+  }, [neoline])
+
   const connectWallet = () => {
     // 未挂载好退出
     if (!neolineN3) {
@@ -291,14 +330,54 @@ export default function HeaderLayout(props: any) {
                 ) : (
                   <></>
                 )}
-                <div
-                  // href={isLogin ? '/create/nft' : '/login'}
-                  onClick={connectWallet}
-                  className="ml-8 font-px cursor-pointer whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md 
+                {walletAddress !== '' && (
+                  <div
+                    className="header-address font-px text-white"
+                    onMouseEnter={() => {
+                      setShowBtns(true)
+                    }}
+                    onMouseOver={() => {
+                      setShowBtns(true)
+                    }}
+                    onMouseOut={() => {
+                      setShowBtns(false)
+                    }}
+                  >
+                    <div className="header-address-info">
+                      <div className="header-address-info-avatar">
+                        <div className="header-address-info-avatar-status"></div>
+                      </div>
+                      <div className="header-address-info-content">{walletAddress.slice(0, 12)}···</div>
+                    </div>
+                    {showBtns && (
+                      <div
+                        className="header-address-btns"
+                        onMouseEnter={() => {
+                          setShowBtns(true)
+                        }}
+                        onMouseOver={() => {
+                          setShowBtns(true)
+                        }}
+                        onMouseOut={() => {
+                          setShowBtns(false)
+                        }}
+                      >
+                        <div className="header-address-btns-item">SOCIAL CONNECTION</div>
+                        <div className="header-address-btns-item">DISCONNECT</div>
+                      </div>
+                    )}
+                  </div>
+                )}
+                {walletAddress == '' && (
+                  <div
+                    // href={isLogin ? '/create/nft' : '/login'}
+                    onClick={connectWallet}
+                    className="ml-8 font-px cursor-pointer whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md 
                   shadow-sm text-base font-medium bg-primary text-white hover:text-white  hover:bg-opacity-90"
-                >
-                  {walletAddress}
-                </div>
+                  >
+                    Connect Wallet
+                  </div>
+                )}
               </div>
             </div>
           </div>
