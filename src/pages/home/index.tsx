@@ -5,7 +5,7 @@ function Home() {
   return (
     <>
       <div className={classnames(styles.marketWrap, 'h-screen w-screen relative')}>
-        <div className="flex flex-row items-center container mx-auto mb-24 mt-40">
+        <div className="flex flex-row items-center container mx-auto mb-24 mt-40 relative">
           <div className="pr-96">
             <div className="text-primary text-8xl flex items-center flex-row font-extrabold">
               <div className="font-px text-5xl">Connect social account TO Mint A Blockchain Pet ！</div>
