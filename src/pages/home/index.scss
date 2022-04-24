@@ -4,13 +4,24 @@
 .grey-line{
 	border-bottom: 3px dashed #808080;
 }
-.home-radius-btn{
-	padding: 8px 12px;
-	border-radius: 50px;
-}
 .taohong-bg{
 	background: #FC3A99;
 }
 .huise-bg{
 	background: #A3A3A3;
+}
+.home{
+	&-radius-btn{
+		padding: 8px 12px;
+		border-radius: 50px;
+	}
+	&-xinxi {
+		// background-image: url(https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/bg_11.png);
+		// width: 521px;
+		// height: 143px;
+		// background-position: center;
+		// background-repeat: no-repeat;
+		// background-size: contain;
+		mix-blend-mode: lighten;
+	}
 }
