@@ -4,9 +4,9 @@ import classnames from 'classnames'
 function Home() {
   return (
     <>
-      <div className={classnames(styles.marketWrap, 'h-screen w-screen ')}>
+      <div className={classnames(styles.marketWrap, 'h-screen w-screen relative')}>
         <div className="flex flex-row items-center container mx-auto mb-24 mt-40">
-          <div className="pr-20">
+          <div className="pr-96">
             <div className="text-primary text-8xl flex items-center flex-row font-extrabold">
               <div className="font-px text-5xl">Connect social account TO Mint A Blockchain Pet ！</div>
             </div>
@@ -21,6 +21,9 @@ function Home() {
                 Greater possibility of the rare pets will be had. Get started now!
               </div>
             </div>
+          </div>
+          <div className="home-xinxi w-96">
+            <img src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/bg_11.png" />
           </div>
         </div>
         <div className="flex flex-row pr-40 pl-40 items-center">
@@ -55,6 +58,9 @@ function Home() {
           <div className="">
             <img className="w-20" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_gray_egg.png" />
           </div>
+        </div>
+        <div className="absolute bottom-0">
+          <img src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_jianbian.png" />
         </div>
       </div>
     </>
