@@ -43,7 +43,7 @@ function classNames(...classes: any[]) {
 }
 
 export default function HeaderLayout(props: any) {
-  const { auth, connectWallet, walletAddress } = props
+  const { auth, connectWallet, walletAddress, tabIndex } = props
   const { isLogin, userInfo } = auth
   const [theme, setTheme] = useState('dark')
   const [showBtns, setShowBtns] = useState(false) // 鼠标悬浮钱包地址展示按钮
@@ -93,19 +93,27 @@ export default function HeaderLayout(props: any) {
                   className="font-px text-base text-center block relative font-medium text-white dark:text-white hover:text-white"
                 >
                   About Bamboo
-                  <div className=" h-1.5 rounded-full left-1/2 -ml-7 z-10 -bottom-3 absolute bg-primary w-14"></div>
+                  {tabIndex == '/' && (
+                    <div className=" h-1.5 rounded-full left-1/2 -ml-7 z-10 -bottom-3 absolute bg-primary w-14"></div>
+                  )}
                 </a>
                 <a
                   href={'/market'}
-                  className="font-px block text-base font-medium text-white dark:text-white hover:text-white"
+                  className="font-px block text-base relative font-medium text-white dark:text-white hover:text-white"
                 >
                   MARKET
+                  {tabIndex == '/market' && (
+                    <div className=" h-1.5 rounded-full z-10 -bottom-3 absolute bg-primary w-14"></div>
+                  )}
                 </a>
                 <a
                   href="/home"
-                  className="font-px block text-base font-medium text-white dark:text-white hover:text-white"
+                  className="font-px block text-base relative font-medium text-white dark:text-white hover:text-white"
                 >
                   My Home
+                  {tabIndex == '/home' && (
+                    <div className=" h-1.5 rounded-full z-10 -bottom-3 absolute bg-primary w-14"></div>
+                  )}
                 </a>
               </Popover.Group>
               <div className="hidden md:flex items-center justify-end ">

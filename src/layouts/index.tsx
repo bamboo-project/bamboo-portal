@@ -246,7 +246,7 @@ function IndexLayout(props) {
   if (props.location.pathname === '/home') {
     return (
       <div className="bg-purple dark:bg-dark-bg-1 ">
-        <Header auth={props.auth} connectWallet={connectWallet} walletAddress={walletAddress} />
+        <Header auth={props.auth} connectWallet={connectWallet} walletAddress={walletAddress} tabIndex={pathname} />
         <div className="mx-auto">
           {React.cloneElement(props.children, {
             walletAddress: walletAddress,
@@ -264,7 +264,7 @@ function IndexLayout(props) {
   if (/^\/aaa|goods\/(\d+)/.test(pathname) || '/create/nft' == pathname) {
     return (
       <div className="bg-white overflow-hidden lg:h-screen w-screen flex flex-col dark:bg-dark-bg-1 ">
-        <Header auth={props.auth} connectWallet={connectWallet} walletAddress={walletAddress} />
+        <Header auth={props.auth} connectWallet={connectWallet} walletAddress={walletAddress} tabIndex={pathname} />
         <div className="mx-auto flex container flex-1  flex-shrink-0 overflow-hidden ">{props.children}</div>
       </div>
     )
@@ -272,7 +272,7 @@ function IndexLayout(props) {
 
   return (
     <div className="bg-purple dark:bg-dark-bg-1 ">
-      <Header auth={props.auth} connectWallet={connectWallet} walletAddress={walletAddress} />
+      <Header auth={props.auth} connectWallet={connectWallet} walletAddress={walletAddress} tabIndex={pathname} />
       <div className="mx-auto">{props.children}</div>
       <Footer />
     </div>
