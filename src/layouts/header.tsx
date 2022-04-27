@@ -163,6 +163,122 @@ export default function HeaderLayout(props: any) {
         }
       })
   }
+  // const mintAddress = () => {
+  //   neolineN3
+  //     .AddressToScriptHash({ address: walletAddress })
+  //     .then(result => {
+  //       const { scriptHash } = result
+  //       neolineN3
+  //         .invoke({
+  //           scriptHash: '0x7d65a781d4a06306e75f107150d982fd63a689c7',
+  //           operation: 'mint',
+  //           args: [
+  //             {
+  //               type: 'Hash160',
+  //               value: walletAddress,
+  //             },
+  //             {
+  //               type: 'ByteArray',
+  //               value: '{"foo":"bar"}',
+  //             },
+  //             {
+  //               type: 'ByteArray',
+  //               value: '{}',
+  //             },
+  //             {
+  //               type: 'ByteArray',
+  //               value: '{}',
+  //             },
+  //             {
+  //               type: 'Any',
+  //               value: null,
+  //             },
+  //           ],
+  //           fee: '0.0001',
+  //           broadcastOverride: false,
+  //           signers: [
+  //             {
+  //               account: scriptHash,
+  //               scopes: 1,
+  //             },
+  //           ],
+  //         })
+  //         .then(result1 => {
+  //           console.log('Invoke transaction success!')
+  //           console.log('Transaction ID: ' + result1.txid)
+  //           console.log('RPC node URL: ' + result1.nodeURL)
+  //         })
+  //         .catch(error1 => {
+  //           const { type, description, data } = error1
+  //           switch (type) {
+  //             case 'NO_PROVIDER':
+  //               console.log('No provider available.')
+  //               break
+  //             case 'RPC_ERROR':
+  //               console.log('There was an error when broadcasting this transaction to the network.')
+  //               break
+  //             case 'CANCELED':
+  //               console.log('The user has canceled this transaction.')
+  //               break
+  //             default:
+  //               // Not an expected error object.  Just write the error to the console.
+  //               console.error(error1)
+  //               break
+  //           }
+  //         })
+  //       console.log('scriptHash' + scriptHash)
+  //     })
+  //     .catch(error => {
+  //       const { type, description, data } = error
+  //       switch (type) {
+  //         case 'NO_PROVIDER':
+  //           console.log('No provider available.')
+  //           break
+  //         case 'MALFORMED_INPUT':
+  //           console.log('Please check your input')
+  //           break
+  //         default:
+  //           // Not an expected error object.  Just write the error to the console.
+  //           console.error(error)
+  //           break
+  //       }
+  //     })
+  // }
+  const readInvoke = () => {
+    neolineN3
+      .invokeRead({
+        scriptHash: '0x7d65a781d4a06306e75f107150d982fd63a689c7',
+        operation: 'totalSupply',
+        args: [],
+        signers: [
+          {
+            account: '2cab903ff032ac693f8514581665be534beac39f',
+            scopes: 1,
+          },
+        ],
+      })
+      .then(result => {
+        console.log('Read invocation result: ' + JSON.stringify(result))
+      })
+      .catch(error => {
+        const { type, description, data } = error
+        switch (type) {
+          case 'NO_PROVIDER':
+            console.log('No provider available.')
+            break
+          case 'CONNECTION_REFUSED':
+            console.log('Connection dApp not connected. Please call the "connect" function.')
+            break
+          case 'RPC_ERROR':
+            console.log('There was an error when broadcasting this transaction to the network.')
+            break
+          default:
+            // Not an expected error object.  Just write the error to the console.
+            console.error(error)
+            break
+        }
+      })
+  }
   return (
     <Popover className="relative bg-gray-700 bg-opacity-50 dark:header">
       {({ open }) => (

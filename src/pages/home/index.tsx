@@ -1,7 +1,8 @@
 import styles from './index.scss'
 import './index.scss'
 import classnames from 'classnames'
-function Home() {
+function Home(props) {
+  const { mintAddress, mintSuccess } = props
   return (
     <>
       <div className={classnames(styles.marketWrap, 'h-screen w-screen relative')}>
@@ -49,8 +50,15 @@ function Home() {
           <div>
             <div className="w-20 grey-line"></div>
           </div>
-          <div>
-            <img className="w-64" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_gray_mint.png" />
+          <div onClick={mintAddress}>
+            {mintSuccess ? (
+              <img
+                className="w-64"
+                src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_color_mint.png"
+              />
+            ) : (
+              <img className="w-64" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_gray_mint.png" />
+            )}
           </div>
           <div className="px-5">
             <img className="w-14" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_gray_arrow.png" />
