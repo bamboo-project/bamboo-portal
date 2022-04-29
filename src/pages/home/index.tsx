@@ -1,8 +1,21 @@
 import styles from './index.scss'
 import './index.scss'
 import classnames from 'classnames'
+import { useEffect, useRef } from 'react'
+import { useState } from 'react'
 function Home(props) {
   const { walletAddress, mintAddress, mintSuccess, socialAccount = true } = props
+  let intervalFlag = useRef(false)
+  let [newMint, setNewMint] = useState(false)
+  useEffect(() => {
+    // setInerval
+    if (mintSuccess && !intervalFlag.current) {
+      intervalFlag.current = true
+      setInterval(() => {
+        setNewMint(true)
+      }, 5000)
+    }
+  }, [mintSuccess])
   return (
     <div className="relative">
       <div className={classnames(styles.marketWrap, 'h-screen w-screen relative')}>
@@ -99,10 +112,35 @@ function Home(props) {
       </div>
       {mintSuccess && (
         <div className="for-egg">
-          <div className="for-egg-pic">
-            <img src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_color_egg.gif" />
-          </div>
-          <div className="for-egg-bg"></div>
+          {!newMint && (
+            <>
+              <div className="for-egg-pic">
+                <img src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_color_egg.gif" />
+              </div>
+              <div className="for-egg-bg"></div>
+            </>
+          )}
+          {newMint && (
+            <>
+              <div className="for-egg-minted">
+                <div className="for-egg-minted-pic">
+                  <img src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_pet_blue.gif" />
+                </div>
+
+                <div className="for-egg-minted-title text-white font-game text-3xl">BLUE GHOST</div>
+                <div className="flex flex-row items-center justify-center">
+                  <img
+                    className="w-64 mr-6"
+                    src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_start_btn.png"
+                  />
+                  <img
+                    className="w-14 -mt-4"
+                    src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_color_arrow.gif"
+                  />
+                </div>
+              </div>
+            </>
+          )}
         </div>
       )}
     </div>
