@@ -57,6 +57,32 @@
 		mix-blend-mode: color-dodge;
 
 	}
+	&-minted{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		&-pic{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: url(https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/bg_11.png);
+			width: 750px;
+			height: 350px;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: contain;
+			mix-blend-mode: lighten;
+			img{
+				mix-blend-mode:normal;
+			}
+
+		}
+		&-title{
+			position: relative;
+			top: -50px;
+		}
+	}
 }
 @keyframes eggAni {
 	from{
