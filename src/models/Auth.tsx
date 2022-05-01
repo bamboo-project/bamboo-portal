@@ -1,7 +1,8 @@
 import { Effect, ImmerReducer, Reducer, Subscription } from 'umi'
-// import * as AuthService from '@/services/Auth'
-// import * as AuthUtils from '@/utils/auth'
+import * as UserService from '@/services/User'
+import * as ConnectUtils from '@/utils/connect'
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
+import { message } from 'antd'
 
 const IndexModel = {
   namespace: 'auth',
@@ -9,70 +10,84 @@ const IndexModel = {
   state: {
     isLogin: false,
     userInfo: {},
+    wallet: {},
+    isOpenConnectWalletModal: false,
   },
 
   effects: {
-    /**
-     * 微信授权登录
-     * @param param0
-     * @param param1
-     */
-    *mpLogin({ payload }, { call, put }) {
-      try {
-        const { code } = payload
-
-        const res = yield call(AuthService.doMpLogin, { code })
-
-        if (res.code === 200) {
-          const { user_id, access_token, expires_in, jti, refresh_token, scope } = res.data
-          AuthUtils.setAuth({ userId: user_id, token: access_token, tokenRf: refresh_token, expires: expires_in })
-
-          // 登录成功跳转
-          console.log('登录成功跳转: ')
-
-          window.location.href = '/'
-        }
-      } catch (e) {
-        console.error(e)
-      }
-    },
-    /**
-     * 自动登录
-     * @param _
-     * @param param1
-     */
-    *login(_, { call, put }) {
-      /**
-       * 检查本地Token
-       */
-
-      const { userId } = AuthUtils.getAuth()
-      if (!userId) {
+    *connectWallet({ payload }, { call, put, select }) {
+      const NeoLineN3InitStatus = yield select(state => state['sdk'].NeoLineN3)
+      if (!NeoLineN3InitStatus) {
         return
       }
-      /**
-       * 使用Token登录
-       */
-
-      /**
-       * 获取用户信息
-       */
-      put({
-        type: 'refreshUser',
-      })
-    },
-    /**
-     * 刷新登录用户信息
-     * @param _
-     * @param param1
-     */
-    *refreshUser(_, { call, put, select }) {
       try {
-        const response = yield call(AuthService.getUserInfo)
-        if (response && response.code === 200) {
+        const result = yield window.neolineN3Instance.pickAddress()
+        const { label, address } = result
+        yield put({
+          type: 'refreshUser',
+          payload: {
+            walletId: address,
+          },
+        })
+      } catch (error) {
+        const { type, description, data } = error
+        switch (type) {
+          case 'NO_PROVIDER':
+            message.warning('No provider available')
+            break
+          case 'CANCELED':
+            message.warning('The user cancels, or refuses the dapps request')
+            break
+          default:
+            console.error(error)
+            break
+        }
+      }
+    },
+    *getNeoAccount({ payload }, { call, take, put }) {
+      try {
+        yield take('sdk/initNeoLineN3Success')
+        console.log('init ne3 success')
+        const account = yield window.neolineN3Instance.getAccount()
+        yield put({
+          type: 'refreshUser',
+          payload: {
+            walletId: account.address,
+          },
+        })
+      } catch (error) {
+        const { type, description, data } = error
+        switch (type) {
+          case 'NO_PROVIDER':
+            console.log('No provider available.')
+            break
+          case 'CONNECTION_DENIED':
+            console.log('The user rejected the request to connect with your dApp')
+            break
+          case 'CHAIN_NOT_MATCH':
+            console.log(
+              'The currently opened chain does not match the type of the call chain, please switch the chain.',
+            )
+            break
+          default:
+            // Not an expected error object.  Just write the error to the console.
+            console.error(error)
+            break
+        }
+      }
+    },
+    *refreshUser({ payload }: any, { call, put, select }) {
+      console.log('payload: ', payload)
+      try {
+        const response = yield call(UserService.getUser, { walletId: payload.walletId })
+        if (response && response.code === 0) {
+          ConnectUtils.setConnect({ isConnect: true, connectType: 'NEO3' })
           yield put({
             type: 'refreshUserSuccess',
             payload: { userData: response.data },
+          })
+          yield put({
+            type: 'closeConnectWalletModal',
           })
         } else {
           yield put({
@@ -88,18 +103,18 @@ const IndexModel = {
         })
       }
     },
-    /**
-     * 退出登录
-     * @param _
-     * @param param1
-     */
     *logout(_, { call, put, select }) {
-      AuthUtils.clearAuth()
-
+      ConnectUtils.clearConnect()
       window.location.href = '/'
     },
   },
   reducers: {
+    openConnectWalletModal(state: any, _) {
+      state.isOpenConnectWalletModal = true
+    },
+    closeConnectWalletModal(state: any, _) {
+      state.isOpenConnectWalletModal = false
+    },
     loginSuccess(state, { payload }) {
       const { userData } = payload
       state.userInfo = userData.userInfo
@@ -108,8 +123,7 @@ const IndexModel = {
     },
     refreshUserSuccess(state, { payload }) {
       const { userData } = payload
-      state.userInfo = userData.userInfo
-      state.chainWallet = userData.chainWallet
+      state.userInfo = userData
       state.isLogin = true
     },
     logoutSuccess(state, { payload }) {
@@ -122,38 +136,30 @@ const IndexModel = {
     },
   },
   subscriptions: {
-    // setup({ dispatch, history }) {
-    //   return history.listen(({ pathname }) => {
-    //     if (localStorage.theme == '"light"') {
-    //       document.querySelector('html').classList.remove('dark')
-    //     } else {
-    //       document.querySelector('html').classList.add('dark')
-    //     }
-    //     // console.log('pathname: ', pathname)
-    //     // 排除不需要自动登录的页面
-    //     const pagePaths = ['/login', '/404']
-    //     let is = false
-    //     pagePaths.map(path => {
-    //       if (path === pathname) {
-    //         is = true
-    //         return
-    //       }
-    //     })
-    //     if (!is) {
-    //       const { AUTH_TOKEN } = AuthUtils.getAuth()
-
-    //       if (AUTH_TOKEN && AUTH_TOKEN.length > 0) {
-    //         // 开始loading
-    //         dispatch({
-    //           type: 'global/openGlobalLoading',
-    //         })
-    //         dispatch({
-    //           type: 'refreshUser',
-    //         })
-    //       }
-    //     }
-    //   })
-    // },
+    setup({ dispatch, history }) {
+      return history.listen(({ pathname }) => {
+        const pagePaths = ['/login', '/404']
+        let is = false
+        pagePaths.map(path => {
+          if (path === pathname) {
+            is = true
+            return
+          }
+        })
+        if (!is) {
+          const connectInfo = ConnectUtils.getConnect()
+          if (connectInfo[ConnectUtils.WALLET_IS_CONNECT]) {
+            dispatch({
+              type: 'global/openGlobalLoading',
+            })
+            dispatch({
+              type: 'getNeoAccount',
+            })
+            
+          }
+        }
+      })
+    },
   },
 }
 

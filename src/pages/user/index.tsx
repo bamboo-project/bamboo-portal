@@ -1,6 +1,7 @@
 import styles from './index.scss'
 import Message from './components/messages'
 import Sidebar from './components/sidebar'
+import { connect } from 'umi'
 function User() {
   return (
     <div className="flex flex-row" style={{ backgroundColor: '#453559' }}>
@@ -112,4 +113,6 @@ function User() {
   )
 }
 
-export default User
+export default connect(({ auth }) => {
+  return { auth }
+})(User)

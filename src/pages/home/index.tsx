@@ -3,8 +3,10 @@ import './index.scss'
 import classnames from 'classnames'
 import { useEffect, useRef } from 'react'
 import { useState } from 'react'
+import { connect } from 'umi'
 function Home(props) {
-  const { walletAddress, mintAddress, mintSuccess, socialAccount = true } = props
+  const { walletAddress, mintAddress, mintSuccess, socialAccount = true, auth, dispatch } = props
+  const { userInfo, isLogin } = auth
   let intervalFlag = useRef(false)
   let [newMint, setNewMint] = useState(false)
   useEffect(() => {
@@ -43,32 +45,38 @@ function Home(props) {
         <div className="flex flex-row pr-40 pl-40 items-center">
           <div className="relative">
             <div
+              onClick={() => {
+                if (!isLogin) {
+                  
+                  console.log('isLogin: ', isLogin)
+                  dispatch({
+                    type: 'auth/openConnectWalletModal',
+                  })
+                }
+              }}
               className={classnames(
-                walletAddress !== '' ? 'huise-bg' : 'taohong-bg',
-                'home-radius-btn w-52 text-center text-white font-game text-base',
-              )}
-            >
+                !isLogin ? 'huise-bg' : 'taohong-bg',
+                !isLogin ? 'animate-bounce' : '',
+                'home-radius-btn w-52 cursor-pointer text-center text-white font-game text-base',
+              )}>
               CONNECT WALLET
             </div>
-            {walletAddress !== '' && (
+            {isLogin && (
               <div className="absolute right-0 -bottom-3">
                 <img className="w-7" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_done.png" />
               </div>
             )}
           </div>
-          <div>
-            {walletAddress == '' ? <div className="w-20 grey-line"></div> : <div className="w-20 pink-line"></div>}
-          </div>
+          <div>{!isLogin ? <div className="w-20 grey-line"></div> : <div className="w-20 pink-line"></div>}</div>
           <div className="relative">
             <div
               className={classnames(
                 socialAccount ? 'huise-bg' : 'taohong-bg',
-                'home-radius-btn w-72 text-center text-white font-game text-base',
-              )}
-            >
+                'home-radius-btn w-72 cursor-pointer text-center text-white font-game text-base',
+              )}>
               Connect Social account
             </div>
-            {socialAccount && (
+            {isLogin && userInfo.isTwitter === 1 && (
               <div className="absolute right-0 -bottom-3">
                 <img className="w-7" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_done.png" />
               </div>
@@ -76,7 +84,7 @@ function Home(props) {
           </div>
           <div>{!socialAccount ? <div className="w-20 grey-line"></div> : <div className="w-20 pink-line"></div>}</div>
           <div onClick={socialAccount && walletAddress !== '' ? mintAddress : () => {}}>
-            {socialAccount && walletAddress !== '' ? (
+            {isLogin && userInfo.isTwitter === 1 ? (
               <img
                 className="w-64"
                 src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_color_mint.png"
@@ -147,4 +155,6 @@ function Home(props) {
   )
 }
 
-export default Home
+export default connect(({ auth }) => {
+  return { auth }
+})(Home)

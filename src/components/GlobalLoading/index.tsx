@@ -13,8 +13,8 @@ import { Spin } from 'antd';
 const GlobalLoading = () => {
   return (
     <>
-      <div className="dark:bg-dark-bg-1 fixed z-10 overflow-hidden left-0 top-0 h-screen w-screen bg-white flex justify-center items-center">
-        <Spin indicator={antIcon} />
+      <div className="bg-purple fixed z-10 overflow-hidden left-0 top-0 h-screen w-screen flex justify-center items-center">
+        <Spin className='text-primary text-2xl' size='large' indicator={antIcon} />
       </div>
     </>
   )

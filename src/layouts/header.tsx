@@ -43,13 +43,20 @@ function classNames(...classes: any[]) {
 }
 
 export default function HeaderLayout(props: any) {
-  const { auth, connectWallet, walletAddress, tabIndex } = props
+  const { auth, tabIndex } = props
+  console.log('props: ', props)
+
   const { isLogin, userInfo } = auth
   const [theme, setTheme] = useState('dark')
   const [showBtns, setShowBtns] = useState(false) // 鼠标悬浮钱包地址展示按钮
 
   const dispatch = useDispatch()
 
+  const connectWallet = () => {
+    dispatch({
+      type: 'auth/openConnectWalletModal',
+    })
+  }
   const handleLogout = () => {
     dispatch({
       type: 'auth/logout',
@@ -90,8 +97,7 @@ export default function HeaderLayout(props: any) {
               <Popover.Group as="nav" className="hidden md:flex space-x-14 flex-1 justify-end">
                 <a
                   href="/"
-                  className="font-px text-base text-center block relative font-medium text-white dark:text-white hover:text-white"
-                >
+                  className="font-px text-base text-center block relative font-medium text-white dark:text-white hover:text-white">
                   About Bamboo
                   {tabIndex == '/' && (
                     <div className=" h-1.5 rounded-full left-1/2 -ml-7 z-10 -bottom-3 absolute bg-primary w-14"></div>
@@ -99,8 +105,7 @@ export default function HeaderLayout(props: any) {
                 </a>
                 <a
                   href={'/market'}
-                  className="font-px block text-base relative font-medium text-white dark:text-white hover:text-white"
-                >
+                  className="font-px block text-base relative font-medium text-white dark:text-white hover:text-white">
                   MARKET
                   {tabIndex == '/market' && (
                     <div className=" h-1.5 rounded-full z-10 -bottom-3 absolute bg-primary w-14"></div>
@@ -108,8 +113,7 @@ export default function HeaderLayout(props: any) {
                 </a>
                 <a
                   href="/home"
-                  className="font-px block text-base relative font-medium text-white dark:text-white hover:text-white"
-                >
+                  className="font-px block text-base relative font-medium text-white dark:text-white hover:text-white">
                   My Home
                   {tabIndex == '/home' && (
                     <div className=" h-1.5 rounded-full z-10 -bottom-3 absolute bg-primary w-14"></div>
@@ -126,10 +130,16 @@ export default function HeaderLayout(props: any) {
                             className={classNames(
                               open ? 'text-gray-900' : 'text-gray-500',
                               'group rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 ',
-                            )}
-                          >
-                            <div>
-                              <img src={userInfo.avatar} className="w-10 h-10 rounded-full" />
+                            )}>
+                            <div className="header-address font-px text-white">
+                              <div className="header-address-info">
+                                <div className="header-address-info-avatar">
+                                  <div className="header-address-info-avatar-status"></div>
+                                </div>
+                                <div className="header-address-info-content">
+                                  {userInfo.wallet_address.slice(0, 12)}···
+                                </div>
+                              </div>
                             </div>
                             <ChevronDownIcon
                               className={classNames(
@@ -148,78 +158,24 @@ export default function HeaderLayout(props: any) {
                             enterTo="opacity-100 translate-y-0"
                             leave="transition ease-in duration-150"
                             leaveFrom="opacity-100 translate-y-0"
-                            leaveTo="opacity-0 translate-y-1"
-                          >
+                            leaveTo="opacity-0 translate-y-1">
                             <Popover.Panel
                               static
-                              className="absolute z-10 -ml-4 mt-3 transform px-2 w-80 max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2"
-                            >
+                              className="absolute z-10 -ml-4 mt-3 transform px-2 w-44 max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2">
                               <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                                 <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
-                                  <a href={`/profile/${userInfo.userId}`}>
-                                    <div className="p-3 text-black font-bold text-2xl">{userInfo.nickname}</div>
-                                  </a>
-                                  <hr />
-                                  <a
-                                    href="/order/buy/list"
-                                    className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
-                                  >
-                                    <div className="ml-4">
-                                      <p className="text-base font-medium text-gray-900">Orders</p>
-                                    </div>
-                                  </a>
-                                  <a href="/wallet" className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
-                                    <div className="ml-4">
-                                      <p className="text-base font-medium text-gray-900">Wallet</p>
-                                    </div>
-                                  </a>
-                                  <a
-                                    href="/profile/edit"
-                                    className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
-                                  >
-                                    <div className="ml-4">
-                                      <p className="text-base font-medium text-gray-900">Setting</p>
-                                    </div>
-                                  </a>
-                                  <a className="-m-3 p-3 flex content-between justify-between rounded-lg hover:bg-gray-50">
-                                    <div className="ml-4 ">
-                                      <p className="text-base font-medium text-gray-900">Dark Theme</p>
-                                    </div>
-                                    <Switch
-                                      checked={theme == 'dark'}
-                                      onChange={() => {
-                                        if (theme == 'dark') {
-                                          document.querySelector('html').classList.remove('dark')
-                                          setTheme('light')
-                                        } else {
-                                          document.querySelector('html').classList.add('dark')
-                                          setTheme('dark')
-                                        }
-                                      }}
-                                      className={`${
-                                        theme == 'dark' ? 'bg-second' : 'bg-gray-400'
-                                      } relative inline-flex items-center h-6 rounded-full w-11`}
-                                    >
-                                      <span className="sr-only">Enable notifications</span>
-                                      <span
-                                        className={`${
-                                          theme == 'dark' ? 'translate-x-6' : 'translate-x-1'
-                                        } inline-block w-4 h-4 transform bg-white rounded-full`}
-                                      />
-                                    </Switch>
-                                  </a>
-                                  <a
+                                  <div className="-m-3 cursor-pointer p-3 flex items-start rounded-lg hover:bg-gray-50">
+                                    <p className="text font-medium text-gray-900">SOCIAL CONNECTION</p>
+                                  </div>
+                                  <div
                                     onClick={() => {
                                       dispatch({
                                         type: 'auth/logout',
                                       })
                                     }}
-                                    className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
-                                  >
-                                    <div className="ml-4">
-                                      <p className="text-base font-medium text-gray-900">Logout</p>
-                                    </div>
-                                  </a>
+                                    className="-m-3 p-3 cursor-pointer flex items-start rounded-lg hover:bg-gray-50">
+                                    <p className="text font-medium text-gray-900">DISCONNECT</p>
+                                  </div>
                                 </div>
                               </div>
                             </Popover.Panel>
@@ -231,51 +187,11 @@ export default function HeaderLayout(props: any) {
                 ) : (
                   <></>
                 )}
-                {walletAddress !== '' && (
+                {!isLogin && (
                   <div
-                    className="header-address font-px text-white"
-                    onMouseEnter={() => {
-                      setShowBtns(true)
-                    }}
-                    onMouseOver={() => {
-                      setShowBtns(true)
-                    }}
-                    onMouseOut={() => {
-                      setShowBtns(false)
-                    }}
-                  >
-                    <div className="header-address-info">
-                      <div className="header-address-info-avatar">
-                        <div className="header-address-info-avatar-status"></div>
-                      </div>
-                      <div className="header-address-info-content">{walletAddress.slice(0, 12)}···</div>
-                    </div>
-                    {showBtns && (
-                      <div
-                        className="header-address-btns"
-                        onMouseEnter={() => {
-                          setShowBtns(true)
-                        }}
-                        onMouseOver={() => {
-                          setShowBtns(true)
-                        }}
-                        onMouseOut={() => {
-                          setShowBtns(false)
-                        }}
-                      >
-                        <div className="header-address-btns-item">SOCIAL CONNECTION</div>
-                        <div className="header-address-btns-item">DISCONNECT</div>
-                      </div>
-                    )}
-                  </div>
-                )}
-                {walletAddress == '' && (
-                  <div
-                    // href={isLogin ? '/create/nft' : '/login'}
                     onClick={connectWallet}
                     className="ml-8 font-px cursor-pointer whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md 
-                  shadow-sm text-base font-medium bg-primary text-white hover:text-white  hover:bg-opacity-90"
-                  >
+                  shadow-sm text-base font-medium bg-primary text-white hover:text-white  hover:bg-opacity-90">
                     Connect Wallet
                   </div>
                 )}
@@ -291,35 +207,17 @@ export default function HeaderLayout(props: any) {
             enterTo="opacity-100 scale-100"
             leave="duration-100 ease-in"
             leaveFrom="opacity-100 scale-100"
-            leaveTo="opacity-0 scale-95"
-          >
+            leaveTo="opacity-0 scale-95">
             <Popover.Panel
               focus
               static
-              className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
-            >
+              className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
               <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
                 <div className="pt-5 pb-6 px-5">
                   <div className="flex items-center justify-between">
-                    <div>
-                      {theme == 'dark' ? (
-                        <img
-                          className="h-6 w-auto sm:h-8"
-                          src="https://yuanwu-imgs.oss-cn-shanghai.aliyuncs.com/attachments/2021-07-17/logo_white.png"
-                          alt=""
-                        />
-                      ) : (
-                        <img
-                          className="h-6 w-auto sm:h-8"
-                          src="https://yuanwu-imgs.oss-cn-shanghai.aliyuncs.com/attachments/2021-07-17/logo_dark.png"
-                          alt=""
-                        />
-                      )}
-                      {/* <img className="h-8 w-auto" src="https://imgs.yuanwuapp.com/assets/logo%203.png" alt="Workflow" /> */}
-                    </div>
                     <div className="-mr-2">
                       <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                        <span className="sr-only">关闭菜单</span>
+                        <span className="sr-only">Close</span>
                         <XIcon className="h-6 w-6" aria-hidden="true" />
                       </Popover.Button>
                     </div>
@@ -330,8 +228,7 @@ export default function HeaderLayout(props: any) {
                         <a
                           key={item.name}
                           href={item.href}
-                          className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
-                        >
+                          className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
                           <item.icon className="flex-shrink-0 h-6 w-6 text-primary-600" aria-hidden="true" />
                           <span className="ml-3 text-base font-medium text-gray-900">{item.name}</span>
                         </a>
@@ -352,8 +249,7 @@ export default function HeaderLayout(props: any) {
                       <a
                         key={item.name}
                         href={item.href}
-                        className="text-base font-medium text-gray-900 hover:text-gray-700"
-                      >
+                        className="text-base font-medium text-gray-900 hover:text-gray-700">
                         {item.name}
                       </a>
                     ))}
@@ -366,8 +262,7 @@ export default function HeaderLayout(props: any) {
                         className="bg-blue-500 p-3 mt-4 text-white"
                         onClick={() => {
                           handleLogout()
-                        }}
-                      >
+                        }}>
                         Logout
                       </div>
                     </div>
@@ -376,8 +271,7 @@ export default function HeaderLayout(props: any) {
                       <a
                         href="/login"
                         className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white
-                       bg-gray-900 dark:text-white hover:text-white hover:bg-gray-700"
-                      >
+                       bg-gray-900 dark:text-white hover:text-white hover:bg-gray-700">
                         Connect Wallet
                       </a>
                     </div>
