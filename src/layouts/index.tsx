@@ -4,8 +4,11 @@ import styles from './index.scss'
 import Header from './header'
 import Footer from './footer'
 import GlobalLoading from '@/components/GlobalLoading'
+import Modal from '@/components/Modal'
 import { connect } from 'umi'
 function IndexLayout(props) {
+  const { dispatch, auth } = props
+  const { isOpenConnectWalletModal } = auth
   const [neoline, setNeoline] = useState(null)
   const [neolineN3, setNeolineN3] = useState(null)
   const [walletAddress, setWalletAddress] = useState('')
@@ -14,112 +17,17 @@ function IndexLayout(props) {
   const { pathname } = props.location
   console.log('props.location: ', props.location)
   console.log('props.children', props.children)
-
-  const initDapi = () => {
-    const initCommonDapi = new Promise((resolve, reject) => {
-      window.addEventListener('NEOLine.NEO.EVENT.READY', () => {
-        let data = new NEOLine.Init()
-        setNeoline(data)
-        if (data) {
-          resolve(data)
-        } else {
-          reject('common dAPI method failed to load.')
-        }
+  const connectWallet = walletType => {
+    if (walletType === 'NEO') {
+      dispatch({
+        type: 'auth/connectWallet',
+        payload: {
+          walletType,
+        },
       })
-    })
-    const initN3Dapi = new Promise((resolve, reject) => {
-      window.addEventListener('NEOLine.N3.EVENT.READY', () => {
-        let data = new NEOLineN3.Init()
-        setNeolineN3(data)
-        if (data) {
-          resolve(data)
-        } else {
-          reject('N3 dAPI method failed to load.')
-        }
-      })
-    })
-    initCommonDapi
-      .then(() => {
-        console.log('The common dAPI method is loaded.')
-        return initN3Dapi
-      })
-      .then(() => {
-        console.log('The N3 dAPI method is loaded.')
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  }
-  const checkConnection = () => {
-    // 未挂载好退出
-    if (!neoline) {
-      return
     }
-    neoline
-      .getAccount()
-      .then(account => {
-        const { address, label } = account
-        setWalletAddress(address)
-        console.log('Provider address: ' + address)
-        console.log('Provider account label (Optional): ' + label)
-      })
-      .catch(error => {
-        const { type, description, data } = error
-        switch (type) {
-          case 'NO_PROVIDER':
-            console.log('No provider available.')
-            break
-          case 'CONNECTION_DENIED':
-            console.log('The user rejected the request to connect with your dApp')
-            break
-          case 'CHAIN_NOT_MATCH':
-            console.log(
-              'The currently opened chain does not match the type of the call chain, please switch the chain.',
-            )
-            break
-          default:
-            // Not an expected error object.  Just write the error to the console.
-            console.error(error)
-            break
-        }
-      })
   }
-  useEffect(() => {
-    initDapi()
-  }, [])
-  useEffect(() => {
-    checkConnection()
-  }, [neoline])
   // 连接钱包
-  const connectWallet = () => {
-    // 未挂载好退出
-    if (!neolineN3) {
-      return
-    }
-    neolineN3
-      .pickAddress()
-      .then((result: { label: any; address: any }) => {
-        const { label, address } = result
-        setWalletAddress(address)
-        console.log('label：' + label)
-        console.log('address：' + address)
-      })
-      .catch((error: { type: any; description: any; data: any }) => {
-        const { type, description, data } = error
-        switch (type) {
-          case 'NO_PROVIDER':
-            console.log('No provider available.')
-            break
-          case 'CANCELED':
-            console.log('The user cancels, or refuses the dapps request')
-            break
-          default:
-            // Not an expected error object.  Just write the error to the console.
-            console.error(error)
-            break
-        }
-      })
-  }
   // 吊起合约窗口进行交易
   const mintAddress = () => {
     neolineN3
@@ -239,42 +147,54 @@ function IndexLayout(props) {
         }
       })
   }
+  if (props.global.loading) {
+    return <GlobalLoading />
+  }
   if (pathname == '/login') {
     return props.children
   }
   // home页面单独配置
-  if (props.location.pathname === '/home') {
-    return (
-      <div className="bg-purple dark:bg-dark-bg-1 ">
-        <Header auth={props.auth} connectWallet={connectWallet} walletAddress={walletAddress} tabIndex={pathname} />
-        <div className="mx-auto">
-          {React.cloneElement(props.children, {
-            walletAddress: walletAddress,
-            mintAddress: mintAddress,
-            mintSuccess: mintSuccess,
-          })}
-        </div>
-        <Footer />
-      </div>
-    )
-  }
+  // if (props.location.pathname === '/home') {
+  //   return (
+  //     <div className="bg-purple dark:bg-dark-bg-1 ">
+  //       <Header auth={props.auth} connectWallet={connectWallet} walletAddress={walletAddress} tabIndex={pathname} />
+  //       <div className="mx-auto">
+  //         {React.cloneElement(props.children, {
+  //           walletAddress: walletAddress,
+  //           mintAddress: mintAddress,
+  //           mintSuccess: mintSuccess,
+  //         })}
+  //       </div>
+  //       <Footer />
+  //     </div>
+  //   )
+  // }
   if (props.global.loading) {
     return <GlobalLoading />
   }
-  if (/^\/aaa|goods\/(\d+)/.test(pathname) || '/create/nft' == pathname) {
-    return (
-      <div className="bg-white overflow-hidden lg:h-screen w-screen flex flex-col dark:bg-dark-bg-1 ">
-        <Header auth={props.auth} connectWallet={connectWallet} walletAddress={walletAddress} tabIndex={pathname} />
-        <div className="mx-auto flex container flex-1  flex-shrink-0 overflow-hidden ">{props.children}</div>
-      </div>
-    )
-  }
-
   return (
     <div className="bg-purple dark:bg-dark-bg-1 ">
       <Header auth={props.auth} connectWallet={connectWallet} walletAddress={walletAddress} tabIndex={pathname} />
       <div className="mx-auto">{props.children}</div>
       <Footer />
+      <Modal
+        isOpen={isOpenConnectWalletModal}
+        onClose={() => {
+          dispatch({
+            type: 'auth/closeConnectWalletModal',
+          })
+        }}>
+        <div className="flex flex-col justify-center items-center">
+          <div className="text-2xl font-game text-white">Connect Wallet</div>
+          <div
+            onClick={() => {
+              connectWallet('NEO')
+            }}
+            className=" cursor-pointer mt-8 text-white text-xl font-px">
+            Nel Line
+          </div>
+        </div>
+      </Modal>
     </div>
   )
 }
