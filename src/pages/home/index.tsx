@@ -20,8 +20,8 @@ function Home(props) {
   }, [mintSuccess])
   return (
     <div className="relative">
-      <div className={classnames(styles.marketWrap, 'h-screen w-screen relative')}>
-        <div className="flex flex-row items-center container mx-auto mb-24 mt-40 relative">
+      <div className={classnames(styles.marketWrap, 'h-screen w-full relative')}>
+        <div className="flex flex-row items-center container mx-auto mb-24 pt-40 relative">
           <div className="pr-96">
             <div className="text-primary text-8xl flex items-center flex-row font-extrabold">
               <div className="font-px text-5xl">Connect social account TO Mint A Blockchain Pet ！</div>
@@ -42,12 +42,11 @@ function Home(props) {
             <img src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/bg_11.png" />
           </div>
         </div>
-        <div className="flex flex-row pr-40 pl-40 items-center">
+        <div className="flex flex-row items-center justify-center w-full overflow-hidden">
           <div className="relative">
             <div
               onClick={() => {
                 if (!isLogin) {
-                  
                   console.log('isLogin: ', isLogin)
                   dispatch({
                     type: 'auth/openConnectWalletModal',
@@ -57,8 +56,9 @@ function Home(props) {
               className={classnames(
                 !isLogin ? 'huise-bg' : 'taohong-bg',
                 !isLogin ? 'animate-bounce' : '',
-                'home-radius-btn w-52 cursor-pointer text-center text-white font-game text-base',
-              )}>
+                'home-radius-btn px-3 py-3 cursor-pointer text-center text-white font-game text-base whitespace-nowrap',
+              )}
+            >
               CONNECT WALLET
             </div>
             {isLogin && (
@@ -67,13 +67,15 @@ function Home(props) {
               </div>
             )}
           </div>
+
           <div>{!isLogin ? <div className="w-20 grey-line"></div> : <div className="w-20 pink-line"></div>}</div>
           <div className="relative">
             <div
               className={classnames(
                 socialAccount ? 'huise-bg' : 'taohong-bg',
-                'home-radius-btn w-72 cursor-pointer text-center text-white font-game text-base',
-              )}>
+                'home-radius-btn px-3 py-3 cursor-pointer text-center text-white font-game text-base whitespace-nowrap',
+              )}
+            >
               Connect Social account
             </div>
             {isLogin && userInfo.isTwitter === 1 && (
@@ -83,36 +85,34 @@ function Home(props) {
             )}
           </div>
           <div>{!socialAccount ? <div className="w-20 grey-line"></div> : <div className="w-20 pink-line"></div>}</div>
-          <div onClick={socialAccount && walletAddress !== '' ? mintAddress : () => {}}>
-            {isLogin && userInfo.isTwitter === 1 ? (
-              <img
-                className="w-64"
-                src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_color_mint.png"
-              />
-            ) : (
-              <img className="w-64" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_gray_mint.png" />
-            )}
-          </div>
-          <div className="px-5">
-            {socialAccount && walletAddress !== '' ? (
-              <img
-                className="w-14"
-                src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_color_arrow.gif"
-              />
-            ) : (
-              <img
-                className="w-14"
-                src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_gray_arrow.png"
-              />
-            )}
-          </div>
-          <div className="">
-            {socialAccount && walletAddress !== '' ? (
-              <img className="w-40" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_color_egg.gif" />
-            ) : (
-              <img className="w-20" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_gray_egg.png" />
-            )}
-          </div>
+
+          {isLogin && userInfo.isTwitter === 1 ? (
+            <img
+              className="w-64"
+              onClick={socialAccount && walletAddress !== '' ? mintAddress : () => {}}
+              src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_color_mint.png"
+            />
+          ) : (
+            <img className="w-64" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_gray_mint.png" />
+          )}
+
+          {socialAccount && walletAddress !== '' ? (
+            <img
+              className="w-14 pl-4"
+              src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_color_arrow.gif"
+            />
+          ) : (
+            <img
+              className="w-14 pl-4"
+              src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_gray_arrow.png"
+            />
+          )}
+
+          {socialAccount && walletAddress !== '' ? (
+            <img className="w-40" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_color_egg.gif" />
+          ) : (
+            <img className="w-20" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_gray_egg.png" />
+          )}
         </div>
         <div className="absolute bottom-0">
           <img src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_jianbian.png" />

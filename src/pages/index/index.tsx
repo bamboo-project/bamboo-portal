@@ -6,10 +6,11 @@ function Index() {
   return (
     <div className="">
       <div
-        className="warp-1 h-screen w-screen bg-contain flex flex-col justify-center items-center"
+        className="warp-1 h-screen bg-contain flex flex-col justify-center items-center w-full"
         style={{
           backgroundImage: 'url(https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_bg.png)',
-        }}>
+        }}
+      >
         <div className="container flex flex-col justify-center items-center mx-auto">
           <div>
             <img className="w-96" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_title_big.png" />
@@ -65,7 +66,8 @@ function Index() {
       <div className="wrap-3 container mx-auto">
         <div
           className="font-game uppercase text-6xl leading-snug		"
-          style={{ color: '#B974FF', textShadow: '1px 10px 3px black' }}>
+          style={{ color: '#B974FF', textShadow: '1px 10px 3px black' }}
+        >
           Connect social account TO Mint A Blockchain Pet in Web3.0 !
         </div>
         <div className="flex flex-row justify-center">
@@ -130,7 +132,8 @@ function Index() {
       <StarPets />
       <div
         className=" h-96 bg-cover bg-no-repeat"
-        style={{ backgroundImage: 'url(https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_jb_1.png)' }}>
+        style={{ backgroundImage: 'url(https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_jb_1.png)' }}
+      >
         <div className="container mx-auto flex justify-center items-center">
           <img
             className="h-12 mt-16 animate-bounce"
@@ -182,7 +185,8 @@ function Index() {
           className="w-full h-96 bg-bottom bg-cover bg-no-repeat"
           style={{
             backgroundImage: 'url(https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_bg_3.png)',
-          }}>
+          }}
+        >
           <div className="container mx-auto flex justify-center items-center">
             <img
               className="h-12 mt-16 animate-bounce"
@@ -234,7 +238,7 @@ function Index() {
           </div>
         </div>
       </div>
-      <div className=' border-b'/>
+      <div className=" border-b" />
     </div>
   )
 }

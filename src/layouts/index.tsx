@@ -6,6 +6,8 @@ import Footer from './footer'
 import GlobalLoading from '@/components/GlobalLoading'
 import Modal from '@/components/Modal'
 import { connect } from 'umi'
+import './index.scss'
+
 function IndexLayout(props) {
   const { dispatch, auth } = props
   const { isOpenConnectWalletModal } = auth
@@ -175,7 +177,7 @@ function IndexLayout(props) {
   return (
     <div className="bg-purple dark:bg-dark-bg-1 ">
       <Header auth={props.auth} connectWallet={connectWallet} walletAddress={walletAddress} tabIndex={pathname} />
-      <div className="mx-auto">{props.children}</div>
+      <div className="mx-auto my-max-width">{props.children}</div>
       <Footer />
       <Modal
         isOpen={isOpenConnectWalletModal}
@@ -183,14 +185,16 @@ function IndexLayout(props) {
           dispatch({
             type: 'auth/closeConnectWalletModal',
           })
-        }}>
+        }}
+      >
         <div className="flex flex-col justify-center items-center">
           <div className="text-2xl font-game text-white">Connect Wallet</div>
           <div
             onClick={() => {
               connectWallet('NEO')
             }}
-            className=" cursor-pointer mt-8 text-white text-xl font-px">
+            className=" cursor-pointer mt-8 text-white text-xl font-px"
+          >
             Nel Line
           </div>
         </div>

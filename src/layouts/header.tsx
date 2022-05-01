@@ -64,7 +64,7 @@ export default function HeaderLayout(props: any) {
   }
 
   return (
-    <Popover className="relative bg-gray-700 bg-opacity-50 dark:header">
+    <Popover className="relative bg-gray-700 bg-opacity-50 dark:header my-header">
       {({ open }) => (
         <>
           <div className="max-w-8xl mx-auto px-4 sm:px-6">
@@ -97,7 +97,8 @@ export default function HeaderLayout(props: any) {
               <Popover.Group as="nav" className="hidden md:flex space-x-14 flex-1 justify-end">
                 <a
                   href="/"
-                  className="font-px text-base text-center block relative font-medium text-white dark:text-white hover:text-white">
+                  className="font-px text-base text-center block relative font-medium text-white dark:text-white hover:text-white"
+                >
                   About Bamboo
                   {tabIndex == '/' && (
                     <div className=" h-1.5 rounded-full left-1/2 -ml-7 z-10 -bottom-3 absolute bg-primary w-14"></div>
@@ -105,7 +106,8 @@ export default function HeaderLayout(props: any) {
                 </a>
                 <a
                   href={'/market'}
-                  className="font-px block text-base relative font-medium text-white dark:text-white hover:text-white">
+                  className="font-px block text-base relative font-medium text-white dark:text-white hover:text-white"
+                >
                   MARKET
                   {tabIndex == '/market' && (
                     <div className=" h-1.5 rounded-full z-10 -bottom-3 absolute bg-primary w-14"></div>
@@ -113,7 +115,8 @@ export default function HeaderLayout(props: any) {
                 </a>
                 <a
                   href="/home"
-                  className="font-px block text-base relative font-medium text-white dark:text-white hover:text-white">
+                  className="font-px block text-base relative font-medium text-white dark:text-white hover:text-white"
+                >
                   My Home
                   {tabIndex == '/home' && (
                     <div className=" h-1.5 rounded-full z-10 -bottom-3 absolute bg-primary w-14"></div>
@@ -130,7 +133,8 @@ export default function HeaderLayout(props: any) {
                             className={classNames(
                               open ? 'text-gray-900' : 'text-gray-500',
                               'group rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 ',
-                            )}>
+                            )}
+                          >
                             <div className="header-address font-px text-white">
                               <div className="header-address-info">
                                 <div className="header-address-info-avatar">
@@ -158,10 +162,12 @@ export default function HeaderLayout(props: any) {
                             enterTo="opacity-100 translate-y-0"
                             leave="transition ease-in duration-150"
                             leaveFrom="opacity-100 translate-y-0"
-                            leaveTo="opacity-0 translate-y-1">
+                            leaveTo="opacity-0 translate-y-1"
+                          >
                             <Popover.Panel
                               static
-                              className="absolute z-10 -ml-4 mt-3 transform px-2 w-44 max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2">
+                              className="absolute z-10 -ml-4 mt-3 transform px-2 w-44 max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2"
+                            >
                               <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                                 <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                                   <div className="-m-3 cursor-pointer p-3 flex items-start rounded-lg hover:bg-gray-50">
@@ -173,7 +179,8 @@ export default function HeaderLayout(props: any) {
                                         type: 'auth/logout',
                                       })
                                     }}
-                                    className="-m-3 p-3 cursor-pointer flex items-start rounded-lg hover:bg-gray-50">
+                                    className="-m-3 p-3 cursor-pointer flex items-start rounded-lg hover:bg-gray-50"
+                                  >
                                     <p className="text font-medium text-gray-900">DISCONNECT</p>
                                   </div>
                                 </div>
@@ -191,7 +198,8 @@ export default function HeaderLayout(props: any) {
                   <div
                     onClick={connectWallet}
                     className="ml-8 font-px cursor-pointer whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md 
-                  shadow-sm text-base font-medium bg-primary text-white hover:text-white  hover:bg-opacity-90">
+                  shadow-sm text-base font-medium bg-primary text-white hover:text-white  hover:bg-opacity-90"
+                  >
                     Connect Wallet
                   </div>
                 )}
@@ -207,11 +215,13 @@ export default function HeaderLayout(props: any) {
             enterTo="opacity-100 scale-100"
             leave="duration-100 ease-in"
             leaveFrom="opacity-100 scale-100"
-            leaveTo="opacity-0 scale-95">
+            leaveTo="opacity-0 scale-95"
+          >
             <Popover.Panel
               focus
               static
-              className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+              className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
+            >
               <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
                 <div className="pt-5 pb-6 px-5">
                   <div className="flex items-center justify-between">
@@ -228,7 +238,8 @@ export default function HeaderLayout(props: any) {
                         <a
                           key={item.name}
                           href={item.href}
-                          className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                          className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
+                        >
                           <item.icon className="flex-shrink-0 h-6 w-6 text-primary-600" aria-hidden="true" />
                           <span className="ml-3 text-base font-medium text-gray-900">{item.name}</span>
                         </a>
@@ -249,7 +260,8 @@ export default function HeaderLayout(props: any) {
                       <a
                         key={item.name}
                         href={item.href}
-                        className="text-base font-medium text-gray-900 hover:text-gray-700">
+                        className="text-base font-medium text-gray-900 hover:text-gray-700"
+                      >
                         {item.name}
                       </a>
                     ))}
@@ -262,7 +274,8 @@ export default function HeaderLayout(props: any) {
                         className="bg-blue-500 p-3 mt-4 text-white"
                         onClick={() => {
                           handleLogout()
-                        }}>
+                        }}
+                      >
                         Logout
                       </div>
                     </div>
@@ -271,7 +284,8 @@ export default function HeaderLayout(props: any) {
                       <a
                         href="/login"
                         className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white
-                       bg-gray-900 dark:text-white hover:text-white hover:bg-gray-700">
+                       bg-gray-900 dark:text-white hover:text-white hover:bg-gray-700"
+                      >
                         Connect Wallet
                       </a>
                     </div>
