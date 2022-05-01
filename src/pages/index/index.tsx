@@ -19,7 +19,6 @@ function Index() {
     } else {
       setShowBTT(false)
     }
-    console.log(scrollTop)
   }
   useEffect(() => {
     window.addEventListener('scroll', bindHandleScroll)
@@ -167,7 +166,7 @@ function Index() {
       >
         <div className="container mx-auto flex justify-center items-center">
           <img
-            className="h-12 mt-16 animate-bounce"
+            className="h-10 mt-16 animate-bounce"
             src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_arrow.png"
           />
         </div>
@@ -178,7 +177,7 @@ function Index() {
           <div className="flex flex-row items-center">
             <img className="h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/icon_5.png" />
             <div className="w-1 h-24 mt-4 ml-4 bg-yellow-300 rounded-lg" />
-            <div className="text-primary mt-4 text-3xl font-game ml-4">
+            <div className="text-primary mt-4 text-2xl font-game ml-4">
               Through data analysis <br /> BAMboo pet can help you obtain interesting content
               <br /> and new friends
             </div>
@@ -220,7 +219,7 @@ function Index() {
         >
           <div className="container mx-auto flex justify-center items-center">
             <img
-              className="h-12 mt-16 animate-bounce"
+              className="h-10 mt-16 animate-bounce"
               src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_arrow.png"
             />
           </div>
@@ -266,6 +265,10 @@ function Index() {
           </div>
           <div className="flex items-center justify-center mt-32 pb-32">
             <img className="h-20" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/btn_10.png" />
+            <img
+              className="w-14 -mt-4 ml-2"
+              src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_color_arrow.gif"
+            />
           </div>
         </div>
       </div>
