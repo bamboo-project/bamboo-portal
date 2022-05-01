@@ -109,7 +109,7 @@ function Index() {
         </div>
       </div>
       <div className="w-full overflow-hidden">
-        <div className="w-52 mt-10">
+        <div className="w-56 mt-10">
           <Carousel autoplay dots={false}>
             <div className="w-52 h-52">
               <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet1.png" />
