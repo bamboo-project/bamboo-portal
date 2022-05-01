@@ -2,32 +2,39 @@ import styles from './index.scss'
 import Neighbors from './components/neighbors'
 import StarPets from './components/star_pets'
 import Warp7 from './components/wrap7'
+import './index.scss'
+
 function Index() {
   return (
     <div className="">
       <div
-        className="warp-1 h-screen bg-contain flex flex-col justify-center items-center w-full"
+        className="warp-1 h-screen bg-contain flex flex-col justify-center items-center w-full relative"
         style={{
           backgroundImage: 'url(https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_bg.png)',
         }}
       >
-        <div className="container flex flex-col justify-center items-center mx-auto">
-          <div>
-            <img className="w-96" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_title_big.png" />
-          </div>
-          <div className="text-white font-game text-3xl">New STYLE to explore the Web3.0 social network</div>
-          <div>
-            <img className="h-36 mt-20" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_egg.png" />
-          </div>
+        <div className="container flex flex-col justify-center items-center mx-auto mb-200px">
           <div>
             <img
-              className="h-12 mt-16 animate-bounce"
+              className="h-44 mx-auto mb-1"
+              src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_title_big.png"
+            />
+          </div>
+          <div className="text-white font-game text-3xl w-6/12 mx-auto text-center">
+            New STYLE to explore the Web3.0 social network
+          </div>
+          <div className="absolute bottom-10 mb-100px">
+            <img className="h-28 mt-20" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_egg.png" />
+          </div>
+          <div className="absolute bottom-10">
+            <img
+              className="h-10 mt-16 animate-bounce"
               src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_arrow.png"
             />
           </div>
         </div>
       </div>
-      <div className="wrap-2 flex flex-row container mx-auto py-20 space-x-28">
+      <div className="wrap-2 flex flex-row container mx-auto py-20 h-screen items-center relative">
         <div>
           <div className="font-game text-white text-3xl">
             Come here to find the <span className="text-primary">social value</span> that Belongs to you already !
@@ -42,11 +49,11 @@ function Index() {
             any one platform.
           </div>
         </div>
-        <div>
+        <div className="ml-28 flex flex-col justify-start">
           <div className="font-game text-white text-3xl">
             Get a special friend who can help you <span className="text-primary">dig more value in web3.0</span> !
           </div>
-          <div className="font-px text-white mt-8">
+          <div className="font-px text-white mt-8 ">
             At the same time, we are thinking about how to provide a more fun mode to guide and help more friends to
             connect in the world of Web3.0 and gain more value.
           </div>
@@ -56,13 +63,14 @@ function Index() {
             soul which is the starting point for joining Web3.0 social network!
           </div>
         </div>
+        <div className="absolute mr-0 ml-0 bottom-10 m-auto w-full flex flex-row justify-center">
+          <img
+            className="h-10 animate-bounce"
+            src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_arrow.png"
+          />
+        </div>
       </div>
-      <div className="mx-auto container flex  justify-center">
-        <img
-          className="h-12 mt-16 mb-16 animate-bounce"
-          src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_arrow.png"
-        />
-      </div>
+
       <div className="wrap-3 container mx-auto">
         <div
           className="font-game uppercase text-6xl leading-snug		"
