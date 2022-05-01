@@ -2,6 +2,7 @@ import styles from './index.scss'
 import Neighbors from './components/neighbors'
 import StarPets from './components/star_pets'
 import Warp7 from './components/wrap7'
+import { Carousel } from 'antd'
 import './index.scss'
 
 function Index() {
@@ -107,33 +108,37 @@ function Index() {
           </div>
         </div>
       </div>
-      <div className="warp-4 grid-row-7 grid-flow-col grid mt-20 gap-4 w-screen overflow-x-scroll">
-        <div className="w-52 h-52">
-          <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet1.png" />
-        </div>
-        <div className="w-52 h-52">
-          <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet2.png" />
-        </div>
-        <div className="w-52 h-52">
-          <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet3.png" />
-        </div>
-        <div className="w-52 h-52">
-          <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet4.png" />
-        </div>
-        <div className="w-52 h-52">
-          <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet5.png" />
-        </div>
-        <div className="w-52 h-52">
-          <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet6.png" />
-        </div>
-        <div className="w-52 h-52">
-          <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet7.png" />
-        </div>
-        <div className="w-52 h-52">
-          <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet8.png" />
-        </div>
-        <div className="w-52 h-52">
-          <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet9.png" />
+      <div className="w-full overflow-hidden">
+        <div className="w-52 mt-10">
+          <Carousel autoplay dots={false}>
+            <div className="w-52 h-52">
+              <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet1.png" />
+            </div>
+            <div className="w-52 h-52">
+              <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet2.png" />
+            </div>
+            <div className="w-52 h-52">
+              <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet3.png" />
+            </div>
+            <div className="w-52 h-52">
+              <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet4.png" />
+            </div>
+            <div className="w-52 h-52">
+              <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet5.png" />
+            </div>
+            <div className="w-52 h-52">
+              <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet6.png" />
+            </div>
+            <div className="w-52 h-52">
+              <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet7.png" />
+            </div>
+            <div className="w-52 h-52">
+              <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet8.png" />
+            </div>
+            <div className="w-52 h-52">
+              <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet9.png" />
+            </div>
+          </Carousel>
         </div>
       </div>
       <Neighbors />
