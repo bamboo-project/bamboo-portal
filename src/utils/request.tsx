@@ -1,7 +1,7 @@
 import { extend } from 'umi-request'
 // import * as AuthService from '@/utils/auth'
 const request = extend({
-  prefix: 'https://api.bamboownft.com',
+  prefix: 'http://api.bamboownft.com',
   timeout: 10000,
   headers: {
     // Authorization: 'Basic YXBwOmFwcF9zZWNyZXQ=',

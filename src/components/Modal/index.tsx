@@ -3,7 +3,7 @@ import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { ExclamationIcon } from '@heroicons/react/outline'
 
-export default function YwModal({ isOpen, children, onClose }) {
+export default function Modal({ isOpen, children, onClose }) {
 
   const cancelButtonRef = useRef(null)
 
