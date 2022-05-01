@@ -4,8 +4,26 @@ import StarPets from './components/star_pets'
 import Warp7 from './components/wrap7'
 import { Carousel } from 'antd'
 import './index.scss'
+import { useEffect } from 'react'
+import { useState } from 'react'
 
 function Index() {
+  const [showBTT, setShowBTT] = useState(false) // back to top btn
+  const bindHandleScroll = event => {
+    const scrollTop =
+      (event.srcElement ? event.srcElement.documentElement.scrollTop : false) ||
+      window.pageYOffset ||
+      (event.srcElement ? event.srcElement.body.scrollTop : 0)
+    if (scrollTop > screen.height) {
+      setShowBTT(true)
+    } else {
+      setShowBTT(false)
+    }
+    console.log(scrollTop)
+  }
+  useEffect(() => {
+    window.addEventListener('scroll', bindHandleScroll)
+  }, [])
   return (
     <div className="">
       <div
@@ -251,7 +269,12 @@ function Index() {
           </div>
         </div>
       </div>
-      <div className=" border-b" />
+      <div className="border-b" />
+      {showBTT && (
+        <div className="back-to-top" onClick={() => window.scrollTo(0, 0)}>
+          <img className="h-28" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/back_to_top.png" />
+        </div>
+      )}
     </div>
   )
 }
