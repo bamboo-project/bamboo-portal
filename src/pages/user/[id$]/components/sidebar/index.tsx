@@ -31,7 +31,7 @@ function Sidebar() {
       <div className="mb-4 mt-4 border border-gray-500 mx-4" />
       <div className="flex-row flex items-center py-4 pl-4">
         <div className="bg-primary h-4 w-2"></div>
-        <div className="font-px text-white text-base ml-2">recommend neighbors</div>
+        <div className="font-px text-white text-base ml-2">Recommend neighbors</div>
       </div>
       <div className=" px-4">
         {recommendUserList.map(item => {

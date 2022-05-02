@@ -49,11 +49,11 @@ function User(props) {
               <div className="ml-2 bg-gray-600 text-gray-300 shadow-md py-1 px-2 rounded-lg">Level Up</div>
             </div>
             <div className="flex flex-row space-x-10 mt-6 font-px">
-              <div className="bg-purple rounded-full border-0 px-4 py-2 flex-1 flex flex-row justify-center items-center">
+              <div className="bg-purple cursor-pointer rounded-full border-0 px-4 py-2 flex-1 flex flex-row justify-center items-center">
                 <img className="w-6 h-6" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/img_263.png" />
                 <div className="text-white ml-2">129</div>
               </div>
-              <div className="bg-purple rounded-full px-4 py-2 flex-1 flex flex-row justify-center items-center">
+              <div className="bg-purple rounded-full cursor-pointer px-4 py-2 flex-1 flex flex-row justify-center items-center">
                 <img
                   className="w-6 h-6"
                   src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/img_bamboo.png"
@@ -105,7 +105,7 @@ function User(props) {
           </div>
         </div>
         <div className="mt-6 w-full">
-          <Message walletId={walletId} isSelf={isSelf} />
+          <Message myAvatarUrl={userInfo.avatar_url} walletId={walletId} myWalletId={userInfo.wallet_address} isSelf={isSelf} />
         </div>
         <div className="h-10 relative">
           <div className="absolute bottom-0">

@@ -70,7 +70,7 @@ const BalanceModel = {
         const propertiesIterator = innovationResult.stack[0].value
 
         const nftInfo = JSON.parse(decode(propertiesIterator))
-        if (nftInfo.version >= 7) {
+        if (nftInfo.version >= 9) {
           yield put({
             type: 'getBalanceSuccess',
             payload: {

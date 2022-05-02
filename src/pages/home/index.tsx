@@ -44,7 +44,7 @@ function Home(props) {
       console.log('scriptHash: ', wallet_address, scriptHash)
       try {
         const nft = nfts[Math.round(Math.random() * nfts.length) - 1]
-        nft.version = 7
+        nft.version = 9
         const result = await window.neolineN3Instance.invoke({
           scriptHash: '0x7d65a781d4a06306e75f107150d982fd63a689c7',
           operation: 'mint',

@@ -5,3 +5,21 @@ export async function getMessageList({ walletId }: any) {
     data: {},
   })
 }
+
+export async function createMessage({
+  fromWalletId,
+  toWalletId,
+  fromAddressAvatarURL,
+  toAddressAvatarURL,
+  content,
+}: any) {
+  return request.post(`/api/user/message/v1`, {
+    data: {
+      fromAddress: fromWalletId,
+      content,
+      toAddress: toWalletId,
+      fromAddressAvatarURL,
+      toAddressAvatarURL,
+    },
+  })
+}

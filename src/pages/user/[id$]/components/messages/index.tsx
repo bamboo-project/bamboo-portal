@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
 import * as MessageService from '@/services/Message'
 import Modal from '@/components/Modal'
+import IconLoading from '@/components/IconLoading'
 function Message(props) {
-  const { walletId, isSelf } = props
-  console.log('isSelf: ', isSelf)
+  const { walletId, isSelf, myWalletId, myAvatarUrl } = props
   const [messageList, setMessageList] = useState([])
   const [messageCount, setMessageCount] = useState(0)
   const [loading, setLoading] = useState(false)
-  const [isOpenPostMessageModal, setIsOpenPostMessage] = useState(false)
+  const [messageContext, setMessageContext] = useState('')
+  const [isOpenPostMessageModal, setIsOpenPostMessageModal] = useState(false)
   const getMessageList = async () => {
     try {
       const res = await MessageService.getMessageList({ walletId })
@@ -17,25 +18,43 @@ function Message(props) {
       }
     } catch (err) {}
   }
-  const PostMessage = () => {}
+  const PostMessage = () => {
+    MessageService.createMessage({
+      toWalletId: walletId,
+      fromWalletId: myWalletId,
+      content: messageContext,
+      fromAddressAvatarURL: myAvatarUrl,
+      toAddressAvatarURL: '',
+    })
+  }
   useEffect(() => {
     getMessageList()
   }, [])
   return (
     <div className="bg-purple w-full py-4">
       <Modal
-        isOpen={true}
+        isOpen={isOpenPostMessageModal}
         onClose={() => {
-          setIsOpenPostMessage
+          setIsOpenPostMessageModal(false)
         }}>
         <div>
           <div>
-            <textarea />
+            <textarea
+              onChange={e => {
+                setMessageContext(e.target.value)
+              }}
+              className="w-full bg-gray-600 border-0"
+              placeholder=""
+            />
           </div>
           <div
-            onClick={() => {}}
-            className="py-2 mx-auto flex justify-center items-center mt-4 px-6 text-1xl bg-primary text-white cursor-pointer w-60">
-            Send
+            onClick={() => {
+              PostMessage()
+            }}
+            className="py-2 font-px mx-auto flex justify-center items-center mt-4 px-6 text-1xl bg-primary text-white cursor-pointer w-60">
+            {
+              loading ? <IconLoading fontSize={20} color='#fff' /> :'Send'
+            }
           </div>
         </div>
       </Modal>
@@ -46,7 +65,11 @@ function Message(props) {
         </div>
         <div className="pr-8">
           {!isSelf && (
-            <div className=" bg-primary px-12 rounded-lg cursor-pointer py-4 font-game text-white text-1xl justify-center items-center flex">
+            <div
+              onClick={() => {
+                setIsOpenPostMessageModal(true)
+              }}
+              className=" bg-primary px-12 rounded-lg cursor-pointer py-4 font-game text-white text-1xl justify-center items-center flex">
               + MESSAGE
             </div>
           )}
