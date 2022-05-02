@@ -35,7 +35,7 @@ function IndexLayout(props) {
   return (
     <div className="bg-purple dark:bg-dark-bg-1 ">
       <Header auth={props.auth} connectWallet={connectWallet} tabIndex={pathname} />
-      <div className="mx-auto my-max-width">{props.children}</div>
+      <div className="mx-auto">{props.children}</div>
       <Footer />
       <Modal
         isOpen={isOpenConnectWalletModal}

@@ -11,15 +11,13 @@ const BalanceModel = {
 
   state: {
     isGetBalanceSuccess: false,
-    balance: {},
+    userNft: {},
   },
 
   effects: {
     *getBalance({ payload }, { take, put }) {
-      console.log('payload: ', payload)
       try {
         const { scriptHash } = yield window.neolineN3Instance.AddressToScriptHash({ address: payload.walletId })
-        console.log('scriptHash: ', scriptHash, payload.walletId)
         const result = yield window.neolineN3Instance.invokeRead({
           scriptHash: '0x7d65a781d4a06306e75f107150d982fd63a689c7',
           operation: 'tokensOf',
@@ -36,13 +34,18 @@ const BalanceModel = {
             },
           ],
         })
-        console.log('result: ', result, encode('{"foo":"bar"}'))
         if (!result || result.state === 'FAULT') {
           //
         }
+        console.log('result.stack: ', result.stack)
         var token = ''
         if (result.stack && result.stack.length > 0) {
-          token = result.stack[0].iterator[0].value
+          // 取最后一个token
+          if (result.stack[0].iterator.length > 0) {
+            token = result.stack[0].iterator[result.stack[0].iterator.length - 1].value
+          } else {
+            return
+          }
         }
         const innovationResult = yield window.neolineN3Instance.invokeRead({
           scriptHash: '0x7d65a781d4a06306e75f107150d982fd63a689c7',
@@ -53,7 +56,6 @@ const BalanceModel = {
               value: token,
             },
           ],
-
           signers: [
             {
               account: scriptHash,
@@ -67,19 +69,15 @@ const BalanceModel = {
         console.log('innovationResult: ', innovationResult)
         const propertiesIterator = innovationResult.stack[0].value
 
-        console.log('propertiesIterator: ', Buffer.from(propertiesIterator, "base64").toString("ascii"))
-        const tokenProperties = {}
-        //   propertiesIterator.forEach((tokenProperty) => {
-        //     const objectPropertyName = Buffer.from(tokenProperty.key.value, "base64").toString("ascii")
-        //     const objectPropertyValue = Buffer.from(tokenProperty.value.value, "base64").toString("ascii")
-        //     tokenProperties[objectPropertyName] = objectPropertyValue
-        //   })
-        yield put({
-          type: 'getBalanceSuccess',
-          payload: {
-            balance: result,
-          },
-        })
+        const nftInfo = JSON.parse(decode(propertiesIterator))
+        if (nftInfo.version >= 7) {
+          yield put({
+            type: 'getBalanceSuccess',
+            payload: {
+              balance: nftInfo,
+            },
+          })
+        }
       } catch (error) {
         const { type, description, data } = error
         switch (type) {
@@ -104,7 +102,7 @@ const BalanceModel = {
     getBalanceSuccess(state: any, { payload }) {
       console.log('payload: ', payload)
       state.isGetBalanceSuccess = true
-      state.balance = payload.balance
+      state.userNft = payload.balance
     },
   },
   subscriptions: {},
