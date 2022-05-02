@@ -9,9 +9,9 @@ import { Spin } from 'antd'
  *
  * @returns
  */
-const YwIconLoading = ({ fontSize, color }) => {
+const IconLoading = ({ fontSize, color }) => {
   const antIcon = <LoadingOutlined style={{ fontSize: fontSize || 30 }} spin />
 
   return <Spin style={{ color: color || '#1890ff' }} indicator={antIcon} />
 }
-export default YwIconLoading
+export default IconLoading

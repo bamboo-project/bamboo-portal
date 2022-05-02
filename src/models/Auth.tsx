@@ -25,10 +25,12 @@ const IndexModel = {
         const { label, address } = result
         yield put({
           type: 'refreshUser',
+
           payload: {
             walletId: address,
           },
         })
+
       } catch (error) {
         const { type, description, data } = error
         switch (type) {
@@ -77,7 +79,6 @@ const IndexModel = {
       }
     },
     *refreshUser({ payload }: any, { call, put, select }) {
-      console.log('payload: ', payload)
       try {
         const response = yield call(UserService.getUser, { walletId: payload.walletId })
         if (response && response.code === 0) {
@@ -85,6 +86,12 @@ const IndexModel = {
           yield put({
             type: 'refreshUserSuccess',
             payload: { userData: response.data },
+          })
+          yield put({
+            type: 'balance/getBalance',
+            payload: {
+              walletId: payload.walletId,
+            },
           })
           yield put({
             type: 'closeConnectWalletModal',
@@ -155,7 +162,6 @@ const IndexModel = {
             dispatch({
               type: 'getNeoAccount',
             })
-            
           }
         }
       })
