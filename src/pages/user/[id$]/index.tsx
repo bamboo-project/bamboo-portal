@@ -7,13 +7,13 @@ function User(props) {
   const { userInfo } = auth
   const { userNft } = balance
   const walletId = props.match.params['id']
-  console.log('walletId: ', walletId)
-
+  const isSelf = userInfo.wallet_address == walletId
+  console.log('userInfo: ', userInfo)
   return (
     <div className="flex flex-row" style={{ backgroundColor: '#453559' }}>
       <div className="w-9/12 flex flex-col items-center px-20">
         <div className="bg-purple p-10 w-full rounded-3xl flex flex-row mt-16">
-          <div className="text-white font-px text-xl w-3/12">Hi, {userInfo.wallet_address} Welcome Home!</div>
+          <div className="text-white font-px text-xl w-3/12">Hi, {walletId} Welcome Home!</div>
           <div className="w-9/12 flex flex-col items-end">
             <div className="text-white font-px text-base ">{userInfo.following} Followers</div>
             <div className="mt-2">
@@ -105,7 +105,7 @@ function User(props) {
           </div>
         </div>
         <div className="mt-6 w-full">
-          <Message walletId={walletId} />
+          <Message walletId={walletId} isSelf={isSelf} />
         </div>
         <div className="h-10 relative">
           <div className="absolute bottom-0">
