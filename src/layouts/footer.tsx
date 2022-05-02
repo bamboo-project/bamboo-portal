@@ -4,7 +4,7 @@ import classnames from 'classnames'
 export default function Footer(props) {
   return (
     <div className={classnames(styles.wrap, 'p-14 bg-black mx-auto')}>
-      <div className="flex flex-col md:flex-row container">
+      <div className="flex flex-col md:flex-row container mx-auto">
         <div className="w-full lg:w-6/12">
           <div className="flex flex-col justify-center items-center pr-24">
             <img

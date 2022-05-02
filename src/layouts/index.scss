@@ -1,6 +1,11 @@
 .title {
   background: rgb(121, 242, 157);
 }
-.my-max-width{
-  max-width: 1440px;
+.my-max-width {
+  max-width: 600px;
+}
+@media (min-width: 1440px){
+  .container {
+    max-width: 1200px !important;
+}
 }

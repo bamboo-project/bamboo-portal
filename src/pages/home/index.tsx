@@ -134,7 +134,8 @@ function Home(props) {
         isOpen={isOpenBindSocialModal}
         onClose={() => {
           setIsOpenBindSocialModal(false)
-        }}>
+        }}
+      >
         <div className="flex flex-col justify-center items-center">
           <div className="text-2xl font-game text-white">Connect Your Social Account</div>
           <div
@@ -143,7 +144,8 @@ function Home(props) {
                 userInfo.wallet_address
               }&callback_url=${window.location.href}&timestamp=${Date.parse(new Date())}`
             }}
-            className=" cursor-pointer mt-8 text-white text-xl font-px">
+            className=" cursor-pointer mt-8 text-white text-xl font-px"
+          >
             Twitter
           </div>
         </div>
@@ -170,7 +172,7 @@ function Home(props) {
             <img src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/bg_11.png" />
           </div>
         </div>
-        <div className="flex flex-row items-center justify-center w-full overflow-hidden">
+        <div className="flex flex-col md:flex-row items-center justify-center w-full overflow-hidden">
           <div className="relative">
             <div
               onClick={() => {
@@ -185,7 +187,8 @@ function Home(props) {
                 !isLogin ? 'huise-bg' : 'taohong-bg',
                 !isLogin ? 'animate-bounce' : '',
                 'home-radius-btn px-3 py-3 cursor-pointer text-center text-white font-game text-base whitespace-nowrap',
-              )}>
+              )}
+            >
               CONNECT WALLET
             </div>
             {isLogin && (
@@ -200,12 +203,14 @@ function Home(props) {
             className="relative"
             onClick={() => {
               setIsOpenBindSocialModal(true)
-            }}>
+            }}
+          >
             <div
               className={classnames(
                 userInfo.is_twitter !== 1 ? 'huise-bg' : 'taohong-bg',
                 'home-radius-btn px-3 py-3 cursor-pointer text-center text-white font-game text-base whitespace-nowrap',
-              )}>
+              )}
+            >
               Connect Social account
             </div>
             {isLogin && userInfo.is_twitter === 1 && (
