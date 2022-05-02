@@ -53,7 +53,7 @@ function IndexLayout(props) {
             }}
             className=" cursor-pointer mt-8 text-white text-xl font-px"
           >
-            Nel Line
+            Neo Line
           </div>
         </div>
       </Modal>
