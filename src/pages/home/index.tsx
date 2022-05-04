@@ -38,9 +38,9 @@ function Home(props) {
     }
   }, [isGetBalanceSuccess])
 
-  if (isLogin && userInfo.is_twitter === 1 && isGetBalanceSuccess) {
-    location.replace(`/user/${userInfo.wallet_address}`)
-  }
+  // if (isLogin && userInfo.is_twitter === 1 && isGetBalanceSuccess) {
+  //   location.replace(`/user/${userInfo.wallet_address}`)
+  // }
   const mintNft = async () => {
     try {
       const { scriptHash } = await window.neolineN3Instance.AddressToScriptHash({ address: wallet_address })
