@@ -142,7 +142,7 @@ function Home(props) {
           <div className="text-2xl font-game text-white">Connect Your Social Account</div>
           <div
             onClick={() => {
-              location.href = `http://api.bamboownft.com/api/login/twitter/auth?walletId=${
+              location.href = `https://api.bamboownft.com/api/login/twitter/auth?walletId=${
                 userInfo.wallet_address
               }&callback_url=${window.location.href}&timestamp=${Date.parse(new Date())}`
             }}
