@@ -2,7 +2,7 @@ function Mint() {
   return (
     <div
       className="h-screen w-screen bg-bottom bg-no-repeat bg-contain"
-      style={{ backgroundImage: 'url(https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_jb_1.png)' }}>
+      style={{ backgroundImage: 'url(https://imgs.bamboownft.com/temp/main_jb_1.png)' }}>
       <div className="container mx-auto mt-20">
         <div className="flex flex-row ">
           <div className="w-2/3">
@@ -20,7 +20,7 @@ function Mint() {
             </div>
           </div>
           <div className="flex w-1/3 justify-center items-center">
-            <img className="w-full " src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/bg_11.png" />
+            <img className="w-full " src="https://imgs.bamboownft.com/temp/bg_11.png" />
           </div>
         </div>
 
@@ -34,8 +34,8 @@ function Mint() {
           <div className="text-white h-14 px-10 bg-primary font-px rounded-full cursor-pointer flex justify-center items-center">
             Mint A Pet And Start Web3.0
           </div>
-          <img className="h-14 mr-10 ml-10" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/arrow_right.png" />
-          <img className="h-24" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/egg_gray.png" />
+          <img className="h-14 mr-10 ml-10" src="https://imgs.bamboownft.com/temp/arrow_right.png" />
+          <img className="h-24" src="https://imgs.bamboownft.com/temp/egg_gray.png" />
         </div>
       </div>
     </div>

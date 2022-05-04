@@ -6,7 +6,7 @@ function StarPets() {
         <div className=" relative p-10 flex flex-col rounded-lg">
           <img
             className="w-40 h-44 ml-10 z-10"
-            src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_small_pet1.png"
+            src="https://imgs.bamboownft.com/temp/main_small_pet1.png"
           />
           <div className="bg-indigo-400 pl-10 pr-10 pb-4 z-0 pt-28 -mt-24 rounded-lg">
             <div className="text-white text-lg font-px">Dwayne Johnson</div>
@@ -25,7 +25,7 @@ function StarPets() {
         <div className=" relative p-10 flex flex-col rounded-lg">
           <img
             className="w-40 h-44 ml-10 z-10"
-            src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_small_pet2.png"
+            src="https://imgs.bamboownft.com/temp/main_small_pet2.png"
           />
           <div className="bg-gray-600 pl-10 pr-10 pb-4 z-0 pt-28 -mt-24 rounded-lg">
             <div className="text-white text-lg font-px">Dwayne Johnson</div>
@@ -44,7 +44,7 @@ function StarPets() {
         <div className=" relative p-10 flex flex-col rounded-lg">
           <img
             className="w-40 h-44 ml-10 z-10"
-            src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_small_pet3.png"
+            src="https://imgs.bamboownft.com/temp/main_small_pet3.png"
           />
           <div className="bg-indigo-400 pl-10 pr-10 pb-4 z-0 pt-28 -mt-24 rounded-lg">
             <div className="text-white text-lg font-px">Dwayne Johnson</div>
@@ -63,7 +63,7 @@ function StarPets() {
         <div className=" relative p-10 flex flex-col rounded-lg">
           <img
             className="w-40 h-44 ml-10 z-10"
-            src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_small_pet4.png"
+            src="https://imgs.bamboownft.com/temp/main_small_pet4.png"
           />
           <div className="bg-yellow-400 pl-10 pr-10 pb-4 z-0 pt-28 -mt-24 rounded-lg">
             <div className="text-white text-lg font-px">Dwayne Johnson</div>
@@ -82,7 +82,7 @@ function StarPets() {
         <div className=" relative p-10 flex flex-col rounded-lg">
           <img
             className="w-40 h-44 ml-10 z-10"
-            src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_small_pet5.png"
+            src="https://imgs.bamboownft.com/temp/main_small_pet5.png"
           />
           <div className="bg-indigo-400 pl-10 pr-10 pb-4 z-0 pt-28 -mt-24 rounded-lg">
             <div className="text-white text-lg font-px">Dwayne Johnson</div>

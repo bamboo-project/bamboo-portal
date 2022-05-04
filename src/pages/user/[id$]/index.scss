@@ -1,0 +1,19 @@
+.card {
+  &:hover {
+    .arrow {
+      margin-right: 20px;
+      background-blend-mode: color-dodge;
+      filter: drop-shadow(200 0 0 #f60);
+    }
+    .img {
+      height: 10rem;
+    }
+  }
+}
+.btn1 {
+  &:hover {
+    .icon {
+      left: 3rem;
+    }
+  }
+}

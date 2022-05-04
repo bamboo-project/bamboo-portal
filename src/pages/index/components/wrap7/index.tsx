@@ -19,13 +19,13 @@ function Wrap7() {
         <div className="grid-rows-2 grid-flow-col grid font-px">
           <div className="flex flex-col justify-center items-center mr-10 pb-28">
             <div className="flex flex-row items-center">
-              <img className="mr-8" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/icon_1.png" />
-              <img src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/btn_1.png" />
+              <img className="mr-8" src="https://imgs.bamboownft.com/temp/icon_1.png" />
+              <img src="https://imgs.bamboownft.com/temp/btn_1.png" />
             </div>
             <div className="h-86">
               <img
                 className="mt-10 mb-10"
-                src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/image_105.png"
+                src="https://imgs.bamboownft.com/temp/image_105.png"
               />
             </div>
             <div className="h-20">
@@ -47,7 +47,7 @@ function Wrap7() {
             <div className="h-60">
               <img
                 className="mt-10 mb-10"
-                src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/image_220.png"
+                src="https://imgs.bamboownft.com/temp/image_220.png"
               />
             </div>
             <div className="h-20">
@@ -70,7 +70,7 @@ function Wrap7() {
             <div className="h-86">
               <img
                 className="mt-10 mb-10"
-                src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/image_217.png"
+                src="https://imgs.bamboownft.com/temp/image_217.png"
               />
             </div>
             <div className="h-20">
@@ -85,13 +85,13 @@ function Wrap7() {
 
           <div className="flex flex-col justify-center items-center">
             <div className="flex flex-row items-center">
-              <img className="mr-8" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/icon_4.png" />
-              <img src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/btn_4.png" />
+              <img className="mr-8" src="https://imgs.bamboownft.com/temp/icon_4.png" />
+              <img src="https://imgs.bamboownft.com/temp/btn_4.png" />
             </div>
             <div className="h-60">
               <img
                 className="mt-10 mb-10"
-                src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/image_215.png"
+                src="https://imgs.bamboownft.com/temp/image_215.png"
               />
             </div>
             <div className="h-20">

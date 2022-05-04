@@ -20,31 +20,36 @@ function Sidebar() {
     <div>
       <div className="flex-row flex items-center py-4 pl-4">
         <div className="bg-primary h-4 w-2"></div>
-        <div className="font-px text-white text-base ml-2">Friends</div>
+        <div className="font-px text-white text-xl ml-2">Friends</div>
       </div>
-      <div className="flex justify-center items-center">
-          <img src='' />
-          <div className="text-gray-400 font-px uppercase text-2xl">
-              NONE
-          </div>
+      <div className="flex flex-col justify-center items-center">
+        <img className="w-10 h-10 mt-4" src="https://imgs.bamboownft.com/temp/icon_351.png" />
+        <div className="text-gray-400 mt-4 font-px uppercase text-2xl">NONE</div>
       </div>
       <div className="mb-4 mt-4 border border-gray-500 mx-4" />
       <div className="flex-row flex items-center py-4 pl-4">
         <div className="bg-primary h-4 w-2"></div>
-        <div className="font-px text-white text-base ml-2">Recommend neighbors</div>
+        <div className="font-px text-white text-xl ml-2">Recommend neighbors</div>
       </div>
       <div className=" px-4">
         {recommendUserList.map(item => {
           return (
-            <div className="bg-gray-400 py-2 px-2 mt-4" key={item.userId}>
-              <img src="" />
-              <div className="text-2xl font-px text-white">{item.nickname}</div>
+            <div
+              style={{
+                backgroundImage: 'url(https://imgs.bamboownft.com/temp/bg_317.png)',
+                backgroundSize: '100% 100%',
+              }}
+              className="py-4 px-6 mt-4 flex flex-row items-center"
+              key={item.userId}>
+              <img className="w-10 h-10 rounded-full" src="https://imgs.bamboownft.com/temp/avatar_1.png" />
+              <div className="text-2xl ml-6 flex-1 font-px text-white">{item.nickname}</div>
+              <img className="w-10 h-10 cursor-pointer" src="https://imgs.bamboownft.com/temp/icon_294.png" />
             </div>
           )
         })}
       </div>
       <div className="flex justify-center mt-6">
-        <div className=" cursor-pointer border-4 flex justify-center items-center border-gray-500 w-10/12 text-gray-500 text-2xl font-px uppercase py-2 pl-2">
+        <div className=" hover:bg-gray-500 hover:text-gray-300 transform transition-all duration-500 cursor-pointer border-4 flex justify-center items-center border-gray-500 w-10/12 text-gray-500 text-2xl font-px uppercase py-2 pl-2">
           Go to the community
         </div>
       </div>

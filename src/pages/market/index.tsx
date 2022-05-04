@@ -7,7 +7,7 @@ function Market() {
         <div className="w-2/3 pr-20">
           <div className="text-primary text-6xl flex items-center flex-row font-extrabold">
             <div className="font-px ">BAMBOO Market</div>
-            <img className="w-20 ml-4" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/market_car.png" />
+            <img className="w-20 ml-4" src="https://imgs.bamboownft.com/temp/market_car.png" />
           </div>
           <div>
             <div className="font-px text-lg text-white mt-4">
@@ -18,10 +18,10 @@ function Market() {
               items in the community store, such as pet clothing sets, home decorations, NFT gallery decorations, etc.
             </div>
           </div>
-          <img className="w-60 mt-10" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/market_btn.png" />
+          <img className="w-60 mt-10" src="https://imgs.bamboownft.com/temp/market_btn.png" />
         </div>
         <div className="w-1/3">
-          <img className="w-80" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/market_icon.png" />
+          <img className="w-80" src="https://imgs.bamboownft.com/temp/market_icon.png" />
         </div>
       </div>
     </div>

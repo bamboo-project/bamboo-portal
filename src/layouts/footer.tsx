@@ -8,7 +8,7 @@ export default function Footer(props) {
         <div className="w-full lg:w-6/12">
           <div className="flex flex-col justify-center items-center pr-24">
             <img
-              src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_title_small.png"
+              src="https://imgs.bamboownft.com/temp/main_title_small.png"
               className=" w-52 rounded-2xl"
             />
             <div className="text-center text-white hidden md:block md:mt-5 font-game">

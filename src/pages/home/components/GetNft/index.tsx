@@ -16,19 +16,19 @@ function GetNft(props: any) {
       <div className="w-full h-full relative">
         {(step == 0 || step == 1) && (
           <div className="flex justify-center h-full w-full items-center">
-            <img className="z-10" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/egg2.gif" />
+            <img className="z-10" src="https://imgs.bamboownft.com/temp/egg2.gif" />
           </div>
         )}
         {step == 0 && (
           <img
             className=" mix-blend-color-dodge absolute top-0 left-0"
-            src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/get_pet_bg_1.webp"
+            src="https://imgs.bamboownft.com/temp/get_pet_bg_1.webp"
           />
         )}
         {step == 1 && (
           <img
             className=" mix-blend-color-dodge absolute top-0 left-0"
-            src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/get_pet_bg_2.webp"
+            src="https://imgs.bamboownft.com/temp/get_pet_bg_2.webp"
           />
         )}
         {step == 2 && (
@@ -44,11 +44,11 @@ function GetNft(props: any) {
                   location.href = `/user/${userInfo.wallet_address}`
                 }}
                 className="w-64 mr-6 cursor-pointer"
-                src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_start_btn.png"
+                src="https://imgs.bamboownft.com/temp/home_start_btn.png"
               />
               <img
                 className="w-14 -mt-4"
-                src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_color_arrow.gif"
+                src="https://imgs.bamboownft.com/temp/home_color_arrow.gif"
               />
             </div>
           </div>

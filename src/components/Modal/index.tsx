@@ -4,7 +4,6 @@ import { Dialog, Transition } from '@headlessui/react'
 import { ExclamationIcon } from '@heroicons/react/outline'
 
 export default function Modal({ isOpen, children, onClose }) {
-
   const cancelButtonRef = useRef(null)
 
   return (
@@ -41,8 +40,17 @@ export default function Modal({ isOpen, children, onClose }) {
             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
             <div className="inline-block align-bottom bg-black rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-              <div className="bg-black px-4 pt-5 pb-4 sm:p-6 sm:pb-4">{children}</div>
-             
+              <div
+                style={{
+                  backgroundImage: 'url(https://imgs.bamboownft.com/temp/bg_158.png)',
+                  backgroundSize: '100% 100%',
+                }}
+                className="bg-black px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <div className="flex justify-end w-full">
+                  <img className="w-10 h-10 cursor-pointer " onClick={onClose} src="https://imgs.bamboownft.com/temp/icon_close.png" />
+                </div>
+                {children}
+              </div>
             </div>
           </Transition.Child>
         </div>
