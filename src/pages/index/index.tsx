@@ -187,7 +187,7 @@ function Index() {
       <Warp7 />
       <div className="pt-20" style={{ backgroundColor: '#453559' }}>
         <div className="container mx-auto">
-          <div className="flex flex-row items-center">
+          <div className="flex flex-row items-center mb-24">
             <img className="h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/icon_5.png" />
             <div className="w-1 h-24 mt-4 ml-4 bg-yellow-300 rounded-lg" />
             <div className="text-primary mt-4 text-2xl font-game ml-4">

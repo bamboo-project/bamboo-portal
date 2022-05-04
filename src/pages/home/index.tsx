@@ -153,7 +153,7 @@ function Home(props) {
       <div className={classnames(styles.marketWrap, 'min-h-screen w-full relative')}>
         <div className="flex flex-row items-center container mx-auto mb-24 pt-40 relative">
           <div className="pr-96">
-            <div className="text-primary text-8xl flex items-center flex-row font-extrabold">
+            <div className="text-primary text-8xl flex items-center flex-row font-extrabold mb-8">
               <div className="font-px text-5xl">Connect social account TO Mint A Blockchain Pet ！</div>
             </div>
             <div>
@@ -245,7 +245,7 @@ function Home(props) {
               {mintLoading && <IconLoading fontSize={20} color="#fff" />}
 
               <img
-                className="w-14 pl-4"
+                className="w-14 mx-4"
                 src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_gray_arrow.png"
               />
             </div>

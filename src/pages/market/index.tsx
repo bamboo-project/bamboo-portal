@@ -5,7 +5,7 @@ function Market() {
     <div className={classnames(styles.marketWrap, 'h-screen w-full flex items-center')}>
       <div className="flex flex-row items-center container mx-auto mb-24">
         <div className="w-2/3 pr-20">
-          <div className="text-primary text-8xl flex items-center flex-row font-extrabold">
+          <div className="text-primary text-6xl flex items-center flex-row font-extrabold">
             <div className="font-px ">BAMBOO Market</div>
             <img className="w-20 ml-4" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/market_car.png" />
           </div>
