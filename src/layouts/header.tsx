@@ -99,9 +99,11 @@ export default function HeaderLayout(props: any) {
                   href="/"
                   className="font-px text-base text-center block relative font-medium text-white dark:text-white hover:text-white"
                 >
-                  About Bamboo
+                  ABOUT BAMBOO
                   {tabIndex == '/' && (
-                    <div className=" h-1.5 rounded-full left-1/2 -ml-7 z-10 -bottom-3 absolute bg-primary w-14"></div>
+                    <div className="h-0.5 rounded-full z-10 absolute bg-primary text-transparent text-center font-px text-base text-center font-medium">
+                      ABOUT BAMBOO
+                    </div>
                   )}
                 </a>
                 <a
@@ -110,16 +112,20 @@ export default function HeaderLayout(props: any) {
                 >
                   MARKET
                   {tabIndex == '/market' && (
-                    <div className=" h-1.5 rounded-full z-10 -bottom-3 absolute bg-primary w-14"></div>
+                    <div className="h-0.5 rounded-full z-10 absolute bg-primary text-transparent text-center font-px text-base text-center font-medium">
+                      MARKET
+                    </div>
                   )}
                 </a>
                 <a
                   href="/home"
                   className="font-px block text-base relative font-medium text-white dark:text-white hover:text-white"
                 >
-                  My Home
+                  MY HOME
                   {tabIndex == '/home' && (
-                    <div className=" h-1.5 rounded-full z-10 -bottom-3 absolute bg-primary w-14"></div>
+                    <div className="h-0.5 rounded-full z-10 absolute bg-primary text-transparent text-center font-px text-base text-center font-medium">
+                      MY HOME
+                    </div>
                   )}
                 </a>
               </Popover.Group>
@@ -197,10 +203,10 @@ export default function HeaderLayout(props: any) {
                 {!isLogin && (
                   <div
                     onClick={connectWallet}
-                    className="ml-8 font-px cursor-pointer whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md 
+                    className="ml-8 font-px cursor-pointer whitespace-nowrap inline-flex items-center justify-center px-4 py-1 border border-transparent rounded-3xl 
                   shadow-sm text-base font-medium bg-primary text-white hover:text-white  hover:bg-opacity-90"
                   >
-                    Connect Wallet
+                    CONNECT WALLET
                   </div>
                 )}
               </div>

@@ -26,7 +26,7 @@ function Index() {
   return (
     <div className="">
       <div
-        className="warp-1 h-screen bg-contain flex flex-col justify-center items-center w-full relative"
+        className="warp-1 h-screen bg-cover bg-no-repeat flex flex-col justify-center items-center w-full relative"
         style={{
           backgroundImage: 'url(https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_bg.png)',
         }}
@@ -91,69 +91,82 @@ function Index() {
 
       <div className="wrap-3 container mx-auto">
         <div
-          className="font-game uppercase text-6xl leading-snug		"
+          className="font-game uppercase text-5xl leading-snug mb-14"
           style={{ color: '#B974FF', textShadow: '1px 10px 3px black' }}
         >
           Connect social account TO Mint A Blockchain Pet in Web3.0 !
         </div>
-        <div className="flex flex-row justify-center">
-          <div>
-            <div className="font-px text-white text-lg mt-8">
+        <div className="flex flex-row justify-between items-center">
+          <div className="w-1/2 tracking-tight leading-4">
+            <div className="font-px text-white text-base mt-4">
               Bamboo,A Web3.0 community that allows you to create a blockchain pet! Come to Bamboo to connect your
               social accounts, and you will create your own growable NFT pet based on your own social graph!
             </div>
-            <div className="font-px text-white text-lg mt-8">
+            <div className="font-px text-white text-base mt-4">
               A unique NFT pet is a good friend who can always accompany you in the world of Bamboo! It can make your
               experience simple and interesting, and explore the social world of Web3.0 in the future.
             </div>
-            <div className="font-px text-white text-lg mt-8">
+            <div className="font-px text-white text-base mt-4">
               When you take pets to participate in social activities, they are constantly learning and recording your
               social behavior in the Web3.0 world, and building your social graph in Web3.0.
             </div>
           </div>
-          <div>
-            <img src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_egg_effect.png" />
-            <div className="relative flex flex-row justify-center">
-              <div className="text-white ml-20 bg-primary py-3 px-14 flex justify-center items-center rounded-md cursor-pointer text-lg font-game mr-4">
-                Mint a pet
-              </div>
+          <div className="w-96">
+            <div className="relative flex flex-row items-center justify-center relative right-10">
               <img
-                className="w-16"
-                src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pink_right.png"
+                className="mix-blend-lighten"
+                src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/bg_11.png"
+              />
+              <img
+                className="absolute"
+                src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_color_egg.gif"
               />
             </div>
           </div>
         </div>
+        <div className="relative flex flex-row justify-end">
+          <div className="text-white ml-20 py-3 px-14 flex justify-center items-center rounded-md cursor-pointer font-game mr-4 bg-contain bg-no-repeat w-80 relative">
+            <div className="absolute z-10 text-3xl -mt-2">Mint a pet</div>
+            <img
+              className="absolute z-0"
+              src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/index_pink_btn_bg.png"
+            />
+          </div>
+          <img
+            className="w-16 relative -top-3"
+            src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_color_arrow.gif"
+          />
+        </div>
       </div>
       <div className="w-full overflow-hidden">
-        <div className="w-56 mt-10">
+        <div className="w-44 mt-14">
           <Carousel autoplay dots={false}>
-            <div className="w-52 h-52">
-              <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet1.png" />
+            <div className="w-40 h-40">
+              <img className="w-40 h-40" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet1.png" />
             </div>
-            <div className="w-52 h-52">
-              <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet2.png" />
+            <div className="w-40 h-40">
+              <img className="w-40 h-40" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet2.png" />
             </div>
-            <div className="w-52 h-52">
-              <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet3.png" />
+            <div className="w-40 h-40">
+              <img className="w-40 h-40" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet3.png" />
             </div>
-            <div className="w-52 h-52">
-              <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet4.png" />
+            <div className="w-40 h-40">
+              <img className="w-40 h-40" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet4.png" />
             </div>
-            <div className="w-52 h-52">
-              <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet5.png" />
+            <div className="w-40 h-40">
+              <img className="w-40 h-40" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet5.png" />
             </div>
-            <div className="w-52 h-52">
-              <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet6.png" />
+            <div className="w-40 h-40">
+              <img className="w-40 h-40" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet6.png" />
             </div>
-            <div className="w-52 h-52">
-              <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet7.png" />
+            <div className="w-40 h-40">
+              <img className="w-40 h-40" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet7.png" />
             </div>
-            <div className="w-52 h-52">
-              <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet8.png" />
+            <div className="w-40 h-40">
+              <img className="w-40 h-40" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet8.png" />
             </div>
-            <div className="w-52 h-52">
-              <img className="w-52 h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet9.png" />
+            <div className="w-40 h-40">
+              <img className="w-40 h-40" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet9.png" />
             </div>
           </Carousel>
         </div>

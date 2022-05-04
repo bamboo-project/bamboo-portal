@@ -1,7 +1,7 @@
 function StarPets() {
   return (
     <div className="container mx-auto mb-20">
-      <div className="font-game text-4xl text-primary mt-20 uppercase">Meet STAR pets</div>
+      <div className="font-px text-2xl text-primary mt-20 uppercase">Meet STAR pets</div>
       <div className="flex flex-row gap-2 overflow-x-auto mt-4">
         <div className=" relative p-10 flex flex-col rounded-lg">
           <img
