@@ -28,26 +28,26 @@ function Index() {
       <div
         className="warp-1 h-screen bg-cover bg-no-repeat flex flex-col justify-center items-center w-full relative"
         style={{
-          backgroundImage: 'url(https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_bg.png)',
+          backgroundImage: 'url(https://imgs.bamboownft.com/temp/main_bg.png)',
         }}
       >
         <div className="container flex flex-col justify-center items-center mx-auto mb-200px">
           <div>
             <img
               className="h-44 mx-auto mb-1"
-              src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_title_big.png"
+              src="https://imgs.bamboownft.com/temp/main_title_big.png"
             />
           </div>
           <div className="text-white font-game text-3xl w-6/12 mx-auto text-center">
             New STYLE to explore the Web3.0 social network
           </div>
           <div className="absolute bottom-10 mb-100px">
-            <img className="h-28 mt-20" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_egg.png" />
+            <img className="h-28 mt-20" src="https://imgs.bamboownft.com/temp/main_egg.png" />
           </div>
           <div className="absolute bottom-10">
             <img
               className="h-10 mt-16 animate-bounce"
-              src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_arrow.png"
+              src="https://imgs.bamboownft.com/temp/main_arrow.png"
             />
           </div>
         </div>
@@ -84,7 +84,7 @@ function Index() {
         <div className="absolute mr-0 ml-0 bottom-10 m-auto w-full flex flex-row justify-center">
           <img
             className="h-10 animate-bounce"
-            src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_arrow.png"
+            src="https://imgs.bamboownft.com/temp/main_arrow.png"
           />
         </div>
       </div>
@@ -175,12 +175,12 @@ function Index() {
       <StarPets />
       <div
         className=" h-96 bg-cover bg-no-repeat"
-        style={{ backgroundImage: 'url(https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_jb_1.png)' }}
+        style={{ backgroundImage: 'url(https://imgs.bamboownft.com/temp/main_jb_1.png)' }}
       >
         <div className="container mx-auto flex justify-center items-center">
           <img
             className="h-10 mt-16 animate-bounce"
-            src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_arrow.png"
+            src="https://imgs.bamboownft.com/temp/main_arrow.png"
           />
         </div>
       </div>
@@ -206,7 +206,7 @@ function Index() {
               are interested in, and where is it.
             </div>
             <div className="flex justify-center items-center">
-              <img className="w-2/3" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/image_100.png" />
+              <img className="w-2/3" src="https://imgs.bamboownft.com/temp/image_100.png" />
             </div>
           </div>
           <div className="flex flex-row space-x-8 mt-20 justify-center items-center">
@@ -218,7 +218,7 @@ function Index() {
               awkward and socially terrified to start conversations.
             </div>
             <div className="flex justify-center items-center">
-              <img className=" w-2/3" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/image_271.png" />
+              <img className=" w-2/3" src="https://imgs.bamboownft.com/temp/image_271.png" />
             </div>
           </div>
         </div>
@@ -227,13 +227,13 @@ function Index() {
         <div
           className="w-full h-96 bg-bottom bg-cover bg-no-repeat"
           style={{
-            backgroundImage: 'url(https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_bg_3.png)',
+            backgroundImage: 'url(https://imgs.bamboownft.com/temp/main_bg_3.png)',
           }}
         >
           <div className="container mx-auto flex justify-center items-center">
             <img
               className="h-10 mt-16 animate-bounce"
-              src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_arrow.png"
+              src="https://imgs.bamboownft.com/temp/main_arrow.png"
             />
           </div>
         </div>
@@ -255,7 +255,7 @@ function Index() {
               So the higher the pet level, the higher the value you have on the chain.
             </div>
             <div>
-              <img className="h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/image_266.png" />
+              <img className="h-52" src="https://imgs.bamboownft.com/temp/image_266.png" />
             </div>
           </div>
           <div className="flex flex-row items-center mt-28 space-x-28">
@@ -264,7 +264,7 @@ function Index() {
               every day.
             </div>
             <div>
-              <img className="h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/image_101.png" />
+              <img className="h-52" src="https://imgs.bamboownft.com/temp/image_101.png" />
             </div>
           </div>
           <div className="flex flex-row items-center mt-28 space-x-28">
@@ -273,14 +273,14 @@ function Index() {
               profile of the project, and can also provide users with DID-based credit value through the data
             </div>
             <div>
-              <img className=" h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/image_267.png" />
+              <img className=" h-52" src="https://imgs.bamboownft.com/temp/image_267.png" />
             </div>
           </div>
           <div className="flex items-center justify-center mt-32 pb-32">
-            <img className="h-20" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/btn_10.png" />
+            <img className="h-20" src="https://imgs.bamboownft.com/temp/btn_10.png" />
             <img
               className="w-14 -mt-4 ml-2"
-              src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_color_arrow.gif"
+              src="https://imgs.bamboownft.com/temp/home_color_arrow.gif"
             />
           </div>
         </div>
@@ -288,7 +288,7 @@ function Index() {
       <div className="border-b" />
       {showBTT && (
         <div className="back-to-top" onClick={() => window.scrollTo(0, 0)}>
-          <img className="h-28" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/back_to_top.png" />
+          <img className="h-28" src="https://imgs.bamboownft.com/temp/back_to_top.png" />
         </div>
       )}
     </div>

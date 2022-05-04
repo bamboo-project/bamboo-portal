@@ -169,7 +169,7 @@ function Home(props) {
             </div>
           </div>
           <div className="home-xinxi w-96">
-            <img src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/bg_11.png" />
+            <img src="https://imgs.bamboownft.com/temp/bg_11.png" />
           </div>
         </div>
         <div className="flex flex-col md:flex-row items-center justify-center w-full overflow-hidden">
@@ -193,7 +193,7 @@ function Home(props) {
             </div>
             {isLogin && (
               <div className="absolute right-0 -bottom-3">
-                <img className="w-7" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_done.png" />
+                <img className="w-7" src="https://imgs.bamboownft.com/temp/home_done.png" />
               </div>
             )}
           </div>
@@ -215,13 +215,13 @@ function Home(props) {
             </div>
             {isLogin && userInfo.is_twitter === 1 && (
               <div className="absolute right-0 -bottom-3">
-                <img className="w-7" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_done.png" />
+                <img className="w-7" src="https://imgs.bamboownft.com/temp/home_done.png" />
               </div>
             )}
           </div>
           <div>{!isLogin ? <div className="w-20 grey-line"></div> : <div className="w-20 pink-line"></div>}</div>
           {isLogin && userInfo.is_twitter === 1 && isGetBalanceSuccess ? (
-            <img className="w-64" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_color_mint.png" />
+            <img className="w-64" src="https://imgs.bamboownft.com/temp/home_color_mint.png" />
           ) : (
             <img
               onClick={async () => {
@@ -230,14 +230,14 @@ function Home(props) {
                 }
               }}
               className="w-64"
-              src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_gray_mint.png"
+              src="https://imgs.bamboownft.com/temp/home_gray_mint.png"
             />
           )}
           {isLogin && userInfo.is_twitter === 1 && isGetBalanceSuccess ? (
             <div>
               <img
                 className="w-14 pl-4"
-                src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_color_arrow.gif"
+                src="https://imgs.bamboownft.com/temp/home_color_arrow.gif"
               />
             </div>
           ) : (
@@ -257,14 +257,14 @@ function Home(props) {
                 setMintSuccess(true)
               }}
               className="w-40"
-              src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_color_egg.gif"
+              src="https://imgs.bamboownft.com/temp/home_color_egg.gif"
             />
           ) : (
-            <img className="w-20" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_gray_egg.png" />
+            <img className="w-20" src="https://imgs.bamboownft.com/temp/home_gray_egg.png" />
           )}
         </div>
         <div className="">
-          <img src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_jianbian.png" />
+          <img src="https://imgs.bamboownft.com/temp/home_jianbian.png" />
         </div>
       </div>
       {mintSuccess && <GetNft userInfo={userInfo} userNft={userNft} />}

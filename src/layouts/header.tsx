@@ -75,13 +75,13 @@ export default function HeaderLayout(props: any) {
                   {theme == 'dark' ? (
                     <img
                       className="h-6 w-auto sm:h-8"
-                      src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_title_small.png"
+                      src="https://imgs.bamboownft.com/temp/main_title_small.png"
                       alt=""
                     />
                   ) : (
                     <img
                       className="h-6 w-auto sm:h-8"
-                      src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_title_small.png"
+                      src="https://imgs.bamboownft.com/temp/main_title_small.png"
                       alt=""
                     />
                   )}
@@ -144,7 +144,8 @@ export default function HeaderLayout(props: any) {
                             <div className="header-address font-px text-white">
                               <div className="header-address-info">
                                 <div className="header-address-info-avatar">
-                                  <div className="header-address-info-avatar-status"></div>
+                                  <img src={userInfo.avatar_url} className=' rounded-full' />
+                                  {/* <div className="header-address-info-avatar-status"></div> */}
                                 </div>
                                 <div className="header-address-info-content">
                                   {userInfo.wallet_address.slice(0, 12)}···
@@ -274,7 +275,7 @@ export default function HeaderLayout(props: any) {
                   </div>
                   {isLogin ? (
                     <div className="w-full flex flex-col text-center">
-                      <img className="rounded-full w-20 h-20 mx-auto" src={userInfo.avatar} />
+                      <img className="rounded-full w-20 h-20 mx-auto" src={userInfo.avatar_url} />
                       <div className="text-black text-2xl mt-3">{userInfo.nickname}</div>
                       <div
                         className="bg-blue-500 p-3 mt-4 text-white"

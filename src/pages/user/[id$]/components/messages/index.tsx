@@ -31,7 +31,9 @@ function Message(props) {
     getMessageList()
   }, [])
   return (
-    <div className="bg-purple w-full py-4">
+    <div
+      style={{ backgroundImage: 'url(https://imgs.bamboownft.com/temp/bg_321.png)', backgroundSize: '100% 100%' }}
+      className="w-full py-4 bg-contain">
       <Modal
         isOpen={isOpenPostMessageModal}
         onClose={() => {
@@ -52,16 +54,14 @@ function Message(props) {
               PostMessage()
             }}
             className="py-2 font-px mx-auto flex justify-center items-center mt-4 px-6 text-1xl bg-primary text-white cursor-pointer w-60">
-            {
-              loading ? <IconLoading fontSize={20} color='#fff' /> :'Send'
-            }
+            {loading ? <IconLoading fontSize={20} color="#fff" /> : 'Send'}
           </div>
         </div>
       </Modal>
-      <div className="text-white flex flex-row py-4 pl-4  items-center">
+      <div className="text-white flex flex-row py-2 pl-8  items-center">
         <div className="flex-1 flex-row items-center flex">
-          <img className="w-6 h-6" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/img_370.png" />
-          <div className="font-px text-base ml-2">{messageCount} MESSAGE</div>
+          <img className="w-6 h-6" src="https://imgs.bamboownft.com/temp/img_370.png" />
+          <div className="font-px text-base ml-4 mt-1">{messageCount} MESSAGE</div>
         </div>
         <div className="pr-8">
           {!isSelf && (
@@ -80,10 +80,7 @@ function Message(props) {
           return (
             <div key={item.id} className="bg-green-100 bg-opacity-10 px-4 py-4">
               <div className="font-px flex flex-row">
-                <img
-                  className="rounded-full w-8 h-8"
-                  src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/img_370.png"
-                />
+                <img className="rounded-full w-8 h-8" src="https://imgs.bamboownft.com/temp/img_370.png" />
                 <div className="ml-2">
                   <div className="text-white">{item.from_wallet}</div>
                   <div className="text-white">{item.create_at}</div>
