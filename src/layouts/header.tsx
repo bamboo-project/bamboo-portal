@@ -43,7 +43,7 @@ function classNames(...classes: any[]) {
 }
 
 export default function HeaderLayout(props: any) {
-  const { auth, tabIndex } = props
+  const { auth, tabIndex ,isGetBalanceSuccess} = props
   console.log('props: ', props)
 
   const { isLogin, userInfo } = auth
@@ -118,7 +118,7 @@ export default function HeaderLayout(props: any) {
                   )}
                 </a>
                 <a
-                  href="/home"
+                  href={isLogin && userInfo.is_twitter === 1 && isGetBalanceSuccess ? `/user/${userInfo.wallet_address}` : '/home'}
                   className="font-px block text-base relative font-medium text-white dark:text-white hover:text-white"
                 >
                   MY HOME
@@ -143,8 +143,10 @@ export default function HeaderLayout(props: any) {
                           >
                             <div className="header-address font-px text-white">
                               <div className="header-address-info">
-                                <div className="header-address-info-avatar">
+                                <div className="header-address-info-avatar relative">
                                   <img src={userInfo.avatar_url} className=' rounded-full' />
+                                  <div className='w-2 h-2 bg-green-400 bottom-0 right-0 absolute rounded-full'></div>
+
                                   {/* <div className="header-address-info-avatar-status"></div> */}
                                 </div>
                                 <div className="header-address-info-content">
@@ -176,9 +178,9 @@ export default function HeaderLayout(props: any) {
                               className="absolute z-10 -ml-4 mt-3 transform px-2 w-44 max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2"
                             >
                               <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
-                                <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
-                                  <div className="-m-3 cursor-pointer p-3 flex items-start rounded-lg hover:bg-gray-50">
-                                    <p className="text font-medium text-gray-900">SOCIAL CONNECTION</p>
+                                <div className="relative grid gap-6 bg-black px-5 py-6 sm:gap-8 sm:p-8">
+                                  <div className="-m-3 cursor-pointer p-3 flex items-start rounded-lg hover:bg-gray-900">
+                                    <a href={`/user/${userInfo.wallet_address}`} className="text font-medium text-gray-100">Account</a>
                                   </div>
                                   <div
                                     onClick={() => {
@@ -186,9 +188,9 @@ export default function HeaderLayout(props: any) {
                                         type: 'auth/logout',
                                       })
                                     }}
-                                    className="-m-3 p-3 cursor-pointer flex items-start rounded-lg hover:bg-gray-50"
+                                    className="-m-3 p-3 cursor-pointer flex items-start rounded-lg hover:bg-gray-900"
                                   >
-                                    <p className="text font-medium text-gray-900">DISCONNECT</p>
+                                    <p className="text font-medium text-gray-100">DISCONNECT</p>
                                   </div>
                                 </div>
                               </div>

@@ -11,6 +11,7 @@ import { useState } from 'react'
 function User(props) {
   const { auth, balance } = props
   const { userInfo } = auth
+  console.log('userInfo: ', userInfo)
   const { userNft } = balance
   const walletId = props.match.params['id']
   const isSelf = userInfo.wallet_address == walletId
@@ -44,7 +45,7 @@ function User(props) {
           <div className="w-6/12">
             <div className="mt-6 ml-16">
               <div className="text-base font-game text-white">{userNft.name}</div>
-              <div className="text-white  items-center font-game flex flex-row">
+              <div className="text-white  items-center font-px flex flex-row">
                 TokenID：{userNft.name}...
                 <img className="w-4 h-4 ml-4 cursor-pointer" src="https://imgs.bamboownft.com/temp/iocn_copy.png" />
               </div>
@@ -61,7 +62,9 @@ function User(props) {
               className=" rounded-xl h-16 text-base text-white font-px flex flex-row py-2 px-4 items-center">
               <div className="text-white ml-4">Lv.{userNft.level}</div>
               <div className="border-white border w-1/3 h-6 relative ml-2">
-                <div className="text-white w-full h-full text-center text-xs flex justify-center items-center">0/100</div>
+                <div className="text-white w-full h-full text-center text-xs flex justify-center items-center">
+                  0/100
+                </div>
                 <div className="bg-primary h-full absolute top-0 left-0" style={{ width: '10%' }}></div>
               </div>
               <div className="border border-primary ml-2 text-primary px-2 rounded-md">exp</div>
@@ -130,7 +133,9 @@ function User(props) {
                 </div>
                 <div className="text-white mt-2 flex flex-row items-center">
                   <img className="w-6 h-6" src="https://imgs.bamboownft.com/temp/icon_499.png" />
-                  <div className="font-px ml-4 mt-1 h-6 text-base flex leading-6 justify-center items-center">13,341</div>
+                  <div className="font-px ml-4 mt-1 h-6 text-base flex leading-6 justify-center items-center">
+                    13,341
+                  </div>
                 </div>
               </div>
               <img

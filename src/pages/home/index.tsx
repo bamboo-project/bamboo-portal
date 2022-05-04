@@ -38,6 +38,9 @@ function Home(props) {
     }
   }, [isGetBalanceSuccess])
 
+  // if (isLogin && userInfo.is_twitter === 1 && isGetBalanceSuccess) {
+  //   location.replace(`/user/${userInfo.wallet_address}`)
+  // }
   const mintNft = async () => {
     try {
       const { scriptHash } = await window.neolineN3Instance.AddressToScriptHash({ address: wallet_address })
@@ -134,8 +137,7 @@ function Home(props) {
         isOpen={isOpenBindSocialModal}
         onClose={() => {
           setIsOpenBindSocialModal(false)
-        }}
-      >
+        }}>
         <div className="flex flex-col justify-center items-center">
           <div className="text-2xl font-game text-white">Connect Your Social Account</div>
           <div
@@ -144,8 +146,7 @@ function Home(props) {
                 userInfo.wallet_address
               }&callback_url=${window.location.href}&timestamp=${Date.parse(new Date())}`
             }}
-            className=" cursor-pointer mt-8 text-white text-xl font-px"
-          >
+            className=" cursor-pointer mt-8 text-white text-xl font-px">
             Twitter
           </div>
         </div>
@@ -187,8 +188,7 @@ function Home(props) {
                 !isLogin ? 'huise-bg' : 'taohong-bg',
                 !isLogin ? 'animate-bounce' : '',
                 'home-radius-btn px-3 py-3 cursor-pointer text-center text-white font-game text-base whitespace-nowrap',
-              )}
-            >
+              )}>
               CONNECT WALLET
             </div>
             {isLogin && (
@@ -202,15 +202,15 @@ function Home(props) {
           <div
             className="relative"
             onClick={() => {
-              setIsOpenBindSocialModal(true)
-            }}
-          >
+              if (isLogin && userInfo.is_twitter !== 1) {
+                setIsOpenBindSocialModal(true)
+              }
+            }}>
             <div
               className={classnames(
                 userInfo.is_twitter !== 1 ? 'huise-bg' : 'taohong-bg',
                 'home-radius-btn px-3 py-3 cursor-pointer text-center text-white font-game text-base whitespace-nowrap',
-              )}
-            >
+              )}>
               Connect Social account
             </div>
             {isLogin && userInfo.is_twitter === 1 && (
@@ -235,10 +235,7 @@ function Home(props) {
           )}
           {isLogin && userInfo.is_twitter === 1 && isGetBalanceSuccess ? (
             <div>
-              <img
-                className="w-14 pl-4"
-                src="https://imgs.bamboownft.com/temp/home_color_arrow.gif"
-              />
+              <img className="w-14 pl-4" src="https://imgs.bamboownft.com/temp/home_color_arrow.gif" />
             </div>
           ) : (
             <div>
