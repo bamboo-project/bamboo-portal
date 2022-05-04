@@ -10,9 +10,10 @@ import { message } from 'antd'
 import './index.scss'
 
 function IndexLayout(props) {
-  const { dispatch, auth } = props
+  const { dispatch, auth, balance } = props
   const { isOpenConnectWalletModal } = auth
 
+  const { isGetBalanceSuccess } = balance
   const { pathname } = props.location
   const connectWallet = walletType => {
     if (walletType === 'NEO') {
@@ -35,7 +36,12 @@ function IndexLayout(props) {
   }
   return (
     <div className="bg-purple dark:bg-dark-bg-1 ">
-      <Header auth={props.auth} connectWallet={connectWallet} tabIndex={pathname} />
+      <Header
+        isGetBalanceSuccess={isGetBalanceSuccess}
+        auth={props.auth}
+        connectWallet={connectWallet}
+        tabIndex={pathname}
+      />
       <div className="mx-auto">{props.children}</div>
       <Footer />
       <Modal
@@ -46,7 +52,6 @@ function IndexLayout(props) {
           })
         }}>
         <div className="flex flex-col justify-center items-center pb-6">
-          
           <div className="text-3xl font-game text-white">Connect Wallet</div>
           <div
             onClick={() => {
@@ -85,7 +90,8 @@ function IndexLayout(props) {
     </div>
   )
 }
-export default connect(({ global, auth }) => ({
+export default connect(({ global, auth, balance }) => ({
   global,
   auth,
+  balance,
 }))(IndexLayout)

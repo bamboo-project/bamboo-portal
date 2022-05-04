@@ -112,7 +112,7 @@ const IndexModel = {
     },
     *logout(_, { call, put, select }) {
       ConnectUtils.clearConnect()
-      // window.location.href = '/'
+      window.location.href = '/'
     },
   },
   reducers: {
