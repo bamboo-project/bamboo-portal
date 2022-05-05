@@ -9,7 +9,7 @@ function GetNft(props: any) {
     }, 1000)
     setTimeout(() => {
       setStep(2)
-    }, 1500)
+    }, 2000)
   }, [])
   return (
     <div className="w-screen fixed bg-purple h-screen z-10 overflow-hidden top-0 left-0">
@@ -46,10 +46,7 @@ function GetNft(props: any) {
                 className="w-64 mr-6 cursor-pointer"
                 src="https://imgs.bamboownft.com/temp/home_start_btn.png"
               />
-              <img
-                className="w-14 -mt-4"
-                src="https://imgs.bamboownft.com/temp/home_color_arrow.gif"
-              />
+              <img className="w-14 -mt-4" src="https://imgs.bamboownft.com/temp/home_color_arrow.gif" />
             </div>
           </div>
         )}
