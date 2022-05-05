@@ -16,6 +16,10 @@ function User(props) {
   const walletId = props.match.params['id']
   const isSelf = userInfo.wallet_address == walletId
   const [countdown, setCountdown] = useState(2000)
+  const [bambooCoin, setBambooCoin] = useState(3)
+  const [bamboo, setBamboo] = useState(129)
+  const [exp, setExp] = useState(10)
+
   useInterval(() => {
     setCountdown(countdown - 1)
   }, 1000)
@@ -24,7 +28,8 @@ function User(props) {
       <div className="w-9/12 flex flex-col items-center px-20">
         <div
           style={{ backgroundImage: 'url(https://imgs.bamboownft.com/temp/bg_121.png)' }}
-          className="p-10 bg-center bg-no-repeat bg-contain w-full rounded-3xl flex flex-row mt-16">
+          className="p-10 bg-center bg-no-repeat bg-contain w-full rounded-3xl flex flex-row mt-16"
+        >
           <div className="text-white font-px text-2xl w-5/12">
             Hi, <span style={{ color: '#00ffd1' }}>{walletId.slice(0, 14)}...</span>
             <br /> Welcome Home!
@@ -59,13 +64,14 @@ function User(props) {
                 backgroundImage: 'url(https://imgs.bamboownft.com/temp/bg_216.png)',
                 backgroundSize: '100% 100%',
               }}
-              className=" rounded-xl h-16 text-base text-white font-px flex flex-row py-2 px-4 items-center">
+              className=" rounded-xl h-16 text-base text-white font-px flex flex-row py-2 px-4 items-center"
+            >
               <div className="text-white ml-4">Lv.{userNft.level}</div>
               <div className="border-white border w-1/3 h-6 relative ml-2">
-                <div className="text-white w-full h-full text-center text-xs flex justify-center items-center">
-                  0/100
+                <div className="text-white w-full h-full text-center text-xs flex justify-center items-center absolute z-10">
+                  {exp}/100
                 </div>
-                <div className="bg-primary h-full absolute top-0 left-0" style={{ width: '10%' }}></div>
+                <div className="bg-primary h-full absolute top-0 left-0 z-0" style={{ width: `${exp}%` }}></div>
               </div>
               <div className="border border-primary ml-2 text-primary px-2 rounded-md">exp</div>
               <div className="ml-2">+1 Day</div>
@@ -76,7 +82,8 @@ function User(props) {
                 style={{
                   backgroundImage: 'url(https://imgs.bamboownft.com/temp/bg_271.png)',
                   backgroundSize: '100% 100%',
-                }}>
+                }}
+              >
                 Level Up
               </div>
             </div>
@@ -86,27 +93,42 @@ function User(props) {
                   backgroundImage: 'url(https://imgs.bamboownft.com/temp/bg_192.png)',
                   backgroundSize: '100% 100%',
                 }}
+                onClick={() => {
+                  if (bamboo > 0) {
+                    setBamboo(bamboo - 1)
+                    setExp(exp + 3)
+                  }
+                }}
                 className={classnames(
                   'cursor-pointer h-12 bg-contain border-0 px-4 py-2 flex-1 flex flex-row justify-center items-center',
-                )}>
+                )}
+              >
                 <img className="w-6 h-6" src="https://imgs.bamboownft.com/temp/img_263.png" />
-                <div className="text-white text-base ml-2">129</div>
+                <div className="text-white text-base ml-2">{bamboo}</div>
               </div>
               <div
                 style={{
                   backgroundImage: 'url(https://imgs.bamboownft.com/temp/bg_192.png)',
                   backgroundSize: '100% 100%',
                 }}
-                className="bg-contain cursor-pointer px-4 py-2 flex-1 flex flex-row justify-center items-center">
+                onClick={() => {
+                  if (bambooCoin > 0) {
+                    setBambooCoin(bambooCoin - 1)
+                    setExp(exp + 1)
+                  }
+                }}
+                className="bg-contain cursor-pointer px-4 py-2 flex-1 flex flex-row justify-center items-center"
+              >
                 <img className="w-6 h-6" src="https://imgs.bamboownft.com/temp/img_bamboo.png" />
-                <div className="text-white ml-2">3</div>
+                <div className="text-white ml-2">{bambooCoin}</div>
               </div>
               <div
                 style={{
                   backgroundImage: 'url(https://imgs.bamboownft.com/temp/bg_192.png)',
                   backgroundSize: '100% 100%',
                 }}
-                className="bg-contain cursor-pointer px-4 py-2 flex-1 flex flex-row justify-center items-center">
+                className="bg-contain cursor-pointer px-4 py-2 flex-1 flex flex-row justify-center items-center"
+              >
                 <img className="w-4 h-4" src="https://imgs.bamboownft.com/temp/img_399.png" />
               </div>
             </div>
@@ -124,7 +146,8 @@ function User(props) {
               style={{
                 backgroundImage: 'url(https://imgs.bamboownft.com/temp/bg_b11.png)',
                 backgroundSize: '100% 100%',
-              }}>
+              }}
+            >
               <div className="flex-1 pl-8">
                 <div className="font-game text-3xl">
                   NFT
@@ -158,7 +181,8 @@ function User(props) {
               style={{
                 backgroundImage: 'url(https://imgs.bamboownft.com/temp/bg_g10.png)',
                 backgroundSize: '100% 100%',
-              }}>
+              }}
+            >
               <div className="flex-1 pl-8">
                 <div className=" font-game text-3xl">
                   Bamboo
@@ -193,7 +217,8 @@ function User(props) {
                 className={classnames(
                   styles.btn1,
                   'flex-1 text-white h-14 hover:text-primary transform transition-all duration-500 cursor-pointer bg-contain flex flex-row py-3 justify-center items-center',
-                )}>
+                )}
+              >
                 <img
                   className={classnames(styles.icon, 'h-8 transform transition-all duration-500 absolute left-6')}
                   src="https://imgs.bamboownft.com/temp/icon_247.png"
@@ -211,7 +236,8 @@ function User(props) {
                 className={classnames(
                   styles.btn1,
                   'flex-1 text-white relative hover:text-primary transform transition-all duration-500 cursor-pointer bg-contain flex flex-row py-3 justify-center items-center',
-                )}>
+                )}
+              >
                 <img
                   className={classnames(styles.icon, 'h-8 transform transition-all duration-500 absolute left-6')}
                   src="https://imgs.bamboownft.com/temp/icon_228.png"
