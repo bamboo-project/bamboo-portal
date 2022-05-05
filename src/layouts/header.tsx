@@ -43,7 +43,7 @@ function classNames(...classes: any[]) {
 }
 
 export default function HeaderLayout(props: any) {
-  const { auth, tabIndex ,isGetBalanceSuccess} = props
+  const { auth, tabIndex, isGetBalanceSuccess } = props
   console.log('props: ', props)
 
   const { isLogin, userInfo } = auth
@@ -64,7 +64,7 @@ export default function HeaderLayout(props: any) {
   }
 
   return (
-    <Popover className="relative bg-gray-700 bg-opacity-50 dark:header my-header">
+    <Popover className="relative my-gray-bg bg-opacity-80 dark:header my-header">
       {({ open }) => (
         <>
           <div className="max-w-8xl mx-auto px-4 sm:px-6">
@@ -118,11 +118,15 @@ export default function HeaderLayout(props: any) {
                   )}
                 </a>
                 <a
-                  href={isLogin && userInfo.is_twitter === 1 && isGetBalanceSuccess ? `/user/${userInfo.wallet_address}` : '/home'}
+                  href={
+                    isLogin && userInfo.is_twitter === 1 && isGetBalanceSuccess
+                      ? `/user/${userInfo.wallet_address}`
+                      : '/home'
+                  }
                   className="font-px block text-base relative font-medium text-white dark:text-white hover:text-white"
                 >
                   MY HOME
-                  {tabIndex == '/home' && (
+                  {(tabIndex == '/home' || tabIndex.indexOf('/user') !== -1) && (
                     <div className="h-0.5 rounded-full z-10 absolute bg-primary text-transparent text-center font-px text-base text-center font-medium">
                       MY HOME
                     </div>
@@ -144,8 +148,8 @@ export default function HeaderLayout(props: any) {
                             <div className="header-address font-px text-white">
                               <div className="header-address-info">
                                 <div className="header-address-info-avatar relative">
-                                  <img src={userInfo.avatar_url} className=' rounded-full' />
-                                  <div className='w-2 h-2 bg-green-400 bottom-0 right-0 absolute rounded-full'></div>
+                                  <img src={userInfo.avatar_url} className=" rounded-full" />
+                                  <div className="w-2 h-2 bg-green-400 bottom-0 right-0 absolute rounded-full"></div>
 
                                   {/* <div className="header-address-info-avatar-status"></div> */}
                                 </div>
@@ -180,7 +184,12 @@ export default function HeaderLayout(props: any) {
                               <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                                 <div className="relative grid gap-6 bg-black px-5 py-6 sm:gap-8 sm:p-8">
                                   <div className="-m-3 cursor-pointer p-3 flex items-start rounded-lg hover:bg-gray-900">
-                                    <a href={`/user/${userInfo.wallet_address}`} className="text font-medium text-gray-100">Account</a>
+                                    <a
+                                      href={`/user/${userInfo.wallet_address}`}
+                                      className="text font-medium text-gray-100"
+                                    >
+                                      Account
+                                    </a>
                                   </div>
                                   <div
                                     onClick={() => {

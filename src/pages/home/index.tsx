@@ -137,7 +137,8 @@ function Home(props) {
         isOpen={isOpenBindSocialModal}
         onClose={() => {
           setIsOpenBindSocialModal(false)
-        }}>
+        }}
+      >
         <div className="flex flex-col justify-center items-center">
           <div className="text-2xl font-game text-white">Connect Your Social Account</div>
           <div
@@ -146,7 +147,8 @@ function Home(props) {
                 userInfo.wallet_address
               }&callback_url=${window.location.href}&timestamp=${Date.parse(new Date())}`
             }}
-            className=" cursor-pointer mt-8 text-white text-xl font-px">
+            className=" cursor-pointer mt-8 text-white text-xl font-px"
+          >
             Twitter
           </div>
         </div>
@@ -185,10 +187,11 @@ function Home(props) {
                 }
               }}
               className={classnames(
-                !isLogin ? 'huise-bg' : 'taohong-bg',
-                !isLogin ? 'animate-bounce' : '',
-                'home-radius-btn px-3 py-3 cursor-pointer text-center text-white font-game text-base whitespace-nowrap',
-              )}>
+                !isLogin ? 'taohong-bg' : 'huise-bg',
+                // !isLogin ? 'animate-bounce' : '',
+                'home-radius-btn px-6 py-3 cursor-pointer text-center text-white font-game text-base whitespace-nowrap',
+              )}
+            >
               CONNECT WALLET
             </div>
             {isLogin && (
@@ -205,12 +208,14 @@ function Home(props) {
               if (isLogin && userInfo.is_twitter !== 1) {
                 setIsOpenBindSocialModal(true)
               }
-            }}>
+            }}
+          >
             <div
               className={classnames(
-                userInfo.is_twitter !== 1 ? 'huise-bg' : 'taohong-bg',
-                'home-radius-btn px-3 py-3 cursor-pointer text-center text-white font-game text-base whitespace-nowrap',
-              )}>
+                userInfo.is_twitter !== 1 ? 'taohong-bg' : 'huise-bg',
+                'home-radius-btn px-6 py-3 cursor-pointer text-center text-white font-game text-base whitespace-nowrap',
+              )}
+            >
               Connect Social account
             </div>
             {isLogin && userInfo.is_twitter === 1 && (
@@ -219,19 +224,30 @@ function Home(props) {
               </div>
             )}
           </div>
-          <div>{!isLogin ? <div className="w-20 grey-line"></div> : <div className="w-20 pink-line"></div>}</div>
+          <div>
+            {!(isLogin && userInfo.is_twitter === 1) ? (
+              <div className="w-20 grey-line"></div>
+            ) : (
+              <div className="w-20 pink-line"></div>
+            )}
+          </div>
           {isLogin && userInfo.is_twitter === 1 && isGetBalanceSuccess ? (
-            <img className="w-64" src="https://imgs.bamboownft.com/temp/home_color_mint.png" />
+            <div className="relative">
+              <img
+                onClick={async () => {
+                  if (userInfo.is_twitter === 1 && isLogin) {
+                    await mintNft()
+                  }
+                }}
+                className="w-64"
+                src="https://imgs.bamboownft.com/temp/home_gray_mint.png"
+              />
+              <div className="absolute right-0 -bottom-3">
+                <img className="w-7" src="https://imgs.bamboownft.com/temp/home_done.png" />
+              </div>
+            </div>
           ) : (
-            <img
-              onClick={async () => {
-                if (userInfo.is_twitter === 1 && isLogin) {
-                  await mintNft()
-                }
-              }}
-              className="w-64"
-              src="https://imgs.bamboownft.com/temp/home_gray_mint.png"
-            />
+            <img className="w-64" src="https://imgs.bamboownft.com/temp/home_color_mint.png" />
           )}
           {isLogin && userInfo.is_twitter === 1 && isGetBalanceSuccess ? (
             <div>

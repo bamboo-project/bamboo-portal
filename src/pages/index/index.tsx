@@ -33,22 +33,16 @@ function Index() {
       >
         <div className="container flex flex-col justify-center items-center mx-auto mb-200px">
           <div>
-            <img
-              className="h-44 mx-auto mb-1"
-              src="https://imgs.bamboownft.com/temp/main_title_big.png"
-            />
+            <img className="h-44 mx-auto mb-1" src="https://imgs.bamboownft.com/temp/main_title_big.png" />
           </div>
           <div className="text-white font-game text-3xl w-6/12 mx-auto text-center">
             New STYLE to explore the Web3.0 social network
           </div>
-          <div className="absolute bottom-10 mb-100px">
-            <img className="h-28 mt-20" src="https://imgs.bamboownft.com/temp/main_egg.png" />
+          <div className="absolute bottom-10 mb-80px">
+            <img className="h-28 mt-20" src="https://imgs.bamboownft.com/temp/home_color_egg.gif" />
           </div>
           <div className="absolute bottom-10">
-            <img
-              className="h-10 mt-16 animate-bounce"
-              src="https://imgs.bamboownft.com/temp/main_arrow.png"
-            />
+            <img className="h-10 mt-16 animate-bounce" src="https://imgs.bamboownft.com/temp/main_arrow.png" />
           </div>
         </div>
       </div>
@@ -57,11 +51,11 @@ function Index() {
           <div className="font-game text-white text-3xl">
             Come here to find the <span className="text-primary">social value</span> that Belongs to you already !
           </div>
-          <div className="font-px text-white mt-8">
+          <div className="font-px text-white mt-8 my-line-height1">
             The Web2.0 is to help people expand the social network from offline to online. What can the social
             networking of Web3.0 bring us?
           </div>
-          <div className="font-px text-white mt-8">
+          <div className="font-px text-white mt-8 my-line-height1">
             It is the social information can bring the value to you! We hope to link traditional social network with the
             blockchain, so that the value of social information can be returned to everyone, instead of being limited to
             any one platform.
@@ -71,21 +65,18 @@ function Index() {
           <div className="font-game text-white text-3xl">
             Get a special friend who can help you <span className="text-primary">dig more value in web3.0</span> !
           </div>
-          <div className="font-px text-white mt-8 ">
+          <div className="font-px text-white mt-8 my-line-height1">
             At the same time, we are thinking about how to provide a more fun mode to guide and help more friends to
             connect in the world of Web3.0 and gain more value.
           </div>
-          <div className="font-px text-white mt-8">
+          <div className="font-px text-white mt-8 my-line-height1">
             Whether socializing in the real world or in the virtual world, we all need a friend. Here we need a friend
             who can help us explore the metaverse together! What we need is except a pile of cold data, an interesting
             soul which is the starting point for joining Web3.0 social network!
           </div>
         </div>
         <div className="absolute mr-0 ml-0 bottom-10 m-auto w-full flex flex-row justify-center">
-          <img
-            className="h-10 animate-bounce"
-            src="https://imgs.bamboownft.com/temp/main_arrow.png"
-          />
+          <img className="h-10 animate-bounce" src="https://imgs.bamboownft.com/temp/main_arrow.png" />
         </div>
       </div>
 
@@ -97,16 +88,16 @@ function Index() {
           Connect social account TO Mint A Blockchain Pet in Web3.0 !
         </div>
         <div className="flex flex-row justify-between items-center">
-          <div className="w-1/2 tracking-tight leading-4">
-            <div className="font-px text-white text-base mt-4">
+          <div className="w-1/2 tracking-tight leading-4 my-line-height1">
+            <div className="font-px text-white mt-4">
               Bamboo,A Web3.0 community that allows you to create a blockchain pet! Come to Bamboo to connect your
               social accounts, and you will create your own growable NFT pet based on your own social graph!
             </div>
-            <div className="font-px text-white text-base mt-4">
+            <div className="font-px text-white mt-4">
               A unique NFT pet is a good friend who can always accompany you in the world of Bamboo! It can make your
               experience simple and interesting, and explore the social world of Web3.0 in the future.
             </div>
-            <div className="font-px text-white text-base mt-4">
+            <div className="font-px text-white mt-4">
               When you take pets to participate in social activities, they are constantly learning and recording your
               social behavior in the Web3.0 world, and building your social graph in Web3.0.
             </div>
@@ -165,9 +156,9 @@ function Index() {
             <div className="w-40 h-40">
               <img className="w-40 h-40" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet8.png" />
             </div>
-            <div className="w-40 h-40">
+            {/* <div className="w-40 h-40">
               <img className="w-40 h-40" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/main_pet9.png" />
-            </div>
+            </div> */}
           </Carousel>
         </div>
       </div>
@@ -178,14 +169,11 @@ function Index() {
         style={{ backgroundImage: 'url(https://imgs.bamboownft.com/temp/main_jb_1.png)' }}
       >
         <div className="container mx-auto flex justify-center items-center">
-          <img
-            className="h-10 mt-16 animate-bounce"
-            src="https://imgs.bamboownft.com/temp/main_arrow.png"
-          />
+          <img className="h-10 mt-16 animate-bounce" src="https://imgs.bamboownft.com/temp/main_arrow.png" />
         </div>
       </div>
       <Warp7 />
-      <div className="pt-20" style={{ backgroundColor: '#453559' }}>
+      <div className="pt-40" style={{ backgroundColor: '#453559' }}>
         <div className="container mx-auto">
           <div className="flex flex-row items-center mb-24">
             <img className="h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/icon_5.png" />
@@ -195,7 +183,7 @@ function Index() {
               <br /> and new friends
             </div>
           </div>
-          <div className="flex flex-row space-x-8 justify-center items-center">
+          <div className="flex flex-row space-x-8 justify-center items-center my-line-height1">
             <div className="text-white font-px">
               Pets can bring back collectibles and news that match your preferences every day.
               <br /> Your pet's favorite thing every day is to go to the Bamboo community to explore, and it is very
@@ -209,7 +197,7 @@ function Index() {
               <img className="w-2/3" src="https://imgs.bamboownft.com/temp/image_100.png" />
             </div>
           </div>
-          <div className="flex flex-row space-x-8 mt-20 justify-center items-center">
+          <div className="flex flex-row space-x-8 mt-36 justify-center items-center my-line-height1">
             <div className="text-white font-px">
               Pets will bring back friends who best match your social attributes and recommend them to you.
               <br />
@@ -230,21 +218,18 @@ function Index() {
             backgroundImage: 'url(https://imgs.bamboownft.com/temp/main_bg_3.png)',
           }}
         >
-          <div className="container mx-auto flex justify-center items-center">
-            <img
-              className="h-10 mt-16 animate-bounce"
-              src="https://imgs.bamboownft.com/temp/main_arrow.png"
-            />
+          <div className="container mx-auto flex justify-center items-center pt-20">
+            <img className="h-10 mt-16 animate-bounce" src="https://imgs.bamboownft.com/temp/main_arrow.png" />
           </div>
         </div>
       </div>
       <div className="bg-black pt-28">
         <div className="container mx-auto">
-          <div className="font-game uppercase text-4xl" style={{ color: '#B974FF' }}>
+          <div className="font-game uppercase text-4xl w-1/2 leading-tight" style={{ color: '#B974FF' }}>
             maximize the value of social information
           </div>
-          <div className="flex flex-row items-center mt-28 space-x-28">
-            <div className="text-white font-px w-2/3 text-base">
+          <div className="flex flex-row items-center mt-44 space-x-28 my-line-height1">
+            <div className="text-white font-px w-2/3">
               Every pet is not just a NFT. When you take pets to participate in social activities, they are constantly
               learning and recording your social behavior in the Web3.0 world, and building your social graph in Web3.0
               <br />
@@ -258,8 +243,8 @@ function Index() {
               <img className="h-52" src="https://imgs.bamboownft.com/temp/image_266.png" />
             </div>
           </div>
-          <div className="flex flex-row items-center mt-28 space-x-28">
-            <div className="text-white font-px w-2/3 text-base">
+          <div className="flex flex-row items-center mt-80 space-x-28 my-line-height1">
+            <div className="text-white font-px w-2/3">
               Higher social value allows your pet to bring back more suitable and better items and community benefits
               every day.
             </div>
@@ -267,8 +252,8 @@ function Index() {
               <img className="h-52" src="https://imgs.bamboownft.com/temp/image_101.png" />
             </div>
           </div>
-          <div className="flex flex-row items-center mt-28 space-x-28">
-            <div className="text-white font-px w-2/3 text-base">
+          <div className="flex flex-row items-center mt-80 space-x-28 my-line-height1">
+            <div className="text-white font-px w-2/3">
               Based on personal social data behind pets，other projects can quickly find people who match the user
               profile of the project, and can also provide users with DID-based credit value through the data
             </div>
@@ -276,12 +261,9 @@ function Index() {
               <img className=" h-52" src="https://imgs.bamboownft.com/temp/image_267.png" />
             </div>
           </div>
-          <div className="flex items-center justify-center mt-32 pb-32">
+          <div className="flex items-center justify-center mt-80 pb-64">
             <img className="h-20" src="https://imgs.bamboownft.com/temp/btn_10.png" />
-            <img
-              className="w-14 -mt-4 ml-2"
-              src="https://imgs.bamboownft.com/temp/home_color_arrow.gif"
-            />
+            <img className="w-14 -mt-4 ml-2" src="https://imgs.bamboownft.com/temp/home_color_arrow.gif" />
           </div>
         </div>
       </div>

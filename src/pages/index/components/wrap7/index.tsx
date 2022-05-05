@@ -23,12 +23,9 @@ function Wrap7() {
               <img src="https://imgs.bamboownft.com/temp/btn_1.png" />
             </div>
             <div className="h-86">
-              <img
-                className="mt-10 mb-10"
-                src="https://imgs.bamboownft.com/temp/image_105.png"
-              />
+              <img className="mt-10 mb-10" src="https://imgs.bamboownft.com/temp/image_105.png" />
             </div>
-            <div className="h-20">
+            <div className="h-20 my-line-height1">
               <div className="text-white">
                 Start with building NFT galleries and build your own home for pets and yourself!
               </div>
@@ -45,12 +42,9 @@ function Wrap7() {
               <img src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/btn_2.png" />
             </div>
             <div className="h-60">
-              <img
-                className="mt-10 mb-10"
-                src="https://imgs.bamboownft.com/temp/image_220.png"
-              />
+              <img className="mt-10 mb-10" src="https://imgs.bamboownft.com/temp/image_220.png" />
             </div>
-            <div className="h-20">
+            <div className="h-20 my-line-height1">
               <div className="text-white">
                 You can farm in your home with your community friends! In the world of Bamboo, your pets must eat bamboo
                 to growing.
@@ -68,12 +62,9 @@ function Wrap7() {
               <img src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/btn_3.png" />
             </div>
             <div className="h-86">
-              <img
-                className="mt-10 mb-10"
-                src="https://imgs.bamboownft.com/temp/image_217.png"
-              />
+              <img className="mt-10 mb-10" src="https://imgs.bamboownft.com/temp/image_217.png" />
             </div>
-            <div className="h-20">
+            <div className="h-20 my-line-height1">
               <div className="text-white">
                 You can send pets to walk around every day, and there is a chance to receive additional skin sets!
               </div>
@@ -89,12 +80,9 @@ function Wrap7() {
               <img src="https://imgs.bamboownft.com/temp/btn_4.png" />
             </div>
             <div className="h-60">
-              <img
-                className="mt-10 mb-10"
-                src="https://imgs.bamboownft.com/temp/image_215.png"
-              />
+              <img className="mt-10 mb-10" src="https://imgs.bamboownft.com/temp/image_215.png" />
             </div>
-            <div className="h-20">
+            <div className="h-20 my-line-height1">
               <div className="text-white">
                 You can bring your pets to participate in various small games in the community. The Bamboo community
                 supports everyone to develop their own mini-games, invite friends to play, and get bamboo during the
