@@ -168,7 +168,7 @@ function Index() {
         className=" h-96 bg-cover bg-no-repeat"
         style={{ backgroundImage: 'url(https://imgs.bamboownft.com/temp/main_jb_1.png)' }}
       >
-        <div className="container mx-auto flex justify-center items-center">
+        <div className="container mx-auto flex justify-center items-center pt-72">
           <img className="h-10 mt-16 animate-bounce" src="https://imgs.bamboownft.com/temp/main_arrow.png" />
         </div>
       </div>

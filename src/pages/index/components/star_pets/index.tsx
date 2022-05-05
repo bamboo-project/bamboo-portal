@@ -1,99 +1,119 @@
 function StarPets() {
   return (
-    <div className="container mx-auto mb-20">
-      <div className="font-px text-2xl text-primary mt-20 uppercase">Meet STAR pets</div>
-      <div className="flex flex-row gap-2 overflow-x-auto mt-4">
-        <div className=" relative p-10 flex flex-col rounded-lg">
-          <img
-            className="w-40 h-44 ml-10 z-10"
-            src="https://imgs.bamboownft.com/temp/main_small_pet1.png"
-          />
-          <div className="bg-indigo-400 pl-10 pr-10 pb-4 z-0 pt-28 -mt-24 rounded-lg">
-            <div className="text-white text-lg font-px">Dwayne Johnson</div>
-            <div className="flex flex-row items-center">
-              <div className="relative">
-                <div className="w-12 h-12 rounded-full bg-gray-100"></div>
-                <div className="w-2 h-2 absolute bottom-0 right-0 bg-green-400 rounded-full"></div>
-              </div>
-              <div className="ml-4">
-                <div className="text-white font-px ">Taloy Kitchase</div>
-                <div className="text-white font-px">CEO OF BAMBOO</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className=" relative p-10 flex flex-col rounded-lg">
-          <img
-            className="w-40 h-44 ml-10 z-10"
-            src="https://imgs.bamboownft.com/temp/main_small_pet2.png"
-          />
-          <div className="bg-gray-600 pl-10 pr-10 pb-4 z-0 pt-28 -mt-24 rounded-lg">
-            <div className="text-white text-lg font-px">Dwayne Johnson</div>
-            <div className="flex flex-row items-center">
-              <div className="relative">
-                <div className="w-12 h-12 rounded-full bg-gray-100"></div>
-                <div className="w-2 h-2 absolute bottom-0 right-0 bg-green-400 rounded-full"></div>
-              </div>
-              <div className="ml-4">
-                <div className="text-white font-px ">Taloy Kitchase</div>
-                <div className="text-white font-px">CEO OF BAMBOO</div>
+    <div className="container mx-auto">
+      <div className="font-px text-2xl text-primary mt-44 uppercase">Meet STAR pets</div>
+      <div className="overflow-x-scroll mt-4">
+        <div className="flex flex-row gap-2 w-screen">
+          <div className="h-72 w-52 relative">
+            <img
+              className="w-32 z-10 absolute left-10 top-5"
+              src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/nft/nft_1.gif"
+            />
+            <div className="w-52 h-44 pet1-bg rounded-lg absolute bottom-0 p-4">
+              <div className="absolute bottom-4 font-px text-white flex flex-col items-center">
+                <div className="mb-2.5 text-xl">Dwayne Johnson</div>
+                <div className="flex flex-row">
+                  <div className="w-10 h-10 rounded-full bg-yellow-400 mr-2.5"></div>
+                  <div className="text-base">
+                    <div>From</div>
+                    <div>Tempor nullam</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className=" relative p-10 flex flex-col rounded-lg">
-          <img
-            className="w-40 h-44 ml-10 z-10"
-            src="https://imgs.bamboownft.com/temp/main_small_pet3.png"
-          />
-          <div className="bg-indigo-400 pl-10 pr-10 pb-4 z-0 pt-28 -mt-24 rounded-lg">
-            <div className="text-white text-lg font-px">Dwayne Johnson</div>
-            <div className="flex flex-row items-center">
-              <div className="relative">
-                <div className="w-12 h-12 rounded-full bg-gray-100"></div>
-                <div className="w-2 h-2 absolute bottom-0 right-0 bg-green-400 rounded-full"></div>
-              </div>
-              <div className="ml-4">
-                <div className="text-white font-px ">Taloy Kitchase</div>
-                <div className="text-white font-px">CEO OF BAMBOO</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className=" relative p-10 flex flex-col rounded-lg">
-          <img
-            className="w-40 h-44 ml-10 z-10"
-            src="https://imgs.bamboownft.com/temp/main_small_pet4.png"
-          />
-          <div className="bg-yellow-400 pl-10 pr-10 pb-4 z-0 pt-28 -mt-24 rounded-lg">
-            <div className="text-white text-lg font-px">Dwayne Johnson</div>
-            <div className="flex flex-row items-center">
-              <div className="relative">
-                <div className="w-12 h-12 rounded-full bg-gray-100"></div>
-                <div className="w-2 h-2 absolute bottom-0 right-0 bg-green-400 rounded-full"></div>
-              </div>
-              <div className="ml-4">
-                <div className="text-white font-px ">Taloy Kitchase</div>
-                <div className="text-white font-px">CEO OF BAMBOO</div>
+
+          <div className="h-72 w-52 relative ml-7">
+            <img
+              className="w-32 z-10 absolute left-10 top-5"
+              src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/nft/nft_2.gif"
+            />
+            <div className="w-52 h-44 pet2-bg rounded-lg absolute bottom-0 p-4">
+              <div className="absolute bottom-4 font-px text-white flex flex-col items-center">
+                <div className="mb-2.5 text-xl">BLUEGHOST</div>
+                <div className="flex flex-row">
+                  <div className="w-10 h-10 rounded-full bg-yellow-400 mr-2.5"></div>
+                  <div className="text-base">
+                    <div>From</div>
+                    <div>Nulla magnis</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className=" relative p-10 flex flex-col rounded-lg">
-          <img
-            className="w-40 h-44 ml-10 z-10"
-            src="https://imgs.bamboownft.com/temp/main_small_pet5.png"
-          />
-          <div className="bg-indigo-400 pl-10 pr-10 pb-4 z-0 pt-28 -mt-24 rounded-lg">
-            <div className="text-white text-lg font-px">Dwayne Johnson</div>
-            <div className="flex flex-row items-center">
-              <div className="relative">
-                <div className="w-12 h-12 rounded-full bg-gray-100"></div>
-                <div className="w-2 h-2 absolute bottom-0 right-0 bg-green-400 rounded-full"></div>
+
+          <div className="h-72 w-52 relative ml-7">
+            <img
+              className="w-32 z-10 absolute left-10 top-5"
+              src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/nft/nft_3.gif"
+            />
+            <div className="w-52 h-44 pet3-bg rounded-lg absolute bottom-0 p-4">
+              <div className="absolute bottom-4 font-px text-white flex flex-col items-center">
+                <div className="mb-2.5 text-xl">SantaHusky</div>
+                <div className="flex flex-row">
+                  <div className="w-10 h-10 rounded-full bg-yellow-400 mr-2.5"></div>
+                  <div className="text-base">
+                    <div>From</div>
+                    <div>Tincidunt vitae</div>
+                  </div>
+                </div>
               </div>
-              <div className="ml-4">
-                <div className="text-white font-px ">Taloy Kitchase</div>
-                <div className="text-white font-px">CEO OF BAMBOO</div>
+            </div>
+          </div>
+
+          <div className="h-72 w-52 relative ml-7">
+            <img
+              className="w-32 z-10 absolute left-10 top-5"
+              src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/nft/nft_4.gif"
+            />
+            <div className="w-52 h-44 pet4-bg rounded-lg absolute bottom-0 p-4">
+              <div className="absolute bottom-4 font-px text-white flex flex-col items-center">
+                <div className="mb-2.5 text-xl">BADMAN</div>
+                <div className="flex flex-row">
+                  <div className="w-10 h-10 rounded-full bg-yellow-400 mr-2.5"></div>
+                  <div className="text-base">
+                    <div>From</div>
+                    <div>Adipiscing nibh</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="h-72 w-52 relative ml-7">
+            <img
+              className="w-32 z-10 absolute left-10 top-5"
+              src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/nft/nft_5.gif"
+            />
+            <div className="w-52 h-44 pet5-bg rounded-lg absolute bottom-0 p-4">
+              <div className="absolute bottom-4 font-px text-white flex flex-col items-center">
+                <div className="mb-2.5 text-xl">REDGHOST</div>
+                <div className="flex flex-row">
+                  <div className="w-10 h-10 rounded-full bg-yellow-400 mr-2.5"></div>
+                  <div className="text-base">
+                    <div>From</div>
+                    <div>Et cum</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="h-72 w-52 relative ml-7">
+            <img
+              className="w-32 z-10 absolute left-10 top-5"
+              src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/nft/nft_1.gif"
+            />
+            <div className="w-52 h-44 pet1-bg rounded-lg absolute bottom-0 p-4">
+              <div className="absolute bottom-4 font-px text-white flex flex-col items-center">
+                <div className="mb-2.5 text-xl">Dwayne Johnson</div>
+                <div className="flex flex-row">
+                  <div className="w-10 h-10 rounded-full bg-yellow-400 mr-2.5"></div>
+                  <div className="text-base">
+                    <div>From</div>
+                    <div>Tempor nullam</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

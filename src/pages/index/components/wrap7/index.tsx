@@ -1,6 +1,6 @@
 function Wrap7() {
   return (
-    <div className="pt-20" style={{ backgroundColor: '#453559' }}>
+    <div className="pt-72" style={{ backgroundColor: '#453559' }}>
       <div className="container mx-auto">
         <div
           className="font-game uppercase text-5xl leading-snug mb-10"

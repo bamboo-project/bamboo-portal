@@ -20,7 +20,7 @@ function Neighbors() {
     )
   }
   return (
-    <div className="warp-5 container mx-auto mt-14">
+    <div className="warp-5 container mx-auto mt-28">
       <div className="font-px text-primary text-2xl uppercase">Already settled Star neighbors</div>
       <div className="grid grid-cols-5 grid-flow-row gap-4 mt-5">{items}</div>
     </div>
