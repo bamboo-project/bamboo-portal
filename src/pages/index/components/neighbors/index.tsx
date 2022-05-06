@@ -1,21 +1,21 @@
 function Neighbors() {
   var items = []
   let neighborsInfo = [
-    { name: 'Elon Musk', pro: 'CEO of SpaceX' },
-    { name: 'Zuckerberg', pro: 'CEO of Facebook' },
-    { name: 'Lisa Su', pro: 'CEO of AMD' },
-    { name: 'Bill Gates', pro: 'Founder of Microsoft' },
-    { name: 'Tim Cook', pro: 'CEO of Apple' },
-    { name: 'Page', pro: 'Founder of Google' },
-    { name: 'Jensen Huang', pro: 'CEO of NVIDIA' },
-    { name: 'JohnnWang', pro: 'Star of Bamboo' },
-    { name: 'Allennn', pro: 'Star of Bamboo' },
-    { name: 'Nikkor', pro: 'Star of Bamboo' },
-    { name: 'ToddyKQM', pro: 'Star of Bamboo' },
-    { name: 'MrQiuuuu', pro: 'Star of Bamboo' },
-    { name: 'Morbi', pro: 'Star of Bamboo' },
-    { name: 'Magna', pro: 'Star of Bamboo' },
-    { name: 'IMorbi', pro: 'Star of Bamboo' },
+    { name: 'Elon Musk', pro: 'CEO of SpaceX', avatar: 'https://imgs.bamboownft.com/temp/index_avatar1.png' },
+    { name: 'Zuckerberg', pro: 'CEO of Facebook', avatar: 'https://imgs.bamboownft.com/temp/index_avatar2.png' },
+    { name: 'Lisa Su', pro: 'CEO of AMD', avatar: 'https://imgs.bamboownft.com/temp/index_avatar3.png' },
+    { name: 'Bill Gates', pro: 'Founder of Microsoft', avatar: 'https://imgs.bamboownft.com/temp/index_avatar4.png' },
+    { name: 'Tim Cook', pro: 'CEO of Apple', avatar: 'https://imgs.bamboownft.com/temp/index_avatar5.png' },
+    { name: 'Page', pro: 'Founder of Google', avatar: 'https://imgs.bamboownft.com/temp/index_avatar6.png' },
+    { name: 'Jensen Huang', pro: 'CEO of NVIDIA', avatar: 'https://imgs.bamboownft.com/temp/index_avatar7.png' },
+    { name: 'Stven W', pro: 'Star of Bamboo', avatar: 'https://imgs.bamboownft.com/temp/avatar_5.png' },
+    { name: 'Allennn', pro: 'Star of Bamboo', avatar: 'https://imgs.bamboownft.com/temp/index_avatar9.png' },
+    { name: 'Nikkor', pro: 'Star of Bamboo', avatar: 'https://imgs.bamboownft.com/temp/avatar_6.png' },
+    { name: 'ToddyKQM', pro: 'Star of Bamboo', avatar: 'https://imgs.bamboownft.com/temp/index_avatar11.png' },
+    { name: 'MrQiuuuu', pro: 'Star of Bamboo', avatar: 'https://imgs.bamboownft.com/temp/index_avatar12.png' },
+    { name: 'Morbi', pro: 'Star of Bamboo', avatar: 'https://imgs.bamboownft.com/temp/index_avatar13.png' },
+    { name: 'Magna', pro: 'Star of Bamboo', avatar: 'https://imgs.bamboownft.com/temp/index_avatar14.png' },
+    { name: 'IMorbi', pro: 'Star of Bamboo', avatar: 'https://imgs.bamboownft.com/temp/index_avatar15.png' },
   ]
 
   for (let index = 0; index < neighborsInfo.length; index++) {
@@ -23,13 +23,11 @@ function Neighbors() {
       <div
         key={index}
         className="w-56 flex flex-row items-center pl-4 mb-4 shadow-md py-4 bg-black bg-opacity-10 rounded-lg bg-contain bg-no-repeat"
-        style={{ backgroundImage: 'url(https://imgs.bamboownft.com/temp/index_ner_bg.png)' }}
-      >
+        style={{ backgroundImage: 'url(https://imgs.bamboownft.com/temp/index_ner_bg.png)' }}>
         <div className="relative">
           <div
             className="w-12 h-12 rounded-full bg-center bg-contain"
-            style={{ backgroundImage: `url(https://imgs.bamboownft.com/temp/index_avatar${index + 1}.png)` }}
-          ></div>
+            style={{ backgroundImage: `url(https://imgs.bamboownft.com/temp/index_avatar${index + 1}.png)` }}></div>
           <div className="w-2 h-2 absolute bottom-0 right-0 bg-green-400 rounded-full"></div>
         </div>
         <div className="ml-4">
