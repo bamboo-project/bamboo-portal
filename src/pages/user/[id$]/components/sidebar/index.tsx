@@ -2,18 +2,23 @@ function Sidebar() {
   var recommendUserList = [
     {
       userId: 1,
-      nickname: 'Netus amet',
-      avatar: '',
+      nickname: 'Elon Musk',
+      avatar: 'https://imgs.bamboownft.com/temp/index_avatar1.png',
     },
     {
       userId: 2,
-      nickname: 'Massa nulla',
-      avatar: '',
+      nickname: 'Zuckerberg',
+      avatar: 'https://imgs.bamboownft.com/temp/index_avatar2.png',
     },
     {
       userId: 3,
-      nickname: 'Diam pulvinor',
-      avatar: '',
+      nickname: 'Jensen Huang',
+      avatar: 'https://imgs.bamboownft.com/temp/index_avatar7.png',
+    },
+    {
+      userId: 4,
+      nickname: 'Bill Gates',
+      avatar: 'https://imgs.bamboownft.com/temp/index_avatar4.png',
     },
   ]
   return (
@@ -41,7 +46,7 @@ function Sidebar() {
               }}
               className="py-4 px-6 mt-4 flex flex-row items-center"
               key={item.userId}>
-              <img className="w-10 h-10 rounded-full" src="https://imgs.bamboownft.com/temp/avatar_1.png" />
+              <img className="w-10 h-10 rounded-full" src={item.avatar} />
               <div className="text-2xl ml-6 flex-1 font-px text-white">{item.nickname}</div>
               <img className="w-10 h-10 cursor-pointer" src="https://imgs.bamboownft.com/temp/icon_294.png" />
             </div>
