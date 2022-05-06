@@ -37,10 +37,9 @@ function GetNft(props: any) {
               <img src={userNft.image} />
             </div>
             <div className="for-egg-minted-title mt-8 text-white font-game text-3xl">{userNft.name}</div>
-            <div className="flex flex-row mt-8 items-center justify-center">
+            <div className="flex flex-row mt-8 items-center justify-center relative">
               <img
                 onClick={() => {
-                  console.log('location: ', location)
                   location.href = `/user/${userInfo.wallet_address}`
                 }}
                 className="w-64 mr-6 cursor-pointer"
@@ -48,6 +47,12 @@ function GetNft(props: any) {
               />
               <img className="w-14 -mt-4" src="https://imgs.bamboownft.com/temp/home_color_arrow.gif" />
             </div>
+            
+            <img
+              className="absolute bottom-0 left-0 z-0"
+              style={{ zIndex: '-1' }}
+              src="https://imgs.bamboownft.com/temp/img_652.png"
+            />
           </div>
         )}
       </div>

@@ -9,13 +9,16 @@ import { message } from 'antd'
 import { encode, decode } from 'js-base64'
 import GetNft from './components/GetNft'
 import Modal from '@/components/Modal'
+import config from '@/config'
 import IconLoading from '@/components/IconLoading'
 const nfts = require('./nfts.json')
 function Home(props) {
   const { mintAddress, auth, dispatch, balance } = props
   const { userInfo, isLogin } = auth
-  const { isGetBalanceSuccess, userNft } = balance
+  const { isGetBalanceSuccess } = balance
   const { wallet_address } = userInfo
+  const { userNft } = balance.user[wallet_address] ? balance.user[wallet_address] : {}
+
   const [interval, setInterval] = useState<number | undefined>(undefined)
 
   let [isOpenBindSocialModal, setIsOpenBindSocialModal] = useState(false)
@@ -23,6 +26,7 @@ function Home(props) {
   let [mintLoading, setMintLoading] = useState(false)
 
   useInterval(() => {
+    console.log('interval: ', interval)
     dispatch({
       type: 'balance/getBalance',
       payload: {
@@ -38,16 +42,26 @@ function Home(props) {
     }
   }, [isGetBalanceSuccess])
 
-  // if (isLogin && userInfo.is_twitter === 1 && isGetBalanceSuccess) {
-  //   location.replace(`/user/${userInfo.wallet_address}`)
-  // }
+  const step1 = isLogin
+  const step2 = step1 && userInfo.is_twitter === 1
+  console.log('userInfo: ', userInfo)
+  const step3 = step2 && isGetBalanceSuccess
+
+  useEffect(() => {
+    if (step3) {
+      console.log('step3: ', step3)
+      // location.replace(`/user/${userInfo.wallet_address}`)
+    }
+  }, [])
   const mintNft = async () => {
+    if (mintLoading) {
+      return
+    }
     try {
       const { scriptHash } = await window.neolineN3Instance.AddressToScriptHash({ address: wallet_address })
-      console.log('scriptHash: ', wallet_address, scriptHash)
       try {
         const nft = nfts[Math.round(Math.random() * nfts.length) - 1]
-        nft.version = 9
+        nft.version = config.nftVersion
         const result = await window.neolineN3Instance.invoke({
           scriptHash: '0x7d65a781d4a06306e75f107150d982fd63a689c7',
           operation: 'mint',
@@ -115,7 +129,6 @@ function Home(props) {
         }
       }
     } catch (error) {
-      console.log('error: ', error)
       const { type, description, data } = error
       switch (type) {
         case 'NO_PROVIDER':
@@ -137,19 +150,40 @@ function Home(props) {
         isOpen={isOpenBindSocialModal}
         onClose={() => {
           setIsOpenBindSocialModal(false)
-        }}
-      >
-        <div className="flex flex-col justify-center items-center">
-          <div className="text-2xl font-game text-white">Connect Your Social Account</div>
-          <div
-            onClick={() => {
-              location.href = `https://api.bamboownft.com/api/login/twitter/auth?walletId=${
-                userInfo.wallet_address
-              }&callback_url=${window.location.href}&timestamp=${Date.parse(new Date())}`
-            }}
-            className=" cursor-pointer mt-8 text-white text-xl font-px"
-          >
-            Twitter
+        }}>
+        <div className="flex flex-col justify-center items-center pb-10">
+          <div className="text-2xl font-game text-white mt-4">Connect Your Social Account</div>
+          <div className="flex flex-row space-x-8">
+            <div
+              onClick={() => {
+                location.href = `${config.requestApiUrl}/api/login/twitter/auth?walletId=${
+                  userInfo.wallet_address
+                }&callback_url=${window.location.href}&timestamp=${Date.parse(new Date())}`
+              }}
+              className=" cursor-pointer mt-8 text-white text-xl font-px">
+              <img className="w-10 h-10" src="https://imgs.bamboownft.com/temp/icon_265.png" />
+            </div>
+            <div
+              onClick={() => {
+                message.info('coming soon')
+              }}
+              className=" cursor-pointer mt-8 text-white text-xl font-px">
+              <img className="w-10 h-10" src="https://imgs.bamboownft.com/temp/icon_262.png" />
+            </div>
+            <div
+              onClick={() => {
+                message.info('coming soon')
+              }}
+              className=" cursor-pointer mt-8 text-white text-xl font-px">
+              <img className="w-10 h-10" src="https://imgs.bamboownft.com/temp/icon_263.png" />
+            </div>
+            <div
+              onClick={() => {
+                message.info('coming soon')
+              }}
+              className=" cursor-pointer mt-8 text-white text-xl font-px">
+              <img className="w-10 h-10" src="https://imgs.bamboownft.com/temp/icon_264.png" />
+            </div>
           </div>
         </div>
       </Modal>
@@ -179,91 +213,103 @@ function Home(props) {
           <div className="relative">
             <div
               onClick={() => {
-                if (!isLogin) {
-                  console.log('isLogin: ', isLogin)
+                if (!step1) {
                   dispatch({
                     type: 'auth/openConnectWalletModal',
                   })
                 }
               }}
               className={classnames(
-                !isLogin ? 'taohong-bg' : 'huise-bg',
-                // !isLogin ? 'animate-bounce' : '',
+                !step1 ? 'taohong-bg' : 'huise-bg',
                 'home-radius-btn px-6 py-3 cursor-pointer text-center text-white font-game text-base whitespace-nowrap',
-              )}
-            >
+              )}>
               CONNECT WALLET
             </div>
-            {isLogin && (
+            {step1 && (
               <div className="absolute right-0 -bottom-3">
                 <img className="w-7" src="https://imgs.bamboownft.com/temp/home_done.png" />
               </div>
             )}
           </div>
 
-          <div>{!isLogin ? <div className="w-20 grey-line"></div> : <div className="w-20 pink-line"></div>}</div>
+          <div>{!step1 ? <div className="w-20 grey-line"></div> : <div className="w-20 pink-line"></div>}</div>
           <div
             className="relative"
             onClick={() => {
-              if (isLogin && userInfo.is_twitter !== 1) {
+              if (step1 && !step2) {
                 setIsOpenBindSocialModal(true)
               }
-            }}
-          >
+            }}>
             <div
               className={classnames(
-                userInfo.is_twitter !== 1 ? 'taohong-bg' : 'huise-bg',
+                !step2 ? 'taohong-bg' : 'huise-bg',
                 'home-radius-btn px-6 py-3 cursor-pointer text-center text-white font-game text-base whitespace-nowrap',
-              )}
-            >
+              )}>
               Connect Social account
             </div>
-            {isLogin && userInfo.is_twitter === 1 && (
+            {step2 && (
               <div className="absolute right-0 -bottom-3">
                 <img className="w-7" src="https://imgs.bamboownft.com/temp/home_done.png" />
               </div>
             )}
           </div>
-          <div>
-            {!(isLogin && userInfo.is_twitter === 1) ? (
-              <div className="w-20 grey-line"></div>
-            ) : (
-              <div className="w-20 pink-line"></div>
-            )}
-          </div>
-          {isLogin && userInfo.is_twitter === 1 && isGetBalanceSuccess ? (
+          <div>{!step2 ? <div className="w-20 grey-line"></div> : <div className="w-20 pink-line"></div>}</div>
+          {step3 ? (
             <div className="relative">
-              <img
-                onClick={async () => {
-                  if (userInfo.is_twitter === 1 && isLogin) {
-                    await mintNft()
-                  }
+              <div
+                style={{
+                  backgroundImage: 'url(https://imgs.bamboownft.com/temp/mint_gray_bg.png	)',
+                  backgroundSize: '100% 100%',
                 }}
-                className="w-64"
-                src="https://imgs.bamboownft.com/temp/home_gray_mint.png"
-              />
+                className="w-64 cursor-pointer h-16 w-30">
+                <div className="flex mt-1 text-white font-game justify-center items-center">
+                  MINT A PET
+                  <br />
+                  AND START WEB3.0
+                </div>
+              </div>
               <div className="absolute right-0 -bottom-3">
                 <img className="w-7" src="https://imgs.bamboownft.com/temp/home_done.png" />
               </div>
             </div>
           ) : (
-            <img className="w-64" src="https://imgs.bamboownft.com/temp/home_color_mint.png" />
+            <div
+              style={{
+                backgroundImage: 'url(https://imgs.bamboownft.com/temp/mint_color_bg.png	)',
+                backgroundSize: '100% 100%',
+              }}
+              onClick={async () => {
+                if (step2) {
+                  mintNft()
+                }
+              }}
+              className="w-64 cursor-pointer h-16 w-30">
+              {mintLoading ? (
+                <div className="flex mt-4 font-game text-white justify-center items-center">
+                  <div className="mr-2">in transaction</div>
+                  <IconLoading fontSize={20} color="#fff" />
+                </div>
+              ) : (
+                <div className="flex mt-1 text-white font-game justify-center items-center">
+                  MINT A PET
+                  <br />
+                  AND START WEB3.0
+                </div>
+              )}
+            </div>
           )}
-          {isLogin && userInfo.is_twitter === 1 && isGetBalanceSuccess ? (
+          {step3 ? (
             <div>
               <img className="w-14 ml-4 relative -top-2" src="https://imgs.bamboownft.com/temp/home_color_arrow.gif" />
             </div>
           ) : (
             <div>
-              {mintLoading && <IconLoading fontSize={20} color="#fff" />}
-
               <img
                 className="w-14 ml-4 relative -top-2"
                 src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_gray_arrow.png"
               />
             </div>
           )}
-
           {isLogin && userInfo.is_twitter === 1 && isGetBalanceSuccess ? (
             <img
               onClick={() => {

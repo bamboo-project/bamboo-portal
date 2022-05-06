@@ -21,7 +21,7 @@ const IndexModel = {
         return
       }
       try {
-        const result = yield window.neolineN3Instance.pickAddress()
+        const result = yield window.neolineN3Instance.getAccount()
         const { label, address } = result
         yield put({
           type: 'refreshUser',
@@ -30,7 +30,6 @@ const IndexModel = {
             walletId: address,
           },
         })
-
       } catch (error) {
         const { type, description, data } = error
         switch (type) {
@@ -46,11 +45,21 @@ const IndexModel = {
         }
       }
     },
-    *getNeoAccount({ payload }, { call, take, put }) {
+    *getNeoAccount({ payload }, { call, take, put, race }) {
       try {
         yield take('sdk/initNeoLineN3Success')
         console.log('init ne3 success')
-        const account = yield window.neolineN3Instance.getAccount()
+        const { account } = yield race({
+          account: call(window.neolineN3Instance.getAccount),
+          timeout: call(delay, 3000),
+        })
+        if (!account) {
+          yield put({
+            type: 'logout',
+            payload: {},
+          })
+          return
+        }
         yield put({
           type: 'refreshUser',
           payload: {
@@ -58,6 +67,7 @@ const IndexModel = {
           },
         })
       } catch (error) {
+        console.log('error: ', error)
         const { type, description, data } = error
         switch (type) {
           case 'NO_PROVIDER':

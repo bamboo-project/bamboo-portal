@@ -2,7 +2,7 @@ import { Effect, ImmerReducer, Reducer, Subscription } from 'umi'
 import * as UserService from '@/services/User'
 import * as ConnectUtils from '@/utils/connect'
 import { encode, decode } from 'js-base64'
-
+import config from '@/config'
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 import { message } from 'antd'
 
@@ -12,12 +12,18 @@ const BalanceModel = {
   state: {
     isGetBalanceSuccess: false,
     userNft: {},
+    user: {},
   },
 
   effects: {
-    *getBalance({ payload }, { take, put }) {
+    *getBalance({ payload }, { take, put, select }) {
+      const { walletId, isSelf } = payload
       try {
-        const { scriptHash } = yield window.neolineN3Instance.AddressToScriptHash({ address: payload.walletId })
+        const NeoLineN3InitStatus = yield select(state => state['sdk'].NeoLineN3)
+        if (!NeoLineN3InitStatus) {
+          yield take('sdk/initNeoLineN3Success')
+        }
+        const { scriptHash } = yield window.neolineN3Instance.AddressToScriptHash({ address: walletId })
         const result = yield window.neolineN3Instance.invokeRead({
           scriptHash: '0x7d65a781d4a06306e75f107150d982fd63a689c7',
           operation: 'tokensOf',
@@ -37,14 +43,19 @@ const BalanceModel = {
         if (!result || result.state === 'FAULT') {
           //
         }
-        console.log('result.stack: ', result.stack)
         var token = ''
         if (result.stack && result.stack.length > 0) {
-          // 取最后一个token
           if (result.stack[0].iterator.length > 0) {
             token = result.stack[0].iterator[result.stack[0].iterator.length - 1].value
           } else {
+            if (isSelf) {
+              location.href = '/home'
+            }
             return
+          }
+        } else {
+          if (isSelf) {
+            location.href = '/home'
           }
         }
         const innovationResult = yield window.neolineN3Instance.invokeRead({
@@ -65,20 +76,33 @@ const BalanceModel = {
         })
 
         if (innovationResult == null && innovationResult.result === 'FAULT') {
+          if (isSelf) {
+            location.href = '/home'
+          }
+          return
         }
-        console.log('innovationResult: ', innovationResult)
         const propertiesIterator = innovationResult.stack[0].value
 
         const nftInfo = JSON.parse(decode(propertiesIterator))
-        if (nftInfo.version >= 9) {
+        const buffer = Buffer.from(token, 'base64')
+        const bufString = buffer.toString('hex')
+
+        nftInfo.tokenId = parseInt(bufString, 16)
+        if (nftInfo.version >= config.nftVersion) {
           yield put({
             type: 'getBalanceSuccess',
             payload: {
               balance: nftInfo,
+              walletAddress: payload.walletId,
             },
           })
+        } else {
+          if (isSelf) {
+            location.href = '/home'
+          }
         }
       } catch (error) {
+        console.log('error: ', error)
         const { type, description, data } = error
         switch (type) {
           case 'NO_PROVIDER':
@@ -100,9 +124,11 @@ const BalanceModel = {
   },
   reducers: {
     getBalanceSuccess(state: any, { payload }) {
-      console.log('payload: ', payload)
+      console.log('payload333: ', payload)
       state.isGetBalanceSuccess = true
-      state.userNft = payload.balance
+      state.user[payload.walletAddress] = {}
+      state.user[payload.walletAddress].userNft = payload.balance
+      state.user[payload.walletAddress].success = true
     },
   },
   subscriptions: {},

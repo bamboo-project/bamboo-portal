@@ -1,8 +1,10 @@
 import { extend } from 'umi-request'
+import config from '@/config'
 // import * as AuthService from '@/utils/auth'
 const request = extend({
-  prefix: 'https://api.bamboownft.com',
+  prefix: config.requestApiUrl,
   timeout: 10000,
+  credentials: 'include',
   headers: {
     // Authorization: 'Basic YXBwOmFwcF9zZWNyZXQ=',
     // 'Tenant-Id': '000000',
