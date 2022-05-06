@@ -251,14 +251,14 @@ function Home(props) {
           )}
           {isLogin && userInfo.is_twitter === 1 && isGetBalanceSuccess ? (
             <div>
-              <img className="w-14 pl-4" src="https://imgs.bamboownft.com/temp/home_color_arrow.gif" />
+              <img className="w-14 ml-4 relative -top-2" src="https://imgs.bamboownft.com/temp/home_color_arrow.gif" />
             </div>
           ) : (
             <div>
               {mintLoading && <IconLoading fontSize={20} color="#fff" />}
 
               <img
-                className="w-14 mx-4"
+                className="w-14 ml-4 relative -top-2"
                 src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/home_gray_arrow.png"
               />
             </div>
@@ -273,7 +273,7 @@ function Home(props) {
               src="https://imgs.bamboownft.com/temp/home_color_egg.gif"
             />
           ) : (
-            <img className="w-20" src="https://imgs.bamboownft.com/temp/home_gray_egg.png" />
+            <img className="w-40" src="https://imgs.bamboownft.com/temp/home_gray_egg.png" />
           )}
         </div>
         <div className="">
