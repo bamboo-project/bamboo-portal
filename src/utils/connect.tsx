@@ -3,8 +3,10 @@ export const WALLET_CONNECT_TYPE = 'CONNECT_TYPE'
 import Cookies from 'js-cookie'
 
 export function clearConnect() {
+  console.log('clearConnect: ')
   Cookies.remove(WALLET_IS_CONNECT)
   Cookies.remove(WALLET_CONNECT_TYPE)
+  window.sessionStorage.clear()
 }
 
 export function setConnect({ isConnect, connectType }) {

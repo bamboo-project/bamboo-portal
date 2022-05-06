@@ -6,7 +6,6 @@ import { message } from 'antd'
 import IconLoading from '@/components/IconLoading'
 function Message(props) {
   const { walletId, isSelf, myWalletId, myAvatarUrl } = props
-  console.log('myAvatarUrl: ', myAvatarUrl)
   const [messageList, setMessageList] = useState([])
   const [messageCount, setMessageCount] = useState(0)
   const [loading, setLoading] = useState(false)
@@ -44,6 +43,11 @@ function Message(props) {
         fromAddressAvatarURL: myAvatarUrl,
         toAddressAvatarURL: '',
       })
+      if(res.code === 200){
+        message.success('Post Message Success')
+        setIsOpenPostMessageModal(false)
+        getMessageList()
+      }
       console.log('res: ', res)
     } catch (err) {
       console.log('err: ', err)
@@ -87,6 +91,7 @@ function Message(props) {
           <img className="w-8 h-8" src="https://imgs.bamboownft.com/temp/img_370.png" />
           <div className="font-px text-base ml-4 mt-1">{messageCount} MESSAGE</div>
         </div>
+
         <div className="pr-8">
           {!isSelf && (
             <div
@@ -99,6 +104,9 @@ function Message(props) {
           )}
         </div>
       </div>
+      {messageList.length <= 0 && (
+        <div className="text-white w-full font-px text-2xl justify-center items-center flex mt-4">NONE</div>
+      )}
       <div className="grid grid-flow-row grid-cols-2 gap-4 px-4">
         {messageList.map(item => {
           return (

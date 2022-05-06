@@ -25,3 +25,18 @@ body {
   @apply dark:bg-dark-bg-1;
 }
 
+.anticon-info-circle {
+}
+
+.ant-message-custom-content {
+  font-family: 'Pixellari';
+  color: #fff;
+  .anticon {
+    svg {
+      margin-top: -5px;
+    }
+  }
+}
+.ant-message-notice-content {
+  background-color: rgb(74, 72, 72);
+}
