@@ -280,7 +280,7 @@ function Home(props) {
           <img src="https://imgs.bamboownft.com/temp/home_jianbian.png" />
         </div>
       </div>
-      {!mintSuccess && <GetNft userInfo={userInfo} userNft={userNft} />}
+      {mintSuccess && <GetNft userInfo={userInfo} userNft={userNft} />}
     </div>
   )
 }
