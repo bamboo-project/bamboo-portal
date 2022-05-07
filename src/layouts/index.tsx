@@ -43,21 +43,23 @@ function IndexLayout(props) {
         tabIndex={pathname}
       />
       <div className="mx-auto">{props.children}</div>
-      <Footer />
+      {pathname == '/' && <Footer />}
       <Modal
         isOpen={isOpenConnectWalletModal}
         onClose={() => {
           dispatch({
             type: 'auth/closeConnectWalletModal',
           })
-        }}>
+        }}
+      >
         <div className="flex flex-col justify-center items-center pb-6">
           <div className="text-3xl font-game text-white">Connect Wallet</div>
           <div
             onClick={() => {
               connectWallet('NEO')
             }}
-            className="flex flex-row items-center cursor-pointer mt-8 text-white text-xl font-px">
+            className="flex flex-row items-center cursor-pointer mt-8 text-white text-xl font-px"
+          >
             <img className="w-10 h-10" src="https://imgs.bamboownft.com/temp/logo_neo_2.png" />
             <div className="ml-4 w-36">Neo Line</div>
           </div>
@@ -65,7 +67,8 @@ function IndexLayout(props) {
             onClick={() => {
               message.info('Coming soon')
             }}
-            className="flex flex-row items-center cursor-pointer mt-8 text-white text-xl font-px">
+            className="flex flex-row items-center cursor-pointer mt-8 text-white text-xl font-px"
+          >
             <img className="w-10 h-10" src="https://imgs.bamboownft.com/temp/logo_14.png" />
             <div className="ml-4 w-36">Metamask</div>
           </div>
@@ -73,7 +76,8 @@ function IndexLayout(props) {
             onClick={() => {
               message.info('Coming soon')
             }}
-            className="flex flex-row items-center cursor-pointer mt-8 text-white text-xl font-px">
+            className="flex flex-row items-center cursor-pointer mt-8 text-white text-xl font-px"
+          >
             <img className="w-10 h-10" src="https://imgs.bamboownft.com/temp/logo_13.png" />
             <div className="ml-4 w-36">Wallet Connect</div>
           </div>
@@ -81,7 +85,8 @@ function IndexLayout(props) {
             onClick={() => {
               message.info('Coming soon')
             }}
-            className="flex flex-row items-center cursor-pointer mt-8 text-white text-xl font-px">
+            className="flex flex-row items-center cursor-pointer mt-8 text-white text-xl font-px"
+          >
             <img className="w-10 h-10" src="https://imgs.bamboownft.com/temp/logo_11.png" />
             <div className="ml-4 w-36">CoinBase Wallet</div>
           </div>

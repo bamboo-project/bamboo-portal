@@ -13,7 +13,10 @@ function StarPets() {
               <div className="absolute bottom-4 font-px text-white flex flex-col items-center">
                 <div className="mb-2.5 text-xl">Dwayne Johnson</div>
                 <div className="flex flex-row">
-                  <div className="w-10 h-10 rounded-full bg-yellow-400 mr-2.5"></div>
+                  <div
+                    className="w-10 h-10 rounded-full mr-2.5 bg-contain bg-center"
+                    style={{ backgroundImage: 'url(https://imgs.bamboownft.com/temp/index_mp_avatar1.png)' }}
+                  ></div>
                   <div className="text-base">
                     <div>From</div>
                     <div>Tempor nullam</div>
@@ -32,7 +35,10 @@ function StarPets() {
               <div className="absolute bottom-4 font-px text-white flex flex-col items-center">
                 <div className="mb-2.5 text-xl">BLUEGHOST</div>
                 <div className="flex flex-row">
-                  <div className="w-10 h-10 rounded-full bg-yellow-400 mr-2.5"></div>
+                  <div
+                    className="w-10 h-10 rounded-full mr-2.5 bg-contain bg-center"
+                    style={{ backgroundImage: 'url(https://imgs.bamboownft.com/temp/index_mp_avatar2.png)' }}
+                  ></div>
                   <div className="text-base">
                     <div>From</div>
                     <div>Nulla magnis</div>
@@ -51,7 +57,10 @@ function StarPets() {
               <div className="absolute bottom-4 font-px text-white flex flex-col items-center">
                 <div className="mb-2.5 text-xl">SantaHusky</div>
                 <div className="flex flex-row">
-                  <div className="w-10 h-10 rounded-full bg-yellow-400 mr-2.5"></div>
+                  <div
+                    className="w-10 h-10 rounded-full mr-2.5 bg-contain bg-center"
+                    style={{ backgroundImage: 'url(https://imgs.bamboownft.com/temp/index_mp_avatar3.png)' }}
+                  ></div>
                   <div className="text-base">
                     <div>From</div>
                     <div>Tincidunt vitae</div>
@@ -70,7 +79,10 @@ function StarPets() {
               <div className="absolute bottom-4 font-px text-white flex flex-col items-center">
                 <div className="mb-2.5 text-xl">BADMAN</div>
                 <div className="flex flex-row">
-                  <div className="w-10 h-10 rounded-full bg-yellow-400 mr-2.5"></div>
+                  <div
+                    className="w-10 h-10 rounded-full mr-2.5 bg-contain bg-center"
+                    style={{ backgroundImage: 'url(https://imgs.bamboownft.com/temp/index_mp_avatar4.png)' }}
+                  ></div>
                   <div className="text-base">
                     <div>From</div>
                     <div>Adipiscing nibh</div>
@@ -89,7 +101,10 @@ function StarPets() {
               <div className="absolute bottom-4 font-px text-white flex flex-col items-center">
                 <div className="mb-2.5 text-xl">REDGHOST</div>
                 <div className="flex flex-row">
-                  <div className="w-10 h-10 rounded-full bg-yellow-400 mr-2.5"></div>
+                  <div
+                    className="w-10 h-10 rounded-full mr-2.5 bg-contain bg-center"
+                    style={{ backgroundImage: 'url(https://imgs.bamboownft.com/temp/index_mp_avatar5.png)' }}
+                  ></div>
                   <div className="text-base">
                     <div>From</div>
                     <div>Et cum</div>
@@ -108,10 +123,13 @@ function StarPets() {
               <div className="absolute bottom-4 font-px text-white flex flex-col items-center">
                 <div className="mb-2.5 text-xl">Dwayne Johnson</div>
                 <div className="flex flex-row">
-                  <div className="w-10 h-10 rounded-full bg-yellow-400 mr-2.5"></div>
+                  <div
+                    className="w-10 h-10 rounded-full mr-2.5 bg-contain bg-center"
+                    style={{ backgroundImage: 'url(https://imgs.bamboownft.com/temp/index_mp_avatar6.png)' }}
+                  ></div>
                   <div className="text-base">
                     <div>From</div>
-                    <div>Tempor nullam</div>
+                    <div>Taloy Kitchase</div>
                   </div>
                 </div>
               </div>

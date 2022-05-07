@@ -150,7 +150,8 @@ function Home(props) {
         isOpen={isOpenBindSocialModal}
         onClose={() => {
           setIsOpenBindSocialModal(false)
-        }}>
+        }}
+      >
         <div className="flex flex-col justify-center items-center pb-10">
           <div className="text-2xl font-game text-white mt-4">Connect Your Social Account</div>
           <div className="flex flex-row space-x-8">
@@ -160,34 +161,38 @@ function Home(props) {
                   userInfo.wallet_address
                 }&callback_url=${window.location.href}&timestamp=${Date.parse(new Date())}`
               }}
-              className=" cursor-pointer mt-8 text-white text-xl font-px">
+              className=" cursor-pointer mt-8 text-white text-xl font-px"
+            >
               <img className="w-10 h-10" src="https://imgs.bamboownft.com/temp/icon_265.png" />
             </div>
             <div
               onClick={() => {
                 message.info('coming soon')
               }}
-              className=" cursor-pointer mt-8 text-white text-xl font-px">
+              className=" cursor-pointer mt-8 text-white text-xl font-px"
+            >
               <img className="w-10 h-10" src="https://imgs.bamboownft.com/temp/icon_262.png" />
             </div>
             <div
               onClick={() => {
                 message.info('coming soon')
               }}
-              className=" cursor-pointer mt-8 text-white text-xl font-px">
+              className=" cursor-pointer mt-8 text-white text-xl font-px"
+            >
               <img className="w-10 h-10" src="https://imgs.bamboownft.com/temp/icon_263.png" />
             </div>
             <div
               onClick={() => {
                 message.info('coming soon')
               }}
-              className=" cursor-pointer mt-8 text-white text-xl font-px">
+              className=" cursor-pointer mt-8 text-white text-xl font-px"
+            >
               <img className="w-10 h-10" src="https://imgs.bamboownft.com/temp/icon_264.png" />
             </div>
           </div>
         </div>
       </Modal>
-      <div className={classnames(styles.marketWrap, 'min-h-screen w-full relative')}>
+      <div className={classnames(styles.marketWrap, 'h-screen w-full relative')}>
         <div className="flex flex-row items-center container mx-auto mb-24 pt-40 relative">
           <div className="pr-96">
             <div className="text-primary text-8xl flex items-center flex-row font-extrabold mb-8">
@@ -209,7 +214,7 @@ function Home(props) {
             <img src="https://imgs.bamboownft.com/temp/bg_11.png" />
           </div>
         </div>
-        <div className="flex flex-col md:flex-row items-center justify-center w-full overflow-hidden">
+        <div className="flex flex-col md:flex-row items-center justify-center w-full overflow-hidden absolute z-10">
           <div className="relative">
             <div
               onClick={() => {
@@ -221,8 +226,10 @@ function Home(props) {
               }}
               className={classnames(
                 !step1 ? 'taohong-bg' : 'huise-bg',
+                !step1 && 'animate-bounce',
                 'home-radius-btn px-6 py-3 cursor-pointer text-center text-white font-game text-base whitespace-nowrap',
-              )}>
+              )}
+            >
               CONNECT WALLET
             </div>
             {step1 && (
@@ -239,12 +246,15 @@ function Home(props) {
               if (step1 && !step2) {
                 setIsOpenBindSocialModal(true)
               }
-            }}>
+            }}
+          >
             <div
               className={classnames(
                 !step2 ? 'taohong-bg' : 'huise-bg',
+                step1 && !step2 && 'animate-bounce',
                 'home-radius-btn px-6 py-3 cursor-pointer text-center text-white font-game text-base whitespace-nowrap',
-              )}>
+              )}
+            >
               Connect Social account
             </div>
             {step2 && (
@@ -261,7 +271,8 @@ function Home(props) {
                   backgroundImage: 'url(https://imgs.bamboownft.com/temp/mint_gray_bg.png	)',
                   backgroundSize: '100% 100%',
                 }}
-                className="w-64 cursor-pointer h-16 w-30">
+                className="w-64 cursor-pointer h-16 w-30"
+              >
                 <div className="flex mt-1 text-white font-game justify-center items-center">
                   MINT A PET
                   <br />
@@ -274,6 +285,7 @@ function Home(props) {
             </div>
           ) : (
             <div
+              className={classnames(step2 && 'animate-bounce', 'w-64 cursor-pointer h-16 w-30')}
               style={{
                 backgroundImage: 'url(https://imgs.bamboownft.com/temp/mint_color_bg.png	)',
                 backgroundSize: '100% 100%',
@@ -283,7 +295,7 @@ function Home(props) {
                   mintNft()
                 }
               }}
-              className="w-64 cursor-pointer h-16 w-30">
+            >
               {mintLoading ? (
                 <div className="flex mt-4 font-game text-white justify-center items-center">
                   <div className="mr-2">in transaction</div>
@@ -322,7 +334,7 @@ function Home(props) {
             <img className="w-40" src="https://imgs.bamboownft.com/temp/home_gray_egg.png" />
           )}
         </div>
-        <div className="">
+        <div className="absolute bottom-0">
           <img src="https://imgs.bamboownft.com/temp/home_jianbian.png" />
         </div>
       </div>

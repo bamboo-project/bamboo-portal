@@ -229,7 +229,7 @@ function Index() {
             maximize the value of social information
           </div>
           <div className="flex flex-row items-center mt-44 space-x-28 my-line-height1">
-            <div className="text-white font-px w-2/3">
+            <div className="text-white font-px w-1/2">
               Every pet is not just a NFT. When you take pets to participate in social activities, they are constantly
               learning and recording your social behavior in the Web3.0 world, and building your social graph in Web3.0
               <br />
@@ -240,25 +240,25 @@ function Index() {
               So the higher the pet level, the higher the value you have on the chain.
             </div>
             <div>
-              <img className="h-52" src="https://imgs.bamboownft.com/temp/image_266.png" />
+              <img className="h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/image_266.png" />
             </div>
           </div>
           <div className="flex flex-row items-center mt-80 space-x-28 my-line-height1">
-            <div className="text-white font-px w-2/3">
+            <div className="text-white font-px w-1/2">
               Higher social value allows your pet to bring back more suitable and better items and community benefits
               every day.
             </div>
             <div>
-              <img className="h-52" src="https://imgs.bamboownft.com/temp/image_101.png" />
+              <img className="h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/image_101.png" />
             </div>
           </div>
           <div className="flex flex-row items-center mt-80 space-x-28 my-line-height1">
-            <div className="text-white font-px w-2/3">
+            <div className="text-white font-px w-1/2">
               Based on personal social data behind pets，other projects can quickly find people who match the user
               profile of the project, and can also provide users with DID-based credit value through the data
             </div>
             <div>
-              <img className=" h-52" src="https://imgs.bamboownft.com/temp/image_267.png" />
+              <img className="h-52" src="https://bamboo-imgs.s3.ap-southeast-1.amazonaws.com/temp/image_267.png" />
             </div>
           </div>
           <div className="flex items-center justify-center mt-80 pb-64">
