@@ -27,7 +27,7 @@ function Neighbors() {
         <div className="relative">
           <div
             className="w-12 h-12 rounded-full bg-center bg-contain"
-            style={{ backgroundImage: `url(https://imgs.bamboownft.com/temp/index_avatar${index + 1}.png)` }}></div>
+            style={{ backgroundImage: `url(${neighborsInfo[index].avatar})` }}></div>
           <div className="w-2 h-2 absolute bottom-0 right-0 bg-green-400 rounded-full"></div>
         </div>
         <div className="ml-4">
